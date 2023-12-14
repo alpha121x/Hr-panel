@@ -112,6 +112,13 @@
                 </fieldset>
 
                 <div class="row mb-3">
+                  <label for="inputEmail3" class="col-sm-3 col-form-label"><b>CNIC *</b></label>
+                  <div class="col-sm-9">
+                    <input type="number" class="form-control" id="inputText">
+                  </div>
+                </div>
+
+                <div class="row mb-3">
                   <label for="inputEmail3" class="col-sm-3 col-form-label"><b>Phone No:1</b></label>
                   <div class="col-sm-9">
                     <input type="number" class="form-control" id="inputText">
@@ -126,18 +133,13 @@
                 </div>
 
                 <div class="row mb-3">
-                  <label for="inputEmail3" class="col-sm-3 col-form-label"><b>Local Address*</b></label>
+                  <label for="inputEmail3" class="col-sm-3 col-form-label"><b>Address*</b></label>
                   <div class="col-sm-9">
                     <input type="text" class="form-control" id="inputText">
                   </div>
                 </div>
 
-                <div class="row mb-3">
-                  <label for="inputEmail3" class="col-sm-3 col-form-label"><b>Parmanent Address</b></label>
-                  <div class="col-sm-9">
-                    <input type="text" class="form-control" id="inputText">
-                  </div>
-                </div>
+                
 
                 <div class="row mb-3">
                   <label for="inputEmail3" class="col-sm-3 col-form-label"><b>Nationality</b></label>
@@ -146,33 +148,7 @@
                   </div>
                 </div>
 
-                <div class="row mb-3">
-                  <label for="inputEmail3" class="col-sm-3 col-form-label"><b>Reference 1</b></label>
-                  <div class="col-sm-9">
-                    <input type="text" class="form-control" id="inputText">
-                  </div>
-                </div>
-
-                <div class="row mb-3">
-                  <label for="inputEmail3" class="col-sm-3 col-form-label"><b>Phone No Reference 1</b></label>
-                  <div class="col-sm-9">
-                    <input type="number" class="form-control" id="inputText">
-                  </div>
-                </div>
-
-                <div class="row mb-3">
-                  <label for="inputEmail3" class="col-sm-3 col-form-label"><b>Reference 2</b></label>
-                  <div class="col-sm-9">
-                    <input type="text" class="form-control" id="inputText">
-                  </div>
-                </div>
-
-                <div class="row mb-3">
-                  <label for="inputEmail3" class="col-sm-3 col-form-label"><b>Phone No Reference 2</b></label>
-                  <div class="col-sm-9">
-                    <input type="number" class="form-control" id="inputText">
-                  </div>
-                </div>
+                
 
                 <fieldset class="row mb-3">
                   <legend class="col-form-label col-sm-3 pt-0"><b>Martial Status</b></legend>
