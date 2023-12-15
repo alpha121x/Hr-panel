@@ -42,8 +42,8 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin') {
         </a>
         <ul id="attendance-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="components-alerts.html">
-              <i class="bi bi-circle"></i><span>Add Employes</span>
+            <a href="attendance-daily.php">
+              <i class="bi bi-circle"></i><span>Attendance Daily</span>
             </a>
           </li>
           <li>
