@@ -62,336 +62,267 @@
       </nav>
     </div><!-- End Page Title -->
     <section class="section">
+    <form method="post" class='needs-validation' novalidate action="fir-employe-query.php">
       <div class="row">
         <div class="col-lg-6">
+         
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Persional Details</h5>
+              <h5 class="card-title">Personal Details</h5>
 
               <!-- Horizontal Form -->
-              <form>
-                <div class="row mb-3">
-                  <label for="inputEmail3" class="col-sm-3 col-form-label"><b>Name</b></label>
+              
+                <div class="row mb-4">
+                  <label for="" class="col-sm-3 col-form-label"><b>First Name</b></label>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" id="inputText">
-                  </div>
-                </div>
-
-                <div class="row mb-3 justify-content-center">
-                  <label for="inputEmail3" class="col-sm-3 col-form-label"><b>Father Name</b></label>
-                  <div class="col-sm-9">
-                    <input type="text" class="form-control" id="inputText">
-                  </div>
-                </div>
-
-                <div class="row mb-3">
-                  <label for="inputEmail3" class="col-sm-3 col-form-label"><b>Date of Birth</b></label>
-                  <div class="col-sm-9">
-                    <input type="date" class="form-control" id="inputText">
-                  </div>
-                </div>
-
-                <fieldset class="row mb-3 ">
-                  <legend class="col-form-label col-sm-3 pt-0"><b>Gender</b></legend>
-                  <div class="col-sm-9 d-flex">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-                      <label class="form-check-label" for="gridRadios1">
-                        Male 
-                      </label>
+                    <input type="text" class="form-control" id="inputText" placeholder="Enter Your First Name" required name="first_name">
+                    <div class="invalid-feedback">
+                      Please Enter Your First Name
                     </div>
-                    <div class="form-check mx-3">
-                      <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                      <label class="form-check-label" for="gridRadios2">
-                        Female
-                      </label>
+                  </div>
+                </div>
+
+                <div class="row mb-4 justify-content-center">
+                  <label for="" class="col-sm-3 col-form-label"><b>Last Name</b></label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inputText" placeholder="Enter Your Second Name" required name="last_name">
+                    <div class="invalid-feedback">
+                     please Enter your Second Name
                     </div>
-                    
-                  </div>
-                </fieldset>
-
-                <div class="row mb-3">
-                  <label for="inputEmail3" class="col-sm-3 col-form-label"><b>CNIC *</b></label>
-                  <div class="col-sm-9">
-                    <input type="number" class="form-control" id="inputText">
                   </div>
                 </div>
 
-                <div class="row mb-3">
-                  <label for="inputEmail3" class="col-sm-3 col-form-label"><b>Phone No:1</b></label>
+                <div class="row mb-4">
+                  <label for="" class="col-sm-3 col-form-label"><b>Date of Birth</b></label>
                   <div class="col-sm-9">
-                    <input type="number" class="form-control" id="inputText">
-                  </div>
-                </div>
-
-                <div class="row mb-3">
-                  <label for="inputEmail3" class="col-sm-3 col-form-label"><b>Phone No:2</b></label>
-                  <div class="col-sm-9">
-                    <input type="number" class="form-control" id="inputText">
-                  </div>
-                </div>
-
-                <div class="row mb-3">
-                  <label for="inputEmail3" class="col-sm-3 col-form-label"><b>Address*</b></label>
-                  <div class="col-sm-9">
-                    <input type="text" class="form-control" id="inputText">
-                  </div>
-                </div>
-
-                
-
-                <div class="row mb-3">
-                  <label for="inputEmail3" class="col-sm-3 col-form-label"><b>Nationality</b></label>
-                  <div class="col-sm-9">
-                    <input type="text" class="form-control" id="inputText">
-                  </div>
-                </div>
-
-                
-
-                <fieldset class="row mb-3">
-                  <legend class="col-form-label col-sm-3 pt-0"><b>Martial Status</b></legend>
-                  <div class="col-sm-9 d-flex">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-                      <label class="form-check-label" for="gridRadios1">
-                        Yes
-                      </label>
+                    <input type="date" class="form-control" id="inputText" required name="date_of_birth">
+                    <div class="invalid-feedback">
+                     please Enter your Second Name
                     </div>
-                    <div class="form-check mx-2">
-                      <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                      <label class="form-check-label" for="gridRadios2">
-                       No
-                      </label>
-                    </div>
-                    
                   </div>
-                </fieldset>
+                </div>
 
-                <div class="row mb-3">
-                  <label for="inputEmail3" class="col-sm-3 col-form-label"><b>Photo</b></label>
+                <div class="row mb-4">
+                  <label for="" class="col-sm-3 col-form-label"><b>Gender</b></label>
                   <div class="col-sm-9">
-                    <input type="file" class="form-control" id="inputText">
-                  </div>
-                </div>
-
-                <div class="row mb-3">
-                  <label for="inputEmail3" class="col-sm-3 col-form-label"><b>Comment</b></label>
-                  <div class="col-sm-9">
-                    <textarea name="" id="" cols="30" rows="4" class="form-control"></textarea>
-                  </div>
-                </div>
-
-                
-
-                
-                <div class="text-center">
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                  <button type="reset" class="btn btn-secondary">Reset</button>
-                </div>
-              </form><!-- End Horizontal Form -->
-
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Multi Columns Form</h5>
-
-              <!-- Multi Columns Form -->
-              <form class="row g-3">
-                <div class="col-md-12">
-                  <label for="inputName5" class="form-label">Your Name</label>
-                  <input type="text" class="form-control" id="inputName5">
-                </div>
-                <div class="col-md-6">
-                  <label for="inputEmail5" class="form-label">Email</label>
-                  <input type="email" class="form-control" id="inputEmail5">
-                </div>
-                <div class="col-md-6">
-                  <label for="inputPassword5" class="form-label">Password</label>
-                  <input type="password" class="form-control" id="inputPassword5">
-                </div>
-                <div class="col-12">
-                  <label for="inputAddress5" class="form-label">Address</label>
-                  <input type="text" class="form-control" id="inputAddres5s" placeholder="1234 Main St">
-                </div>
-                <div class="col-12">
-                  <label for="inputAddress2" class="form-label">Address 2</label>
-                  <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-                </div>
-                <div class="col-md-6">
-                  <label for="inputCity" class="form-label">City</label>
-                  <input type="text" class="form-control" id="inputCity">
-                </div>
-                <div class="col-md-4">
-                  <label for="inputState" class="form-label">State</label>
-                  <select id="inputState" class="form-select">
-                    <option selected>Choose...</option>
-                    <option>...</option>
+                  <select class="form-control form-select" required name="gender">
+                    <option selected>Your Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
                   </select>
-                </div>
-                <div class="col-md-2">
-                  <label for="inputZip" class="form-label">Zip</label>
-                  <input type="text" class="form-control" id="inputZip">
-                </div>
-                <div class="col-12">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="gridCheck">
-                    <label class="form-check-label" for="gridCheck">
-                      Check me out
-                    </label>
+                  <div class="valid-feedback">
+                      Please Select Your Gender
+                    </div>
                   </div>
                 </div>
-                <div class="text-center">
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                  <button type="reset" class="btn btn-secondary">Reset</button>
-                </div>
-              </form><!-- End Multi Columns Form -->
 
+                <div class="row mb-4">
+                  <label for="" class="col-sm-3 col-form-label"><b>CNIC *</b></label>
+                  <div class="col-sm-9">
+                    <input type="number" class="form-control" id="inputText" required name="cnic">
+                    <div class="invalid-feedback">
+                     Please Enter Your CNIC Number
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row mb-4">
+                  <label for="" class="col-sm-3 col-form-label"><b>City</b></label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inputText" required name="city">
+                    <div class="invalid-feedback">
+                    Please Enter your City
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row mb-4">
+                  <label for="" class="col-sm-3 col-form-label"><b>Phone No:1</b></label>
+                  <div class="col-sm-9">
+                    <input type="number" class="form-control" id="inputText" placeholder="Enter Your Number" required name="phone1">
+                    <div class="invalid-feedback">
+                    Please Enter Your Phone Number
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row mb-4">
+                  <label for="" class="col-sm-3 col-form-label"><b>Phone No:2</b></label>
+                  <div class="col-sm-9">
+                    <input type="number" class="form-control" id="inputText" placeholder="Optional" name="phone2">
+                    <div class="valid-feedback">
+                    Please Enter Your Phone Number ( Optional )
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row mb-4">
+                  <label for="" class="col-sm-3 col-form-label"><b>Address*</b></label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inputText" placeholder="Enter Your Address" required name="address">
+                    <div class="invalid-feedback">
+                    Please Your Address
+                    </div>
+                  </div>
+                </div>
+
+                
+
+                <div class="row mb-4">
+                  <label for="" class="col-sm-3 col-form-label form-label"><b>Nationality</b></label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inputText" required name="nationality">
+                    <div class="invalid-feedback">
+                    Please  Enter Your Nationality Information
+                    </div>
+                  </div>
+                </div>
+
+                
+
+                <div class="row mb-4">
+                  <label  class="col-sm-3 col-form-label"><b>Marital Status</b></label>
+                  <div class="col-sm-9">
+                  <select  class="form-control form-select" required name="marital_status">
+                    <option selected>Choose...</option>
+                    <option value="Married">Yes</option>
+                    <option value="Not Married">No</option>
+                  </select>
+                  <div class="valid-feedback">
+                  Please Enter You Married or Not!
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row mb-4">
+                  <label for="photo" class="col-sm-3 col-form-label"><b>Photo</b></label>
+                  <div class="col-sm-9">
+                    <input type="file" class="form-control"  required name="photo">
+                    <div class="invalid-feedback">
+                    Please Enter Your Photo
+                    </div>
+                  </div>
+                </div>
             </div>
           </div>
-
         </div>
+
 
         <div class="col-lg-6">
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Vertical Form</h5>
+              <h5 class="card-title">Company Details</h5>
 
               <!-- Vertical Form -->
-              <form class="row g-3">
-                <div class="col-12">
-                  <label for="inputNanme4" class="form-label">Your Name</label>
-                  <input type="text" class="form-control" id="inputNanme4">
-                </div>
-                <div class="col-12">
-                  <label for="inputEmail4" class="form-label">Email</label>
-                  <input type="email" class="form-control" id="inputEmail4">
-                </div>
-                <div class="col-12">
-                  <label for="inputPassword4" class="form-label">Password</label>
-                  <input type="password" class="form-control" id="inputPassword4">
-                </div>
-                <div class="col-12">
-                  <label for="inputAddress" class="form-label">Address</label>
-                  <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                </div>
-                <div class="text-center">
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                  <button type="reset" class="btn btn-secondary">Reset</button>
-                </div>
-              </form><!-- Vertical Form -->
-
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">No Labels / Placeholders as labels Form</h5>
-
-              <!-- No Labels Form -->
-              <form class="row g-3">
-                <div class="col-md-12">
-                  <input type="text" class="form-control" placeholder="Your Name">
-                </div>
-                <div class="col-md-6">
-                  <input type="email" class="form-control" placeholder="Email">
-                </div>
-                <div class="col-md-6">
-                  <input type="password" class="form-control" placeholder="Password">
-                </div>
-                <div class="col-12">
-                  <input type="text" class="form-control" placeholder="Address">
-                </div>
-                <div class="col-md-6">
-                  <input type="text" class="form-control" placeholder="City">
-                </div>
-                <div class="col-md-4">
-                  <select id="inputState" class="form-select">
-                    <option selected>Choose...</option>
-                    <option>...</option>
-                  </select>
-                </div>
-                <div class="col-md-2">
-                  <input type="text" class="form-control" placeholder="Zip">
-                </div>
-                <div class="text-center">
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                  <button type="reset" class="btn btn-secondary">Reset</button>
-                </div>
-              </form><!-- End No Labels Form -->
-
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Floating labels Form</h5>
-
-              <!-- Floating Labels Form -->
-              <form class="row g-3">
-                <div class="col-md-12">
-                  <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingName" placeholder="Your Name">
-                    <label for="floatingName">Your Name</label>
+              
+                  <div class="row mb-4">
+                      <label for="" class="col-sm-3 col-form-label "><b>Department*</b></label>
+                      <div class="col-sm-9">
+                      <select id="inputState" class="form-control form-select" required name="department">
+                        <option selected>Departments</option>
+                        <option value="Call Center">Call Center</option>
+                        <option value="WordPress">WordPress</option>
+                        <option value="PHP Developer">PHP Developer</option>
+                        <option value="Designing">Designing</option>
+                        <option value="Marketing">Marketing</option>
+                      </select>
+                       <div class="valid-feedback">
+                       Please Enter Your Department
+                       </div>
+                      </div>
                   </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-floating">
-                    <input type="email" class="form-control" id="floatingEmail" placeholder="Your Email">
-                    <label for="floatingEmail">Your Email</label>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-floating">
-                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                    <label for="floatingPassword">Password</label>
-                  </div>
-                </div>
-                <div class="col-12">
-                  <div class="form-floating">
-                    <textarea class="form-control" placeholder="Address" id="floatingTextarea" style="height: 100px;"></textarea>
-                    <label for="floatingTextarea">Address</label>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="col-md-12">
-                    <div class="form-floating">
-                      <input type="text" class="form-control" id="floatingCity" placeholder="City">
-                      <label for="floatingCity">City</label>
+
+                  
+
+                  <div class="row mb-4">
+                      <label for="" class="col-sm-3 col-form-label"><b>Designation</b></label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control"  placeholder="Enter Your Designation" required name="designation">
+                        <div class="invalid-feedback">
+                        Please Enter Your Designation
+                        </div>
+                      </div>
                     </div>
+
+                    <div class="row mb-4">
+                      <label for="" class="col-sm-3 col-form-label"><b>Date of Joining</b></label>
+                      <div class="col-sm-9">
+                        <input type="date" class="form-control" id="inputText" required name="date_of_join">
+                        <div class="invalid-feedback">
+                        Please Enter Date of Joining
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row mb-4">
+                      <label for="inputState" class="col-sm-3 col-form-label"><b>Shift</b></label>
+                      <div class="col-sm-9">
+                      <select id="inputState" class="form-control form-select" required name="shift">
+                        <option selected>Select Your Shift</option>
+                        <option value="09:00 am - 06:00 pm">09:00 am - 06:00 pm</option>
+                        <option value="12:00 pm - 09:00 pm">12:00 pm - 09:00 pm</option>
+                        <option value="09:00 pm - 06:00 am">09:00 pm - 06:00 am</option>
+                        
+                      </select>
+                      <div class="valid-feedback">
+                      Please Enter Your Shift
+                    </div>
+                      </div>
                   </div>
                 </div>
-                <div class="col-md-4">
-                  <div class="form-floating mb-3">
-                    <select class="form-select" id="floatingSelect" aria-label="State">
-                      <option selected>New York</option>
-                      <option value="1">Oregon</option>
-                      <option value="2">DC</option>
-                    </select>
-                    <label for="floatingSelect">State</label>
+              </div>
+
+
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Bank Account Detail</h5>
+
+                    <!-- No Labels Form -->
+
+                    <div class="row mb-3">
+                        <label for="" class="col-sm-3 col-form-label"><b>Account Holder Name</b></label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="inputText" placeholder="Your Account Name" required name="account_name">
+                          <div class="invalid-feedback">
+                          Please Enter Your Bank Account Name
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row mb-4">
+                        <label for="" class="col-sm-3 col-form-label"><b>Account Number</b></label>
+                        <div class="col-sm-9">
+                          <input type="number" class="form-control" id="inputText" placeholder="Your Account Number" required name="account_number">
+                          <div class="invalid-feedback">
+                          Please Enter Your Account Number
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row mb-4">
+                        <label for="" class="col-sm-3 col-form-label"><b>Bank Name</b></label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="inputText" placeholder="Enter Bank Name" required name="bank_name">
+                          <div class="invalid-feedback">
+                          Please Enter Your Bank name ( You have a account ) 
+                          </div>
+                        </div>
+                      </div>
                   </div>
                 </div>
-                <div class="col-md-2">
-                  <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingZip" placeholder="Zip">
-                    <label for="floatingZip">Zip</label>
-                  </div>
-                </div>
-                <div class="text-center">
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                  <button type="reset" class="btn btn-secondary">Reset</button>
-                </div>
-              </form><!-- End floating Labels Form -->
 
             </div>
           </div>
 
         </div>
       </div>
+              <div class="text-center text-end mb-5 mt-3">
+                  <button type="submit" class="btn btn-primary btn-lg" name="employe_save">Submit</button>
+                  <!-- <button type="reset" class="btn btn-secondary">Reset</button> -->
+                </div>
+      </form><!-- End Horizontal Form -->
     </section>
 
   </main><!-- End #main -->
@@ -399,7 +330,7 @@
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
     <div class="copyright">
-      &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+      &copy; Copyright <strong><span>Human Resource Management System</span></strong>. All Rights Reserved
     </div>
     <div class="credits">
       <!-- All the links in the footer should remain intact. -->
