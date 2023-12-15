@@ -107,7 +107,7 @@
                   <label for="" class="col-sm-3 col-form-label"><b>Gender</b></label>
                   <div class="col-sm-9">
                   <select class="form-control form-select" required name="gender">
-                    <option selected>Your Gender</option>
+                    <option selected>Gender</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                   </select>
@@ -198,7 +198,7 @@
                 <div class="row mb-4">
                   <label for="photo" class="col-sm-3 col-form-label"><b>Photo</b></label>
                   <div class="col-sm-9">
-                    <input type="file" class="form-control"  required name="photo">
+                    <input type="file" class="form-control" accept=".jpg, .jpeg" required name="photo">
                     <div class="invalid-feedback">
                     Please Enter Your Photo
                     </div>
