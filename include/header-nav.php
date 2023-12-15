@@ -1,4 +1,4 @@
-<?php require("auth.php"); ?>
+<?php require("include/auth.php"); ?>
 <!-- ======= Header ======= -->
 <header id="header" class="header fixed-top d-flex align-items-center">
 

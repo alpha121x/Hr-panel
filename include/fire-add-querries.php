@@ -1,6 +1,6 @@
 <?php
 require_once "include/classes/meekrodb.2.3.class.php";
-require('db_config.php');
+require('include/db_config.php');
 
 if (isset($_POST['add-user'])) {
     $username = $_POST['username'];
@@ -19,30 +19,9 @@ if (isset($_POST['add-user'])) {
     ]);
 
     if ($inserted) {
-        header("Location: add-user-profile.php");
+        header("Location: include/modules/profile/add-user-profile.php");
     }
 }
 ?>
 
-<?php
-require_once "include/classes/meekrodb.2.3.class.php";
-require('db_config.php');
-
-if (isset($_POST['add-user-address'])) {
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $user_address = $_POST['user_address'];
-
-    // Insert query using MeekroDB
-    $inserted = DB::insert('users_address', [
-        'username' => $username,
-        'email' => $email,
-        'user-address' => $user_address
-    ]);
-
-    if ($inserted) {
-        header("Location: add_user_address.php");
-    }
-}
-?>
 

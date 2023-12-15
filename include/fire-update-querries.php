@@ -1,6 +1,6 @@
 <?php
 require_once "include/classes/meekrodb.2.3.class.php";
-include('db_config.php');
+include('include/db_config.php');
 
 // Update user details
 if (isset($_POST['update-user'])) {
@@ -37,24 +37,3 @@ if (isset($_POST['update-password'])) {
 }
 ?>
 
-<?php 
-// Update user-address details
-if (isset($_POST['update-user-address'])) {
-    $user_edit_page_id = $_POST['user-address-edit-page-id'];
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $user_address = $_POST['user_address'];
-
-    // Update query using MeekroDB
-    $updated = DB::update('users_address', [
-        'username' => $username,
-        'email' => $email,
-        'user-address' => $user_address
-    ], 'user_id=%i', $user_edit_page_id);
-
-    if ($updated) {
-        header("Location: users_address.php");
-    }
-}
-
-?>
