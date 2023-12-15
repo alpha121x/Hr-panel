@@ -82,15 +82,6 @@
             </div>
             <br>
             <div class="row m-0">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <!-- <div class="alert alert-success alert-dismissible">
-                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                <strong>Success!</strong> This alert box could indicate a successful or positive action.
-            </div> -->
-                </div>
-                <div class="col-md-3"></div>
-
                 <div class="container mt-3">
                     <!-- <h2 class="text-center">Display Test Db Data</h2> -->
                     <table class="table table-hover">
