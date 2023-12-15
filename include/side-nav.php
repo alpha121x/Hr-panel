@@ -24,12 +24,12 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin') {
         </a>
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="add-employe.php">
+            <a href="include/modules/employe/add-employe.php">
               <i class="bi bi-circle"></i><span>Add Employes</span>
             </a>
           </li>
           <li>
-            <a href="manage-employes.php">
+            <a href="include/modules/employe/manage-employes.php">
               <i class="bi bi-circle"></i><span>Manage Employes</span>
             </a>
           </li>
