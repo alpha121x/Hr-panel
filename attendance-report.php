@@ -123,27 +123,33 @@
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
+    <!-- Script for load data into table -->
+<script>
+    $(document).ready(function () {
+        // Define the click event for the button
+        $('#btn').click(function () {
+            // Make an AJAX request when the button is clicked
+            $.ajax({
+                url: "load-data.php",
+                type: 'POST',
+                success: function (data) {
+                    // Update the content or perform any action here
+                    $('#load-data-into-tbody').html(data);
+                    console.log("Data loaded successfully!");
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+    });
+</script>
+
     <?php include "include/script-files.php" ?>
 
 </body>
 
-<!-- Script for load data into table -->
 
-<script>
-    $(document).ready(function(){
-        
-            $.ajax(
-                {
-                    url:"load-data.php",
-                    type:'POST',
-                    success:function(data){
-                        $('#load-data-into-tbody').html(data);
-                    }
-                }
-            )
-        
-    });
-</script>
 
 
 
