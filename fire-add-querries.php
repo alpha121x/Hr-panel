@@ -34,11 +34,16 @@ if (isset($_POST['submit'])) {
     $shift = $_POST['shift'];
     $in_time = $_POST['time'];
    $attendance_current = $_POST['attendance'];
+   $currentMonthName = date('F');
+   $currentYear = date('Y');
+
 
     // Insert query using MeekroDB
     $inserted = DB::insert('attendance_daily', [
         'employe_name' => $employe_name,
         'date_current' => $date_curent,
+        'current_month' => $currentMonthName,
+        'current_year' => $currentYear,
         'shift' => $shift,
         'in_time' => $in_time,
         'attendance_status' => $attendance_current

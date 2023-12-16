@@ -3,10 +3,7 @@ require_once("db_config.php");
 require_once("include/classes/meekrodb.2.3.class.php"); // Include the MeekroDB library file
 
 
-if (isset($_POST['submit'])) {
-    $employee_name = $_POST['employee'];
-    $year = $_POST['year'];
-    $month = $_POST['month'];
+
     // print_r($_POST);
     // die();
 

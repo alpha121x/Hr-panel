@@ -20,7 +20,7 @@
             <h1 class='text-center'>Attendance Report</h1>
             <p id='output'></p>
             <hr>
-            <form action="load-data.php" method="post">
+            <form  method="post">
                 <div class="row m-0">
                     <div class="col-md-3">
                         <?php
@@ -30,7 +30,7 @@
                         <div class="mb-3">
                             <label for="email" class="form-label">Employees</label>
                             <div class="col-sm-9">
-                                <select id="" class="form-control form-select" required name="employee">
+                                <select id="" class="form-control form-select"  name="employee">
                                     <option value="" selected>SELECT EMPLOYEE</option>
                                     <?php
                                     foreach ($query as $data) {
@@ -47,7 +47,7 @@
                     <div class="col-md-3">
                         <label for="email" class="form-label">Year</label>
                         <div class="col-sm-9">
-                            <select class="form-control form-select" required name="year">
+                            <select class="form-control form-select"  name="year">
                                 <option selected>Choose...</option>
                                 <option value="1">2023</option>
                                 <option value="2">2024</option>
@@ -60,7 +60,7 @@
                     <div class="col-md-3">
                         <label for="email" class="form-label">Month</label>
                         <div class="col-sm-9">
-                            <select class="form-control form-select" required name="month">
+                            <select class="form-control form-select"  name="month">
                                 <option selected>Choose...</option>
                                 <option value="1">Jan</option>
                                 <option value="2">Fab</option>
@@ -99,6 +99,7 @@
                                         <th scope="col">Id</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">Date</th>
+                                        <th scope="col">Month</th>
                                         <th scope="col">Attendance Status</th>
                                         <th>Action</th>
                                     </tr>
@@ -107,14 +108,22 @@
                                     <?php
                                     require_once 'include/classes/meekrodb.2.3.class.php';
                                     require_once 'db_config.php';
-
+                                    
                             
                                     date_default_timezone_set("Asia/Karachi");
                                     $date =  date('d-M-y');
-                                
-                            
 
-                                    $query = DB::query("SELECT * FROM attendance_daily WHERE date_current = %s", $date);
+                                    if (isset($_POST['submit'])) {
+                                        $employee_name = $_POST['employee'];
+                                        $year = $_POST['year'];
+                                        $month = $_POST['month'];
+                                
+                                        $currentMonthName = date('F');
+                                        $currentYear = date('Y');
+
+                                        $query = DB::query("SELECT * FROM attendance_daily WHERE date_current = %s AND current_month = %s AND current_year = %s", $date, $month, $year);
+
+
 
                                     foreach ($query as $row) {
                                     ?>
@@ -122,13 +131,14 @@
                                             <th scope="row"><?php echo $row['id']; ?></th>
                                             <td><a href="" class='text-black'><?php echo $row['employe_name']; ?></a></td>
                                             <td><?php echo $row['date_current']; ?></td>
+                                            <td><?php echo $row['current_month']; ?></td>
                                             <td><?php echo $row['attendance_status']; ?></td>
                                             <td>
                                              <a href="" class='text-black'><i class="bi bi-pencil-square"></i>&nbsp;Edit</a> | <a href="delete-employe.php?id=<?php echo $row['id']; ?>" class='text-black'><i class="bi bi-trash"></i>&nbsp;Delete</a>
                                             </td>
 
                                         </tr>
-                                    <?php } ?>
+                                    <?php } } ?>
                                 </tbody>
                             </table>
                             <!-- End Table with stripped rows -->
