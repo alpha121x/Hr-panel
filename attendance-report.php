@@ -95,8 +95,8 @@
                         <thead>
                             <tr>
                                 <td>ID</td>
-                                <td>E-mail</td>
-                                <td>Password</td>
+                                <td>First Name</td>
+                                <td>Phone</td>
                                 <td>Action</td>
                             </tr>
                         </thead>
@@ -123,13 +123,13 @@
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
     <!-- Script for load data into table -->
-<script>
+    <script>
     $(document).ready(function () {
         // Define the click event for the button
         $('#btn').click(function () {
-            alert("btn pressed");
-            die();
             // Make an AJAX request when the button is clicked
             $.ajax({
                 url: "load-data.php",
@@ -146,6 +146,7 @@
         });
     });
 </script>
+
 
     <?php include "include/script-files.php" ?>
 
