@@ -39,21 +39,23 @@ if (isset($_POST['update-password'])) {
 
 <?php 
 // Update user-address details
-if (isset($_POST['update-user-address'])) {
-    $user_edit_page_id = $_POST['user-address-edit-page-id'];
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $user_address = $_POST['user_address'];
+if (isset($_POST['update'])) {
+    $edit_employe_attendance_id = $_POST['edit-employe-attendance-id'];
+    $employe_name = $_POST['employe_name'];
+    $attendance = $_POST['attendance'];
+    $month = $_POST['month'];
+    $date = $_POST['date'];
 
     // Update query using MeekroDB
-    $updated = DB::update('users_address', [
-        'username' => $username,
-        'email' => $email,
-        'user-address' => $user_address
-    ], 'user_id=%i', $user_edit_page_id);
+    $updated = DB::update('attendance_daily', [
+        'employe_name' => $employe_name,
+        'attendance_status' => $attendance,
+        'current_month' => $month,
+        'date_current' => $date
+    ], 'id=%i', $edit_employe_attendance_id);
 
     if ($updated) {
-        header("Location: users_address.php");
+        header("Location: attendance-report.php");
     }
 }
 

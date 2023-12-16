@@ -20,12 +20,12 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin') {
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-person-fill-add"></i><span>Employes</span><i class="bi bi-chevron-down ms-auto"></i>
+        <i class="bi bi-people"></i><span>Employes</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a href="add-employe.php">
-              <i class="bi bi-circle"></i><span>Add Employes</span>
+            <i class="bi bi-circle"></i></i><span>Add Employes</span>
             </a>
           </li>
           <li>
@@ -38,7 +38,7 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin') {
       <!-- End Components Nav -->
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#attendance-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-person-fill-add"></i><span>Attendance</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-bell"></i><span>Attendance</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="attendance-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
@@ -56,7 +56,7 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin') {
       <!-- End Components Nav -->
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#leaves-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-person-fill-add"></i><span>Leaves</span><i class="bi bi-chevron-down ms-auto"></i>
+        <i class='bx bxs-plane-alt'></i><span>Leaves</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="leaves-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
@@ -74,7 +74,7 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin') {
       <!-- End Components Nav -->
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#payrolls-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-person-fill-add"></i><span>Payrolls</span><i class="bi bi-chevron-down ms-auto"></i>
+        <i class="bi bi-cash-coin"></i><span>Payrolls</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="payrolls-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
@@ -93,7 +93,7 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin') {
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#holidays-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-person-fill-add"></i><span>Holidays</span><i class="bi bi-chevron-down ms-auto"></i>
+        <i class="bi bi-calendar-check"></i><span>Holidays</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="holidays-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
@@ -112,7 +112,7 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin') {
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#daily-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-person-fill-add"></i><span>Daily</span><i class="bi bi-chevron-down ms-auto"></i>
+        <i class="bi bi-archive"></i></i><span>Daily</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="daily-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
@@ -131,7 +131,7 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin') {
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#performances-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-person-fill-add"></i><span>Performances</span><i class="bi bi-chevron-down ms-auto"></i>
+        <i class="bi bi-trophy"></i><span>Performances</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="performances-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>

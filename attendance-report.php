@@ -121,7 +121,9 @@
                                         $currentMonthName = date('F');
                                         $currentYear = date('Y');
 
-                                        $query = DB::query("SELECT * FROM attendance_daily WHERE date_current = %s AND current_month = %s AND current_year = %s", $date, $month, $year);
+                                        $query = DB::query("SELECT * FROM attendance_daily WHERE date_current = %s", $date);
+
+
 
 
 
@@ -134,7 +136,9 @@
                                             <td><?php echo $row['current_month']; ?></td>
                                             <td><?php echo $row['attendance_status']; ?></td>
                                             <td>
-                                             <a href="" class='text-black'><i class="bi bi-pencil-square"></i>&nbsp;Edit</a> | <a href="delete-employe.php?id=<?php echo $row['id']; ?>" class='text-black'><i class="bi bi-trash"></i>&nbsp;Delete</a>
+                                             <a href="edit-employe-attendance.php?id=<?php echo $row['id']; ?>" class='text-black'><i class="bi bi-pencil-square"></i>&nbsp;Edit</a>
+                                              | 
+                                              <a href="" class='text-black'><i class="bi bi-trash"></i>&nbsp;Delete</a>
                                             </td>
 
                                         </tr>
