@@ -16,104 +16,104 @@
 
     <main id="main" class="main">
         <form action="">
-        <div class="container mt-4">
-            <h1 class='text-center'>Attendance Daily</h1>
-            <p id='output'></p>
-            <hr>
-            <div class="row m-0">
-            <div class="col-md-3">
-                    <?php
-                    $query = DB::query("SELECT * FROM employes");
-                    //print_r($query);
-                    ?>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Employees</label>
-                        <div class="col-sm-9">
-                            <select id="" class="form-control form-select" required name="employee">
-                                <option value="" selected>SELECT EMPLOYEE</option>
-                                <?php
-                                foreach ($query as $data) {
-                                ?>
-                                    <option value="<?php echo $data['first_name']."&nbsp".$data['last_name']; ?>"><?php echo $data['first_name']."&nbsp".$data['last_name']; ?></option>
-                                <?php
-                                }
-                                ?>
+            <div class="container mt-4">
+                <h1 class='text-center'>Attendance Daily</h1>
+                <p id='output'></p>
+                <hr>
+                <div class="row m-0">
+                    <div class="col-md-3">
+                        <?php
+                        $query = DB::query("SELECT * FROM employes");
+                        //print_r($query);
+                        ?>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Employees</label>
+                            <div class="col-sm-9">
+                                <select id="" class="form-control form-select" required name="employee">
+                                    <option value="" selected>SELECT EMPLOYEE</option>
+                                    <?php
+                                    foreach ($query as $data) {
+                                    ?>
+                                        <option value="<?php echo $data['first_name'] . "&nbsp" . $data['last_name']; ?>"><?php echo $data['first_name'] . "&nbsp" . $data['last_name']; ?></option>
+                                    <?php
+                                    }
+                                    ?>
 
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Shift</label>
-                        <div class="col-sm-9">
-                            <select id="inputState" class="form-control form-select" required name="shift">
-                                <option selected>Select Your Shift</option>
-                                <option value="09:00 am - 06:00 pm">09:00 am - 06:00 pm</option>
-                                <option value="12:00 pm - 09:00 pm">12:00 pm - 09:00 pm</option>
-                                <option value="09:00 pm - 06:00 am">09:00 pm - 06:00 am</option>
-
-                            </select>
-                            <div class="valid-feedback">
-                                Please Enter Your Shift
+                                </select>
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div class="col-md-3">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Shift</label>
+                            <div class="col-sm-9">
+                                <select id="inputState" class="form-control form-select" required name="shift">
+                                    <option selected>Select Your Shift</option>
+                                    <option value="09:00 am - 06:00 pm">09:00 am - 06:00 pm</option>
+                                    <option value="12:00 pm - 09:00 pm">12:00 pm - 09:00 pm</option>
+                                    <option value="09:00 pm - 06:00 am">09:00 pm - 06:00 am</option>
 
-                <div class="col-md-3">
-                    <div class="mb-3">
-                    <?php  
-                      date_default_timezone_set("Asia/Karachi");
-                      $date1 =  date('h:i:s:a');
-                    ?>
-                        <label for="date" class="form-label">In Time</label>
-                        <input type="text" class="form-control" id="date" name="date" value="<?php echo $date1; ?>">
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="mb-3">
-                        <label for="date" class="form-label">Out Time</label>
-                        <input type="time" class="form-control" id="date" name="date">
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="mb-3">
-                    <?php  
-                      date_default_timezone_set("Asia/Karachi");
-                      $date =  date('d-M-y');
-                    ?>
-                        <label for="date" class="form-label">Date</label>
-                        <input type="text" class="form-control" value="<?php echo $date; ?>" name="date">
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="mb-3">
-                        <label for="date" class="form-label">Mark Attendance</label>
-                        <div class="col-mb-3 p-2">
-                            <input type="radio" id="present" name="attendance" value="present">
-                            <label for="present">Present</label>
-                            &nbsp;
-                            <input type="radio" id="absent" name="attendance" value="absent">
-                            <label for="absent">Absent</label>
-
+                                </select>
+                                <div class="valid-feedback">
+                                    Please Enter Your Shift
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="text-center text-end mb-5 mt-3">
-                  <button type="submit" class="btn btn-primary btn-lg" name="submit">Submit</button>
-                  <!-- <button type="reset" class="btn btn-secondary">Reset</button> -->
-                </div>
 
-                </div>
-                </form>
+                    <div class="col-md-3">
+                        <div class="mb-3">
+                            <?php
+                            date_default_timezone_set("Asia/Karachi");
+                            $date1 =  date('h:i:s:a');
+                            ?>
+                            <label for="date" class="form-label">In Time</label>
+                            <input type="text" class="form-control" id="date" name="date" value="<?php echo $date1; ?>">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="mb-3">
+                            <label for="date" class="form-label">Out Time</label>
+                            <input type="time" class="form-control" id="date" name="date">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="mb-3">
+                            <?php
+                            date_default_timezone_set("Asia/Karachi");
+                            $date =  date('d-M-y');
+                            ?>
+                            <label for="date" class="form-label">Date</label>
+                            <input type="text" class="form-control" value="<?php echo $date; ?>" name="date">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="mb-3">
+                            <label for="date" class="form-label">Mark Attendance</label>
+                            <div class="col-mb-3 p-2">
+                                <input type="radio" id="present" name="attendance" value="present">
+                                <label for="present">Present</label>
+                                &nbsp;
+                                <input type="radio" id="absent" name="attendance" value="absent">
+                                <label for="absent">Absent</label>
 
-                <!-- <div class="col-md-4">
+                            </div>
+                        </div>
+
+                        <div class="text-center text-end mb-5 mt-3">
+                            <button type="submit" class="btn btn-primary btn-lg" name="submit">Submit</button>
+                            <!-- <button type="reset" class="btn btn-secondary">Reset</button> -->
+                        </div>
+
+                    </div>
+        </form>
+
+        <!-- <div class="col-md-4">
                     <label for="searchInput">Search:</label>
                     <input type="text" id="searchInput" placeholder="Type your search term...">
                 </div> -->
 
-            </div>
+        </div>
 
 
 
