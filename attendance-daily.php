@@ -21,12 +21,24 @@
             <p id='output'></p>
             <hr>
             <div class="row m-0">
-                <div class="col-md-3">
+            <div class="col-md-3">
+                    <?php
+                    $query = DB::query("SELECT * FROM employes");
+                    //print_r($query);
+                    ?>
                     <div class="mb-3">
                         <label for="email" class="form-label">Employees</label>
                         <div class="col-sm-9">
                             <select id="" class="form-control form-select" required name="employee">
-                                <option value=""></option>
+                                <option value="" disabled>SELECT EMPLOYEE</option>
+                                <?php
+                                foreach ($query as $data) {
+                                ?>
+                                    <option value="<?php echo $data['first_name']; ?>"><?php echo $data['first_name']; ?></option>
+                                <?php
+                                }
+                                ?>
+
                             </select>
                         </div>
                     </div>
