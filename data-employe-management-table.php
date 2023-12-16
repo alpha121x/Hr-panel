@@ -90,7 +90,7 @@
                                             <h4 class='m-0'><b>Full Name</b></h4>
                                         </div>
                                         <div class='text-end mx-5'>
-                                            <h4 class="m-0"><?php echo $row['first_name'].' '.$row['last_name']; ?></h4>
+                                            <h4 class="m-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['first_name'].' '.$row['last_name']; ?></h4>
                                         </div>
                                 </div>
                                 <hr>
@@ -100,7 +100,7 @@
                                             <h4 class='m-0'><b>Date of Birth</b></h4>
                                         </div>
                                         <div class='text-end mx-5'>
-                                            <h4 class="m-0"><?php echo $row['date_of_birth']; ?></h4>
+                                            <h4 class="m-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['date_of_birth']; ?></h4>
                                         </div>
                                 </div>
                                 <hr>
@@ -110,7 +110,7 @@
                                             <h4 class='m-0'><b>Gender</b></h4>
                                         </div>
                                         <div class='text-end mx-5'>
-                                            <h4 class="m-0"><?php echo $row['gender']; ?></h4>
+                                            <h4 class="m-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['gender']; ?></h4>
                                         </div>
                                 </div>
                                 <hr>
@@ -120,7 +120,7 @@
                                             <h4 class='m-0'><b>CNIC</b></h4>
                                         </div>
                                         <div class='text-end mx-5 '>
-                                            <h4 class="m-0 justify-content-end"><?php echo $row['cnic']; ?></h4>
+                                            <h4 class="m-0 justify-content-end">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['cnic']; ?></h4>
                                         </div>
                                 </div>
                                 <hr>
@@ -130,7 +130,7 @@
                                             <h4 class='m-0'><b>City</b></h4>
                                         </div>
                                         <div class='text-end mx-5'>
-                                            <h4 class="m-0"><?php echo $row['city']; ?></h4>
+                                            <h4 class="m-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['city']; ?></h4>
                                         </div>
                                 </div>
                                 <hr>
@@ -140,7 +140,7 @@
                                             <h4 class='m-0'><b>Phone1</b></h4>
                                         </div>
                                         <div class='text-end mx-5'>
-                                            <h4 class="m-0"><?php echo $row['phone1']; ?></h4>
+                                            <h4 class="m-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['phone1']; ?></h4>
                                         </div>
                                 </div>
                                 <hr>
@@ -150,7 +150,7 @@
                                             <h4 class='m-0'><b>Phone2</b></h4>
                                         </div>
                                         <div class='text-end mx-5'>
-                                            <h4 class="m-0"><?php echo $row['phone2']; ?></h4>
+                                            <h4 class="m-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['phone2']; ?></h4>
                                         </div>
                                 </div>
                                 <hr>
@@ -160,7 +160,7 @@
                                             <h4 class='m-0'><b>Address</b></h4>
                                         </div>
                                         <div class='text-end mx-5'>
-                                            <h4 class="m-0"><?php echo $row['address']; ?></h4>
+                                            <h4 class="m-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['address']; ?></h4>
                                         </div>
                                 </div>
                                 <hr>
@@ -170,7 +170,7 @@
                                             <h4 class='m-0'><b>Nationality</b></h4>
                                         </div>
                                         <div class='text-end mx-5 justify-content-end'>
-                                            <h4 class="m-0 text-end "><?php echo $row['nationality']; ?>></h4>
+                                            <h4 class="m-0 text-end ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['nationality']; ?></h4>
                                         </div>
                                 </div>
                                 <hr>
@@ -180,7 +180,7 @@
                                             <h4 class='m-0'><b>Employe Id</b></h4>
                                         </div>
                                         <div class='text-end mx-5'>
-                                            <h4 class="m-0"><?php echo $row['id']; ?></h4>
+                                            <h4 class="m-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['id']; ?></h4>
                                         </div>
                                 </div>
                                 <hr>
@@ -193,7 +193,7 @@
                                                         <h4 class='m-0'><b>Full Name</b></h4>
                                                     </div>
                                                     <div class='text-end mx-5 mt-3'>
-                                                        <h4 class="m-0"><?php echo $row['first_name'].' '.$row['last_name']; ?></h4>
+                                                        <h4 class="m-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['first_name'].' '.$row['last_name']; ?></h4>
                                                     </div> 
                                     </div>
                                     <hr>
@@ -206,7 +206,7 @@
                                                             <h4 class='m-0'><b>Marital Status</b></h4>
                                                         </div>
                                                         <div class='text-end mx-5 mt-5'>
-                                                            <h4 class="m-0"><?php echo $row['marital_status']; ?></h4>
+                                                            <h4 class="m-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['marital_status']; ?></h4>
                                                     </div>
                                 </div>
                                 <hr>
@@ -225,7 +225,7 @@
                                                             <h4 class='m-0'><b>Department</b></h4>
                                                         </div>
                                                         <div class='text-end mx-5'>
-                                                            <h4 class="m-0"><?php echo $row['department']; ?></h4>
+                                                            <h4 class="m-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['department']; ?></h4>
                                                         </div>
                                                 </div>
                                                 <hr>
@@ -235,7 +235,7 @@
                                                             <h4 class='m-0'><b>Designation</b></h4>
                                                         </div>
                                                         <div class='text-end mx-5'>
-                                                            <h4 class="m-0"><?php echo $row['designation']; ?></h4>
+                                                            <h4 class="m-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['designation']; ?></h4>
                                                         </div>
                                                 </div>
                                                 <hr>
@@ -245,7 +245,7 @@
                                                             <h4 class='m-0'><b>Date of Join</b></h4>
                                                         </div>
                                                         <div class='text-end mx-5'>
-                                                            <h4 class="m-0"><?php echo $row['date_of_join']; ?></h4>
+                                                            <h4 class="m-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['date_of_join']; ?></h4>
                                                         </div>
                                                 </div>
                                                 <hr>
@@ -255,7 +255,7 @@
                                                             <h4 class='m-0'><b>Shift</b></h4>
                                                         </div>
                                                         <div class='text-end mx-5 '>
-                                                            <h4 class="m-0 justify-content-end"><?php echo $row['shift']; ?></h4>
+                                                            <h4 class="m-0 justify-content-end">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['shift']; ?></h4>
                                                         </div>
                                                 </div>
                                                 <hr>
@@ -267,8 +267,8 @@
                                                         <div class='text-start m-0 mt-3'>
                                                             <h4 class='m-0'><b>Account Holder Name</b></h4>
                                                         </div>
-                                                        <div class='text-end mx-5 mt-3'>
-                                                            <h4 class="m-0"><?php echo $row['account_name']; ?></h4>
+                                                        <div class='text-end mx-4 mt-3'>
+                                                            <h4 class="m-0">&nbsp;&nbsp;<?php echo $row['account_name']; ?></h4>
                                                         </div>
                                                 </div>
                                                 <hr>
@@ -288,7 +288,7 @@
                                                             <h4 class='m-0'><b>Bank Name</b></h4>
                                                         </div>
                                                         <div class='text-end mx-5'>
-                                                            <h4 class="m-0"><?php echo $row['bank_name']; ?></h4>
+                                                            <h4 class="m-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['bank_name']; ?></h4>
                                                         </div>
                                                 </div>
                                                 <hr>
