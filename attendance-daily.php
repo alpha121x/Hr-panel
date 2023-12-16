@@ -15,7 +15,7 @@
     <?php include "include/side-nav.php" ?>
 
     <main id="main" class="main">
-
+        <form action="">
         <div class="container mt-4">
             <h1 class='text-center'>Attendance Daily</h1>
             <p id='output'></p>
@@ -34,7 +34,7 @@
                                 <?php
                                 foreach ($query as $data) {
                                 ?>
-                                    <option value="<?php echo $data['first_name']; ?>"><?php echo $data['first_name']; ?></option>
+                                    <option value="<?php echo $data['first_name']."&nbsp".$data['last_name']; ?>"><?php echo $data['first_name']."&nbsp".$data['last_name']; ?></option>
                                 <?php
                                 }
                                 ?>
@@ -100,9 +100,13 @@
                         </div>
                     </div>
                     
-
+                    <div class="text-center text-end mb-5 mt-3">
+                  <button type="submit" class="btn btn-primary btn-lg" name="submit">Submit</button>
+                  <!-- <button type="reset" class="btn btn-secondary">Reset</button> -->
+                </div>
 
                 </div>
+                </form>
 
                 <!-- <div class="col-md-4">
                     <label for="searchInput">Search:</label>
