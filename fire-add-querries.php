@@ -28,21 +28,28 @@ if (isset($_POST['add-user'])) {
 require_once "include/classes/meekrodb.2.3.class.php";
 require('db_config.php');
 
-if (isset($_POST['add-user-address'])) {
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $user_address = $_POST['user_address'];
+if (isset($_POST['submit'])) {
+    $employe_name = $_POST['employee'];
+    $date_curent = $_POST['date'];
+    $shift = $_POST['shift'];
+    $in_time = $_POST['time'];
+   $attendance_current = $_POST['attendance'];
 
     // Insert query using MeekroDB
-    $inserted = DB::insert('users_address', [
-        'username' => $username,
-        'email' => $email,
-        'user-address' => $user_address
+    $inserted = DB::insert('attendance_daily', [
+        'employe_name' => $employe_name,
+        'date_current' => $date_curent,
+        'shift' => $shift,
+        'in_time' => $in_time,
+        'attendance_status' => $attendance_current
     ]);
 
     if ($inserted) {
-        header("Location: add_user_address.php");
+        header("Location: attendance-daily.php");
     }
 }
 ?>
+
+
+
 

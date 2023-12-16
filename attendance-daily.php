@@ -15,7 +15,7 @@
     <?php include "include/side-nav.php" ?>
 
     <main id="main" class="main">
-        <form action="">
+        <form action="fire-add-querries.php" method="post">
             <div class="container mt-4">
                 <h1 class='text-center'>Attendance Daily</h1>
                 <p id='output'></p>
@@ -34,7 +34,7 @@
                                     <?php
                                     foreach ($query as $data) {
                                     ?>
-                                        <option value="<?php echo $data['first_name'] . "&nbsp" . $data['last_name']; ?>"><?php echo $data['first_name'] . "&nbsp" . $data['last_name']; ?></option>
+                                        <option value="<?php echo $data['first_name'] . " " . $data['last_name']; ?>"><?php echo $data['first_name'] . " " . $data['last_name']; ?></option>
                                     <?php
                                     }
                                     ?>
@@ -68,13 +68,13 @@
                             $date1 =  date('h:i:s:a');
                             ?>
                             <label for="date" class="form-label">In Time</label>
-                            <input type="text" class="form-control" id="date" name="date" value="<?php echo $date1; ?>">
+                            <input type="text" class="form-control" id="date" name="time" value="<?php echo $date1; ?>">
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="mb-3">
                             <label for="date" class="form-label">Out Time</label>
-                            <input type="time" class="form-control" id="date" name="date">
+                            <input type="time" class="form-control" id="date" name="out-time">
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -91,10 +91,10 @@
                         <div class="mb-3">
                             <label for="date" class="form-label">Mark Attendance</label>
                             <div class="col-mb-3 p-2">
-                                <input type="radio" id="present" name="attendance" value="present">
+                                <input type="radio" id="present" name="attendance" value="P">
                                 <label for="present">Present</label>
                                 &nbsp;
-                                <input type="radio" id="absent" name="attendance" value="absent">
+                                <input type="radio" id="absent" name="attendance" value="A">
                                 <label for="absent">Absent</label>
 
                             </div>
