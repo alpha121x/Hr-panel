@@ -60,14 +60,17 @@
                             <h5 class="card-title">Data tables</h5>
 
                             <!-- Table with stripped rows -->
-                            <table class="table datatable">
-                                <thead>
-                                    <tr >
-                                        <th scope="col">Id</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">City</th>
-                                        <th scope="col">Phone</th>
-                                        <th scope="col">Department</th>
+                            <table class="table datatable table-striped ">
+                                  <caption>
+                                    HR Management
+                                   </caption>
+                                <thead class="table-primary">
+                                    <tr>
+                                        <th  >Id</th>
+                                        <th  >Name</th>
+                                        <th >City</th>
+                                        <th>Phone</th>
+                                        <th >Department</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -81,12 +84,12 @@
                                     ?>
                                         <tr>
                                             <th scope="row"><?php echo $row['id']; ?></th>
-                                            <td><a href="" class='text-black'><?php echo $row['first_name'] . ' ' . $row['last_name']; ?></a></td>
+                                            <td><?php echo $row['first_name'] . ' ' . $row['last_name']; ?></td>
                                             <td><?php echo $row['city']; ?></td>
                                             <td><?php echo $row['phone1']; ?></td>
                                             <td><?php echo $row['department']; ?></td>
                                             <td>
-                                             <a href="" class='text-black'><i class="bi bi-pencil-square"></i>&nbsp;Edit</a> | <a href="delete-employe.php?id=<?php echo $row['id']; ?>" class='text-black'><i class="bi bi-trash"></i>&nbsp;Delete</a>
+                                             <a href="" class='text-black'><i class="bi bi-pencil-square"></i>&nbsp;Edit</a> | <a href="delete-employe.php?id=<?php echo $row['id']; ?>" class='text-black'><i class="bi bi-trash"></i>&nbsp;Delete</a> | <a href="data-employe-management-table.php?id=<?php echo $row['id']; ?>" class='text-black'><i class='bi bi-eye-fill'> View Detail</i></a>
                                             </td>
 
                                         </tr>
