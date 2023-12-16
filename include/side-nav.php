@@ -47,8 +47,8 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin') {
             </a>
           </li>
           <li>
-            <a href="components-accordion.html">
-              <i class="bi bi-circle"></i><span>Manage Employes</span>
+            <a href="attendance-report.php">
+              <i class="bi bi-circle"></i><span>Attendance Report</span>
             </a>
           </li>
         </ul>
