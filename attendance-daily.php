@@ -30,7 +30,7 @@
                         <label for="email" class="form-label">Employees</label>
                         <div class="col-sm-9">
                             <select id="" class="form-control form-select" required name="employee">
-                                <option value="" disabled>SELECT EMPLOYEE</option>
+                                <option value="" selected>SELECT EMPLOYEE</option>
                                 <?php
                                 foreach ($query as $data) {
                                 ?>
