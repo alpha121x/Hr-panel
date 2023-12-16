@@ -138,7 +138,7 @@
                                             <td>
                                              <a href="edit-employe-attendance.php?id=<?php echo $row['id']; ?>" class='text-black'><i class="bi bi-pencil-square"></i>&nbsp;Edit</a>
                                               | 
-                                              <a href="" class='text-black'><i class="bi bi-trash"></i>&nbsp;Delete</a>
+                                              <a href="#" class='text-black'><i class="bi bi-trash"></i>&nbsp;Delete</a>
                                             </td>
 
                                         </tr>
