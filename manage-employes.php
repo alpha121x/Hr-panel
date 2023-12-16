@@ -62,7 +62,7 @@
                             <!-- Table with stripped rows -->
                             <table class="table datatable">
                                 <thead>
-                                    <tr >
+                                    <tr>
                                         <th scope="col">Id</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">City</th>
@@ -86,7 +86,7 @@
                                             <td><?php echo $row['phone1']; ?></td>
                                             <td><?php echo $row['department']; ?></td>
                                             <td>
-                                             <a href="" class='text-black'><i class="bi bi-pencil-square"></i>&nbsp;Edit</a> | <a href="delete-employe.php?id=<?php echo $row['id']; ?>" class='text-black'><i class="bi bi-trash"></i>&nbsp;Delete</a>
+                                                <a href="edit_employe.php?id=<?php echo $row['id']; ?>" class='text-black'><i class="bi bi-pencil-square"></i>&nbsp;Edit</a> | <a href="delete-employe.php?id=<?php echo $row['id']; ?>" class='text-black'><i class="bi bi-trash"></i>&nbsp;Delete</a>
                                             </td>
 
                                         </tr>
