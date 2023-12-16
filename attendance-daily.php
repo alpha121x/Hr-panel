@@ -35,37 +35,63 @@
                     <div class="mb-3">
                         <label for="email" class="form-label">Shift</label>
                         <div class="col-sm-9">
-                      <select id="inputState" class="form-control form-select" required name="shift">
-                        <option selected>Select Your Shift</option>
-                        <option value="09:00 am - 06:00 pm">09:00 am - 06:00 pm</option>
-                        <option value="12:00 pm - 09:00 pm">12:00 pm - 09:00 pm</option>
-                        <option value="09:00 pm - 06:00 am">09:00 pm - 06:00 am</option>
-                        
-                      </select>
-                      <div class="valid-feedback">
-                      Please Enter Your Shift
-                    </div>
-                      </div>
+                            <select id="inputState" class="form-control form-select" required name="shift">
+                                <option selected>Select Your Shift</option>
+                                <option value="09:00 am - 06:00 pm">09:00 am - 06:00 pm</option>
+                                <option value="12:00 pm - 09:00 pm">12:00 pm - 09:00 pm</option>
+                                <option value="09:00 pm - 06:00 am">09:00 pm - 06:00 am</option>
+
+                            </select>
+                            <div class="valid-feedback">
+                                Please Enter Your Shift
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <div class="col-md-3">
                     <div class="mb-3">
+                    <?php  
+                      date_default_timezone_set("Asia/Karachi");
+                      $date1 =  date('h:i:s:a');
+                    ?>
                         <label for="date" class="form-label">In Time</label>
-                        <input type="time" class="form-control" id="date"  name="date">
+                        <input type="text" class="form-control" id="date" name="date" value="<?php echo $date1; ?>">
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="mb-3">
                         <label for="date" class="form-label">Out Time</label>
-                        <input type="time" class="form-control" id="date"  name="date">
+                        <input type="time" class="form-control" id="date" name="date">
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="mb-3 mt-2">
-                        <button class="btn btn-primary mt-4" id='btn'>Get Employees</button>
+                    <div class="mb-3">
+                    <?php  
+                      date_default_timezone_set("Asia/Karachi");
+                      $date =  date('d-M-y');
+                    ?>
+                        <label for="date" class="form-label">Date</label>
+                        <input type="text" class="form-control" value="<?php echo $date; ?>" name="date">
                     </div>
                 </div>
+                <div class="col-md-3">
+                    <div class="mb-3">
+                        <label for="date" class="form-label">Mark Attendance</label>
+                        <div class="col-mb-3 p-2">
+                            <input type="radio" id="present" name="attendance" value="present">
+                            <label for="present">Present</label>
+                            &nbsp;
+                            <input type="radio" id="absent" name="attendance" value="absent">
+                            <label for="absent">Absent</label>
+
+                        </div>
+                    </div>
+                    
+
+
+                </div>
+
                 <!-- <div class="col-md-4">
                     <label for="searchInput">Search:</label>
                     <input type="text" id="searchInput" placeholder="Type your search term...">
@@ -88,7 +114,6 @@
     <?php include "include/script-files.php" ?>
 
 </body>
-
 
 
 
