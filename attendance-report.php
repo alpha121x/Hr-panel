@@ -128,6 +128,8 @@
     $(document).ready(function () {
         // Define the click event for the button
         $('#btn').click(function () {
+            alert("btn pressed");
+            die();
             // Make an AJAX request when the button is clicked
             $.ajax({
                 url: "load-data.php",
