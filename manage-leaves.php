@@ -81,7 +81,7 @@
                     <td>
                         <a href="edit-leave.php?id=<?php echo $leave['id']; ?>" class='text-black'><i class="bi bi-pencil-square"></i>&nbsp;Edit</a>
                         |
-                        <a href="#" class='text-black'><i class="bi bi-trash"></i>&nbsp;Delete</a>
+                        <a href="deltete.php?id=<?php echo $leave['id']; ?>" class='text-black'><i class="bi bi-trash"></i>&nbsp;Delete</a>
                     </td>
                 </tr>
         <?php
