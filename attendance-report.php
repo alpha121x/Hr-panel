@@ -44,7 +44,7 @@ require_once("include/classes/meekrodb.2.3.class.php");
                             <h5 class="card-title">Attendance Report</h5>
 
 
-                            <form method="post" action="attendance-report.php">
+                            <form method="post" action="">
                                 <div class="row m-0">
                                     <div class="col-md-3">
                                         <?php
@@ -109,7 +109,7 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                         <button class="btn btn-primary mb-4" id='btn' type="submit" name="submit">Get Data</button>
                                     </div>
                             </form>
-                            <br>
+                            <br><br>
                             <div class="row m-0">
                                 <div class="col-md-3"></div>
                                 <div class="col-md-3"></div>
@@ -131,10 +131,6 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                             <?php
                                             require_once 'include/classes/meekrodb.2.3.class.php';
                                             require_once 'db_config.php';
-
-
-                                            date_default_timezone_set("Asia/Karachi");
-                                            $date =  date('d-M-y');
 
                                             if (isset($_POST['submit'])) {
                                                 $employee_name = $_POST['employee'];
@@ -162,7 +158,7 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                                         <td>
                                                             <a href="edit-employe-attendance.php?id=<?php echo $row['id']; ?>" class='text-black'><i class="bi bi-pencil-square text-primary"></i>&nbsp;</a>
                                                             |
-                                                            <a href="#" class='text-black'><i class="bi bi-trash text-primary"></i>&nbsp;</a>
+                                                            <a href="delete.php?deleteId=<?php echo $row['id']; ?>" class='text-black'><i class="bi bi-trash text-primary"></i>&nbsp;</a>
                                                         </td>
 
                                                     </tr>
