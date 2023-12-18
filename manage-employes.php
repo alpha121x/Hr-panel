@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
-    <title>Tables / Data - NiceAdmin Bootstrap Template</title>
-    
+    <title>Home - Manage Employes</title>
+
     <?php include("include/linked-files.php") ?>
 
    
