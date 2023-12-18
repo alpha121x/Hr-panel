@@ -60,3 +60,29 @@ if (isset($_POST['update'])) {
 }
 
 ?>
+
+<?php 
+// Update user-address details
+if (isset($_POST['update-leave'])) {
+    $edit_leave_id = $_POST['edit-leave-id'];
+    $employe_name = $_POST['employe_name'];
+    $leave_type = $_POST['leave_type'];
+    $date_from = $_POST['date_from'];
+    $date_to = $_POST['date_to'];
+    $status = $_POST['status'];
+
+    // Update query using MeekroDB
+    $updated_leave = DB::update('leaves', [
+        'employe_name' => $employe_name,
+        'leave_type' => $leave_type,
+        'date_from' => $date_from,
+        'date_to' => $date_to,
+        'status' => $status
+    ], 'id=%i', $edit_leave_id);
+
+    if ($updated_leave) {
+        header("Location: manage-leaves.php");
+    }
+}
+
+?>

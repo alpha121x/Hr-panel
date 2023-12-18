@@ -109,7 +109,7 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                             <div class="mb-3">
                                                 <label for="email" class="form-label">Status</label>
                                                 <div class="col-sm-9">
-                                                    <select id="inputState" class="form-control form-select" name="leave_type">
+                                                    <select id="inputState" class="form-control form-select" name="status">
                                                         <option selected>Select</option>
                                                         <option value="Approved">Approved</option>
                                                         <option value="Pending">Pending</option>

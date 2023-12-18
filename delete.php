@@ -23,19 +23,19 @@ if (isset($_GET['deleteid'])) {
 include("db_config.php");
 
 // Check if user ID is provided in the URL
-if (isset($_GET['deleteid'])) {
-    $user_id = $_GET['deleteid'];
+if (isset($_GET['id'])) {
+    $user_id = $_GET['id'];
 
     // Delete query using MeekroDB
-    $deleted = DB::delete('users_address', 'user_id=%i', $user_id);
+    $deleted = DB::delete('leaves', 'user_id=%i', $user_id);
 
     if ($deleted) {
-        header("Location: users_address.php");
+        header("Location: manage-leaves.php");
     } else {
-        header("Location: users_address.php");
+        header("Location: manage-leaves.php");
     }
 } else {
     // Handle the case where no user ID is provided in the URL
-    header("Location: users_address.php");
+    header("Location: manage-leaves.php");
 }
 ?>
