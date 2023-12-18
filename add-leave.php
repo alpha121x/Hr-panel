@@ -30,7 +30,7 @@ require_once("include/classes/meekrodb.2.3.class.php");
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item">Manage Leaves</li>
+                    <li class="breadcrumb-item"> Leaves</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
@@ -41,7 +41,7 @@ require_once("include/classes/meekrodb.2.3.class.php");
 
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Manage Leaves</h5>
+                            <h5 class="card-title">Add Leaves</h5>
                             <p>Leaves Record</p>
 
                             <form action="fire-add-querries.php" method="post">
