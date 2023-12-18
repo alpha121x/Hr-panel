@@ -10,7 +10,7 @@ require_once("include/classes/meekrodb.2.3.class.php");
 
 <head>
 
-    <title>Dashboard - NiceAdmin</title>
+    <title>Attendence daily</title>
 
     <?php include("include/linked-files.php") ?>
 
@@ -26,11 +26,11 @@ require_once("include/classes/meekrodb.2.3.class.php");
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Attendance</h1>
+            <h1 class='text-primary'>Attendance</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item">Attendance Daily</li>
+                    <li class="breadcrumb-item text-primary">Attendance Daily</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
@@ -52,7 +52,7 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                         //print_r($query);
                                         ?>
                                         <div class="mb-3">
-                                            <label for="email" class="form-label">Employees</label>
+                                            <label for="email" class="form-label text-primary">Employees</label>
                                             <div class="col-sm-9">
                                                 <select id="" class="form-control form-select" required name="employee">
                                                     <option value="" selected>SELECT EMPLOYEE</option>
@@ -70,7 +70,7 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                     </div>
                                     <div class="col-md-3">
                                         <div class="mb-3">
-                                            <label for="email" class="form-label">Shift</label>
+                                            <label for="email" class="form-label text-primary">Shift</label>
                                             <div class="col-sm-9">
                                                 <select id="inputState" class="form-control form-select" required name="shift">
                                                     <option selected>Select Your Shift</option>
@@ -92,13 +92,13 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                             date_default_timezone_set("Asia/Karachi");
                                             $date1 =  date('h:i:s:a');
                                             ?>
-                                            <label for="date" class="form-label">In Time</label>
+                                            <label for="date" class="form-label text-primary">In Time</label>
                                             <input type="text" class="form-control" id="date" name="time" value="<?php echo $date1; ?>">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="mb-3">
-                                            <label for="date" class="form-label">Out Time</label>
+                                            <label for="date" class="form-label text-primary">Out Time</label>
                                             <input type="time" class="form-control" id="date" name="out-time">
                                         </div>
                                     </div>
@@ -108,13 +108,13 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                             date_default_timezone_set("Asia/Karachi");
                                             $date =  date('d-M-y');
                                             ?>
-                                            <label for="date" class="form-label">Date</label>
+                                            <label for="date" class="form-label text-primary">Date</label>
                                             <input type="text" class="form-control" value="<?php echo $date; ?>" name="date">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="mb-3">
-                                            <label for="date" class="form-label">Mark Attendance</label>
+                                            <label for="date" class="form-label text-primary">Mark Attendance</label>
                                             <div class="col-mb-3 p-2">
                                                 <input type="radio" id="present" name="attendance" value="P">
                                                 <label for="present">Present</label>
