@@ -1,4 +1,9 @@
-<?php require("auth.php"); ?>
+<?php 
+require("auth.php");
+require("db_config.php");
+require_once("include/classes/meekrodb.2.3.class.php");
+
+ ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -43,11 +48,23 @@
                                 <div class="container mt-4">
                                     <div class="row m-0">
                                         <div class="col-md-3">
+                                            <?php
+                                            $query = DB::query("SELECT * FROM employes");
+                                            //print_r($query);
+                                            ?>
                                             <div class="mb-3">
                                                 <label for="email" class="form-label">Employees</label>
                                                 <div class="col-sm-9">
                                                     <select id="" class="form-control form-select" required name="employe_name">
                                                         <option value="" selected>SELECT EMPLOYEE</option>
+                                                        <?php
+                                                        foreach ($query as $data) {
+                                                        ?>
+                                                            <option value="<?php echo $data['first_name'] . " " . $data['last_name']; ?>"><?php echo $data['first_name'] . " " . $data['last_name']; ?></option>
+                                                        <?php
+                                                        }
+                                                        ?>
+
                                                     </select>
                                                 </div>
                                             </div>
@@ -58,9 +75,9 @@
                                                 <div class="col-sm-9">
                                                     <select id="inputState" class="form-control form-select" name="leave_type">
                                                         <option selected>Select Leave Type</option>
-                                                        <option value="1">Sick Leave</option>
-                                                        <option value="2">Casual Leave</option>
-                                                        <option value="3">Annual Leave</option>
+                                                        <option value="Sick Leave">Sick Leave</option>
+                                                        <option value="Casual Leave">Casual Leave</option>
+                                                        <option value="Annual Leave">Annual Leave</option>
 
                                                     </select>
                                                     <div class="valid-feedback">
@@ -82,10 +99,25 @@
                                                 <input type="date" class="form-control" id="date" name="date_to">
                                             </div>
                                         </div>
-                                        <div class="col-md-12">
+                                        <div class="col-md-3">
                                             <div class="mb-3">
                                                 <label for="comments" class="form-label">Comments</label>
                                                 <textarea name="comments" id="comments" class="form-control" cols="40" rows="5"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="mb-3">
+                                                <label for="email" class="form-label">Status</label>
+                                                <div class="col-sm-9">
+                                                    <select id="inputState" class="form-control form-select" name="leave_type">
+                                                        <option selected>Select</option>
+                                                        <option value="Approved">Approved</option>
+                                                        <option value="Pending">Pending</option>
+                                                    </select>
+                                                    <div class="valid-feedback">
+                                                        Please Select Status
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
 
