@@ -47,7 +47,6 @@
             <th scope="col">Leave Type</th>
             <th scope="col">Duration</th>
             <th scope="col">Dates</th>
-            <th scope="col">Reason</th>
             <th scope="col">Status</th>
             <th scope="col">Actions</th>
         </tr>
@@ -67,6 +66,7 @@
                 $leave_type = $leave['leave_type'];
                 $date_from = $leave['date_from'];
                 $date_to = $leave['date_to'];
+                $status = $leave['status'];
 
                 // Calculate duration in days
                 $duration = (strtotime($date_to) - strtotime($date_from)) / (60 * 60 * 24);
@@ -77,8 +77,7 @@
                     <td><?php echo $leave_type ?></td>
                     <td><?php echo $duration ?> Days</td>
                     <td><?php echo $date_from . " to " . $date_to; ?></td>
-                    <td><?php echo $leave_type ?></td>
-                    <td>---</td>
+                    <td><?php echo $status ?></td>
                     <td>
                         <a href="edit-leave.php?id=<?php echo $leave['id']; ?>" class='text-black'><i class="bi bi-pencil-square"></i>&nbsp;Edit</a>
                         |

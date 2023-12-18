@@ -33,6 +33,7 @@ if (isset($_POST['add-leave'])) {
     $leave_type = $_POST['leave_type'];
     $leave_from = $_POST['date_from'];
     $leave_to = $_POST['date_to'];
+    $status = $_POST['status'];
     $comments = $_POST['comments'];
 
     // Insert query using MeekroDB
@@ -41,6 +42,7 @@ if (isset($_POST['add-leave'])) {
         'leave_type' => $leave_type,
         'date_from' => $leave_from,
         'date_to' => $leave_to,
+        'status' => $status,
         'comments' => $comments
     ]);
 
