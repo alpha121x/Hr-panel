@@ -8,6 +8,7 @@
   <title>Dashboard - NiceAdmin</title>
 
   <?php include("include/linked-files.php") ?>
+  
 
 </head>
 
@@ -40,7 +41,7 @@
           <p>Leaves Record</p>
 
           <!-- Table with stripped rows -->
-          <table class="table datatable">
+          <table class="table" id='datatable'>
             <thead>
               <tr>
                 <th scope="col">id.</th>
@@ -112,6 +113,7 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <?php include("include/script-files.php") ?>
+
 
 </body>
 

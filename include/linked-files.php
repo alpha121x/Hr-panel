@@ -18,6 +18,9 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
+  <!-- data table css  -->
+  <link rel="stylesheet" href="assets/jquery/jaquery.datatable.css">
+
 
 
  
