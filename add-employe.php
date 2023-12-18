@@ -91,7 +91,7 @@
                 <div class="row mb-4">
                   <label for="" class="col-sm-3 col-form-label"><b>CNIC *</b></label>
                   <div class="col-sm-9">
-                    <input type="number" class="form-control" id="inputText" required name="cnic">
+                    <input type="text" class="form-control" id="inputText" required name="cnic" data-inputmask="'mask':'99999-9999999-9'" placeholder="xxxxx-xxxxxxx-x">
                     <div class="invalid-feedback">
                      Please Enter Your CNIC Number
                     </div>
@@ -109,9 +109,9 @@
                 </div>
 
                 <div class="row mb-4">
-                  <label for="" class="col-sm-3 col-form-label"><b>Phone No:1</b></label>
+                  <label for="" class="col-sm-3 col-form-label"><b>Phone No 1</b></label>
                   <div class="col-sm-9">
-                    <input type="number" class="form-control" id="inputText" placeholder="Enter Your Number" required name="phone1">
+                    <input type="text" class="form-control" id="inputText"  required name="phone1" data-inputmask="'mask':'9999-9999999'" placeholder="0300-1234567">
                     <div class="invalid-feedback">
                     Please Enter Your Phone Number
                     </div>
@@ -119,9 +119,9 @@
                 </div>
 
                 <div class="row mb-4">
-                  <label for="" class="col-sm-3 col-form-label"><b>Phone No:2</b></label>
+                  <label for="" class="col-sm-3 col-form-label"><b>Phone No 2</b></label>
                   <div class="col-sm-9">
-                    <input type="number" class="form-control" id="inputText" placeholder="Optional" name="phone2">
+                    <input type="text" class="form-control" id="inputText"  name="phone2" data-inputmask="'mask':'9999-9999999'" placeholder="0300-1234567">
                     <div class="valid-feedback">
                     Please Enter Your Phone Number ( Optional )
                     </div>
@@ -313,5 +313,12 @@ if ( window.history.replaceState ) {
   window.history.replaceState( null, null, window.location.href );
 };
 </script>
+<!-- input masking  -->
+<script src="assets/masking/jquery.min.js"></script>
+<script src="assets/masking/jquery.inputmask.bundle.js"></script>
+<script>
+    $(":input").inputmask();
+</script>
+
 
 </html>
