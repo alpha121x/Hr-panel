@@ -60,13 +60,13 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin') {
         </a>
         <ul id="leaves-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="components-alerts.html">
-              <i class="bi bi-circle-fill text-primary"></i><span>Add leave</span>
+            <a href="add-leave.php">
+              <i class="bi bi-circle-fill text-primary"></i><span>Add Leaves</span>
             </a>
           </li>
           <li>
-            <a href="components-accordion.html">
-              <i class="bi bi-circle-fill text-primary"></i><span>Manage Leave</span>
+            <a href="manage-leaves.php">
+              <i class="bi bi-circle-fill text-primary"></i><span>Manage Leaves</span>
             </a>
           </li>
         </ul>
@@ -79,27 +79,12 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin') {
         <ul id="payrolls-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a href="components-alerts.html">
-              <i class="bi bi-circle-fill text-primary"></i><span>PayScale</span>
+              <i class="bi bi-circle-fill text-primary"></i><span>Add Employes</span>
             </a>
           </li>
           <li>
             <a href="components-accordion.html">
-              <i class="bi bi-circle-fill text-primary"></i><span>Monthly</span>
-            </a>
-          </li>
-          <li>
-            <a href="components-accordion.html">
-              <i class="bi bi-circle-fill text-primary"></i><span>Weekly</span>
-            </a>
-          </li>
-          <li>
-            <a href="components-accordion.html">
-              <i class="bi bi-circle-fill text-primary"></i><span>Hourly</span>
-            </a>
-          </li>
-          <li>
-            <a href="components-accordion.html">
-              <i class="bi bi-circle-fill text-primary"></i><span>Per Unit</span>
+              <i class="bi bi-circle-fill text-primary"></i><span>Manage Employes</span>
             </a>
           </li>
         </ul>
@@ -113,12 +98,12 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin') {
         <ul id="holidays-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a href="components-alerts.html">
-              <i class="bi bi-circle-fill text-primary"></i><span>Add Holiday</span>
+              <i class="bi bi-circle-fill text-primary"></i><span>Add Employes</span>
             </a>
           </li>
           <li>
             <a href="components-accordion.html">
-              <i class="bi bi-circle-fill text-primary"></i><span>Manage Holidayss</span>
+              <i class="bi bi-circle-fill text-primary"></i><span>Manage Employes</span>
             </a>
           </li>
         </ul>
