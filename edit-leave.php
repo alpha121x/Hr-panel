@@ -65,17 +65,24 @@ if (isset($_GET['id'])) {
               <!-- Horizontal Form -->
               <form method="post" action="fire-update-querries.php" enctype="form-data">
                 <div class="row mb-3">
-                  <label for="inputemployename" class="col-sm-2 col-form-label"><input type="hidden" name="edit-employe-attendance-id" value='<?php echo $id; ?>'>Employee Name</label>
+                  <label for="inputemployename" class="col-sm-2 col-form-label"><input type="hidden" name="edit-leave-id" value='<?php echo $id; ?>'>Employee Name</label>
                   <div class="col-sm-6">
                     <input type="text" class="form-control" value='<?php echo $employe_name; ?>' name="employe_name">
                   </div>
                 </div>
+
                 <div class="row mb-3">
-                  <label for="inputemail" class="col-sm-2 col-form-label">Leave Type</label>
+                  <label for="leave_type" class="col-sm-2 col-form-label">Leave Type*</label>
                   <div class="col-sm-6">
-                    <input type="text" class="form-control" value='<?php echo $leave_type; ?>' name="leave_type">
+                    <select id="inputState" class="form-control" name="leave_type">
+                      <option selected>Select</option>
+                      <option value="Sick Leave" <?php echo ($leave_type == 'Sick Leave') ? 'selected' : ''; ?>>Sick Leave</option>
+                      <option value="Casual Leave" <?php echo ($leave_type == 'Casual Leave') ? 'selected' : ''; ?>>Casual Leave</option>
+                      <option value="Annual Leave" <?php echo ($leave_type == 'Annual Leave') ? 'selected' : ''; ?>>Annual Leave</option>
+                    </select>
                   </div>
                 </div>
+
 
                 <div class="row mb-3">
                   <label for="inputuser" class="col-sm-2 col-form-label">Duration</label>
@@ -98,41 +105,35 @@ if (isset($_GET['id'])) {
                   </div>
                 </div>
 
-                <div class="row mb-3">
-                  <label for="inputimage" class="col-sm-2 col-form-label">Reason</label>
-                  <div class="col-sm-6">
-                    <input type="text" class="form-control" value='<?php echo $leave_type; ?>' name="date">
-                  </div>
-                </div>
 
                 <div class="row mb-3">
-                <label for="status" class="col-sm-2 col-form-label">Status</label>
-                    <div class="col-sm-6">
+                  <label for="status" class="col-sm-2 col-form-label">Status</label>
+                  <div class="col-sm-6">
                     <select id="inputState" class="form-control form-select" name="status">
                       <option selected>Select</option>
                       <option value="Approved">Approved</option>
                       <option value="Pending">Pending</option>
                     </select>
                   </div>
-                  </div>
-
-
                 </div>
 
-
-
-                <div class="text-center">
-                  <button type="submit" class="btn btn-primary" name="update"><i class='bx bx-upload'></i> Save</button>
-                </div>
-                <br>
-              </form><!-- End Horizontal Form -->
 
             </div>
+
+
+
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary" name="update-leave"><i class='bx bx-upload'></i> Save</button>
+            </div>
+            <br>
+            </form><!-- End Horizontal Form -->
+
           </div>
-
-
-
         </div>
+
+
+
+      </div>
       </div>
     </section>
 
