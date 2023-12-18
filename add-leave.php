@@ -10,7 +10,7 @@ require_once("include/classes/meekrodb.2.3.class.php");
 
 <head>
 
-    <title>Dashboard - NiceAdmin</title>
+    <title>Add Leaves</title>
 
     <?php include("include/linked-files.php") ?>
 
@@ -26,11 +26,11 @@ require_once("include/classes/meekrodb.2.3.class.php");
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Leaves</h1>
+            <h1 class='text-primary'>Leaves</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item"> Leaves</li>
+                    <li class="breadcrumb-item text-primary"> Leaves</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
@@ -42,7 +42,7 @@ require_once("include/classes/meekrodb.2.3.class.php");
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Add Leaves</h5>
-                            <p>Leaves Record</p>
+                            <p class='text-primary'>Leaves Record</p>
 
                             <form action="fire-add-querries.php" method="post">
                                 <div class="container mt-4">
@@ -53,7 +53,7 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                             //print_r($query);
                                             ?>
                                             <div class="mb-3">
-                                                <label for="email" class="form-label">Employees</label>
+                                                <label for="email" class="form-label text-primary">Employees</label>
                                                 <div class="col-sm-9">
                                                     <select id="" class="form-control form-select" required name="employe_name">
                                                         <option value="" selected>SELECT EMPLOYEE</option>
@@ -71,7 +71,7 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                         </div>
                                         <div class="col-md-3">
                                             <div class="mb-3">
-                                                <label for="email" class="form-label">Leave Type*</label>
+                                                <label for="email" class="form-label text-primary">Leave Type*</label>
                                                 <div class="col-sm-9">
                                                     <select id="inputState" class="form-control form-select" name="leave_type">
                                                         <option selected>Select Leave Type</option>
@@ -89,25 +89,20 @@ require_once("include/classes/meekrodb.2.3.class.php");
 
                                         <div class="col-md-3">
                                             <div class="mb-3">
-                                                <label for="date" class="form-label">From*</label>
+                                                <label for="date" class="form-label text-primary">From*</label>
                                                 <input type="date" class="form-control" id="date" name="date_from">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="mb-3">
-                                                <label for="date" class="form-label">To*</label>
+                                                <label for="date" class="form-label text-primary">To*</label>
                                                 <input type="date" class="form-control" id="date" name="date_to">
                                             </div>
                                         </div>
+                                        
                                         <div class="col-md-3">
                                             <div class="mb-3">
-                                                <label for="comments" class="form-label">Comments</label>
-                                                <textarea name="comments" id="comments" class="form-control" cols="40" rows="5"></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="mb-3">
-                                                <label for="email" class="form-label">Status</label>
+                                                <label for="email" class="form-label text-primary">Status</label>
                                                 <div class="col-sm-9">
                                                     <select id="inputState" class="form-control form-select" name="status">
                                                         <option selected>Select</option>
@@ -118,6 +113,12 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                                         Please Select Status
                                                     </div>
                                                 </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="mb-3">
+                                                <label for="comments" class="form-label text-primary">Comments *</label>
+                                                <textarea name="comments" id="comments" class="form-control" cols="10" rows="4"></textarea>
                                             </div>
                                         </div>
 

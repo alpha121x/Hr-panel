@@ -44,12 +44,12 @@ require_once("include/classes/meekrodb.2.3.class.php");
                             <h5 class="card-title text-primary">Add Holiday</h5>
                             
                             <div class="justify-content-center" style="width: 600px; height:auto;margin:auto">
-                                <form action="">
+                                <form class='needs-validation' novalidate method="post" action="fir-add-holiday.php" >
 
                                         <div class="row mb-4">
                                              <label for="" class="col-sm-3 col-form-label text-primary"><b>Date *</b></label>
                                               <div class="col-sm-9">
-                                                <input type="date" class="form-control"  required name="">
+                                                <input type="date" class="form-control"  required name="date">
                                                 <div class="invalid-feedback">
                                                  Please Enter Your Designation
                                                 </div>
@@ -59,13 +59,13 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                         <div class="row mb-4">
                                              <label for="" class="col-sm-3 col-form-label text-primary"><b>Description *</b></label>
                                               <div class="col-sm-9">
-                                                <textarea name="" id="" cols="30" rows="5" class='form-control' require></textarea>
+                                                <textarea id="" cols="30" rows="5" class='form-control' require name='description'></textarea>
                                                 
                                              </div>
                                         </div>
 
                                            <div style="width: 50px; height:auto;margin:auto">
-                                           <button type='submit' class='btn btn-primary mx-5 mt-4'>Holiday</button>
+                                           <button type='submit' class='btn btn-primary mx-5 mt-4' name='holiday'>Holiday</button>
                                            </div>
 
                                 </form>

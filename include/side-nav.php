@@ -111,7 +111,7 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin') {
             </a>
           </li>
           <li>
-            <a href="components-accordion.html">
+            <a href="manage-holiday.php">
               <i class="bi bi-circle-fill text-primary"></i><span>Manage Holiday</span>
             </a>
           </li>

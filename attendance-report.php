@@ -10,7 +10,7 @@ require_once("include/classes/meekrodb.2.3.class.php");
 
 <head>
 
-    <title>Dashboard - NiceAdmin</title>
+    <title>Attendence Report</title>
 
     <?php include("include/linked-files.php") ?>
 
@@ -26,11 +26,11 @@ require_once("include/classes/meekrodb.2.3.class.php");
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Attendance</h1>
+            <h1 class='text-primary'>Attendance</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item">Attendance Report</li>
+                    <li class="breadcrumb-item text-primary">Attendance Report</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
@@ -52,7 +52,7 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                         //print_r($query);
                                         ?>
                                         <div class="mb-3">
-                                            <label for="email" class="form-label">Employees</label>
+                                            <label for="email" class="form-label text-primary">Employees</label>
                                             <div class="col-sm-9">
                                                 <select id="" class="form-control form-select" name="employee">
                                                     <option value="" selected>SELECT EMPLOYEE</option>
@@ -69,7 +69,7 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                        <label for="email" class="form-label">Year</label>
+                                        <label for="email" class="form-label text-primary">Year</label>
                                         <div class="col-sm-9">
                                             <select class="form-control form-select" name="year">
                                                 <option selected>Choose...</option>
@@ -82,7 +82,7 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                        <label for="email" class="form-label">Month</label>
+                                        <label for="email" class="form-label text-primary">Month</label>
                                         <div class="col-sm-9">
                                             <select class="form-control form-select" name="month">
                                                 <option selected>Choose...</option>
@@ -159,9 +159,9 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                                         <td><?php echo $row['current_month']; ?></td>
                                                         <td><?php echo $row['attendance_status']; ?></td>
                                                         <td>
-                                                            <a href="edit-employe-attendance.php?id=<?php echo $row['id']; ?>" class='text-black'><i class="bi bi-pencil-square"></i>&nbsp;Edit</a>
+                                                            <a href="edit-employe-attendance.php?id=<?php echo $row['id']; ?>" class='text-black'><i class="bi bi-pencil-square text-primary"></i>&nbsp;</a>
                                                             |
-                                                            <a href="#" class='text-black'><i class="bi bi-trash"></i>&nbsp;Delete</a>
+                                                            <a href="#" class='text-black'><i class="bi bi-trash text-primary"></i>&nbsp;</a>
                                                         </td>
 
                                                     </tr>

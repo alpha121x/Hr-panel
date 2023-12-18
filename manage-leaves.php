@@ -79,9 +79,9 @@
                     <td><?php echo $date_from . " to " . $date_to; ?></td>
                     <td><?php echo $status ?></td>
                     <td>
-                        <a href="edit-leave.php?id=<?php echo $leave['id']; ?>" class='text-black'><i class="bi bi-pencil-square"></i>&nbsp;Edit</a>
+                        <a href="edit-leave.php?id=<?php echo $leave['id']; ?>" class='text-black'><i class="bi bi-pencil-square text-primary"></i>&nbsp;</a>
                         |
-                        <a href="deltete.php?id=<?php echo $leave['id']; ?>" class='text-black'><i class="bi bi-trash"></i>&nbsp;Delete</a>
+                        <a href="deltete.php?id=<?php echo $leave['id']; ?>" class='text-black'><i class="bi bi-trash text-primary"></i>&nbsp;</a>
                     </td>
                 </tr>
         <?php
