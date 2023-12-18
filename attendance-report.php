@@ -73,8 +73,8 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                         <div class="col-sm-9">
                                             <select class="form-control form-select" name="year">
                                                 <option selected>Choose...</option>
-                                                <option value="1">2023</option>
-                                                <option value="2">2024</option>
+                                                <option value="2023">2023</option>
+                                                <option value="2024">2024</option>
                                             </select>
                                             <div class="valid-feedback">
                                                 Please Enter You Married or Not!
@@ -86,18 +86,18 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                         <div class="col-sm-9">
                                             <select class="form-control form-select" name="month">
                                                 <option selected>Choose...</option>
-                                                <option value="1">January</option>
-                                                <option value="2">Fabuary</option>
-                                                <option value="3">March</option>
-                                                <option value="4">April</option>
-                                                <option value="5">May</option>
-                                                <option value="6">June</option>
-                                                <option value="7">July</option>
-                                                <option value="8">August</option>
-                                                <option value="9">September</option>
-                                                <option value="10">Octuber</option>
-                                                <option value="11">November</option>
-                                                <option value="12">December</option>
+                                                <option value="January">January</option>
+                                                <option value="February">February</option>
+                                                <option value="March">March</option>
+                                                <option value="April">April</option>
+                                                <option value="May">May</option>
+                                                <option value="June">June</option>
+                                                <option value="July">July</option>
+                                                <option value="August">August</option>
+                                                <option value="September">September</option>
+                                                <option value="Octuber">Octuber</option>
+                                                <option value="November">November</option>
+                                                <option value="December">December</option>
                                             </select>
                                             <div class="valid-feedback">
                                                 Please Enter You Married or Not!
@@ -140,22 +140,12 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                                 $employee_name = $_POST['employee'];
                                                 $year = $_POST['year'];
                                                 $month = $_POST['month'];
-
                                                 $currentMonthName = date('F');
                                                 $currentYear = date('Y');
 
                                                 $query = DB::query(
-                                                    "SELECT * FROM attendance_daily 
-                    WHERE employe_name = %s AND current_month = %s AND current_year = %s",
-                                                    $employee_name,
-                                                    $currentMonthName,
-                                                    $currentYear
-                                                );
-
-
-
-
-
+                                                    "SELECT * FROM attendance_daily");
+                                                
 
                                                 foreach ($query as $row) {
                                             ?>
