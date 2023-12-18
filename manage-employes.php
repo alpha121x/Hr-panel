@@ -25,6 +25,9 @@
     <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
     <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
     <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+    <!-- data table css  -->
+    <link rel="stylesheet" href="assets/jquery/jquery.datatable.css">
+    <link rel="stylesheet" href="assets/jquery/jaquery.datatable.css">
 
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
@@ -42,11 +45,11 @@
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Data Tables</h1>
+        <h1>Manage Employes</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                    <li class="breadcrumb-item active">Data Tables</li>
+                    <li class="breadcrumb-item active">Manage Employes</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
@@ -57,12 +60,12 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Data tables</h5>
+                            <h5 class="card-title">Manage Employes</h5>
 
                             <!-- Table with stripped rows -->
-                            <table class="table datatable table-striped ">
+                            <table class="table datatable table-striped table-hover">
                                   <caption>
-                                    HR Management
+                                    BixiSoft HR Management
                                    </caption>
                                 <thead class="table-primary">
                                     <tr>
@@ -110,14 +113,14 @@
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer mt-5">
         <div class="copyright">
-            &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+            &copy; Copyright <strong><span>BixiSoft HR Management</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
             <!-- All the links in the footer should remain intact. -->
             <!-- You can delete the links only if you purchased the pro version. -->
             <!-- Licensing information: https://bootstrapmade.com/license/ -->
             <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+            Designed by <a href="https://bixisoft.com/" class='fs-5'>Bixisoft</a>
         </div>
     </footer><!-- End Footer -->
 
@@ -129,13 +132,20 @@
     <script src="assets/vendor/chart.js/chart.umd.js"></script>
     <script src="assets/vendor/echarts/echarts.min.js"></script>
     <script src="assets/vendor/quill/quill.min.js"></script>
-    <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+    <!-- <script src="assets/vendor/simple-datatables/simple-datatables.js"></script> -->
     <script src="assets/vendor/tinymce/tinymce.min.js"></script>
     <script src="assets/vendor/php-email-form/validate.js"></script>
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
+    <!-- jquery data table js   -->
+    <script src='assets/jquery/datatable.js'></script>
+    <script src='assets/jquery/datatable.min.js'></script>
+    <script src='assets/jquery/datatable.bootstrap.js'></script>
 
 </body>
 
 </html>
+<script>
+    new DataTable('.datatable');
+</script>

@@ -60,7 +60,7 @@
 	<main id="main" class="main">
 
     <div class="pagetitle">
-        <h1>Data Tables</h1>
+        <h1>Manaement Employes</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.php">Home</a></li>
