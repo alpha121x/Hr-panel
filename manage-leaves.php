@@ -41,59 +41,61 @@
 
                             <!-- Table with stripped rows -->
                             <table class="table table-striped table-hover" id='datatable'>
-    <thead>
-        <tr>
-            <th scope="col">Employee Name</th>
-            <th scope="col">Leave Type</th>
-            <th scope="col">Duration</th>
-            <th scope="col">Dates</th>
-            <th scope="col">Status</th>
-            <th scope="col">Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-        include("db_config.php");
-        require_once("include/classes/meekrodb.2.3.class.php");
+                                <thead class="table-primary">
+                                    <tr>
+                                    <th scope="col">Id</th>
+                                        <th scope="col">Employee Name</th>
+                                        <th scope="col">Leave Type</th>
+                                        <th scope="col">Duration</th>
+                                        <th scope="col">Dates</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    include("db_config.php");
+                                    require_once("include/classes/meekrodb.2.3.class.php");
 
-        // Select all leaves from the 'leaves' table
-        $data_leaves = DB::query("SELECT * FROM leaves");
+                                    // Select all leaves from the 'leaves' table
+                                    $data_leaves = DB::query("SELECT * FROM leaves");
 
-        if ($data_leaves) {
-            foreach ($data_leaves as $leave) {
-                // Assign variables from the fetched row
-                $employee_name = $leave['employe_name'];
-                $leave_type = $leave['leave_type'];
-                $date_from = $leave['date_from'];
-                $date_to = $leave['date_to'];
-                $status = $leave['status'];
+                                    if ($data_leaves) {
+                                        foreach ($data_leaves as $leave) {
+                                            // Assign variables from the fetched row
+                                            $employee_name = $leave['employe_name'];
+                                            $leave_type = $leave['leave_type'];
+                                            $date_from = $leave['date_from'];
+                                            $date_to = $leave['date_to'];
+                                            $status = $leave['status'];
 
-                // Calculate duration in days
-                $duration = (strtotime($date_to) - strtotime($date_from)) / (60 * 60 * 24);
-        ?>
-                <!-- Display data in the rows -->
-                <tr>
-                    <td><?php echo $employee_name ?></td>
-                    <td><?php echo $leave_type ?></td>
-                    <td><?php echo $duration ?> Days</td>
-                    <td><?php echo $date_from . " to " . $date_to; ?></td>
-                    <td><?php echo $status ?></td>
-                    <td>
-                        <a href="edit-leave.php?id=<?php echo $leave['id']; ?>" class='text-black'><i class="bi bi-pencil-square text-primary"></i>&nbsp;</a>
-                        |
-                        <a href="deltete.php?id=<?php echo $leave['id']; ?>" class='text-black'><i class="bi bi-trash text-primary"></i>&nbsp;</a>
-                    </td>
-                </tr>
-        <?php
-            }
-        }
-        ?>
-    </tbody>
-</table>
-
-
-
+                                            // Calculate duration in days
+                                            $duration = (strtotime($date_to) - strtotime($date_from)) / (60 * 60 * 24);
+                                    ?>
+                                            <!-- Display data in the rows -->
+                                            <tr>
+                                            <td><?php echo $leave['id']; ?></td>
+                                                <td><?php echo $employee_name ?></td>
+                                                <td><?php echo $leave_type ?></td>
+                                                <td><?php echo $duration ?> Days</td>
+                                                <td><?php echo $date_from . " to " . $date_to; ?></td>
+                                                <td><?php echo $status ?></td>
+                                                <td>
+                                                    <a href="edit-leave.php?id=<?php echo $leave['id']; ?>" class='text-black'><i class="bi bi-pencil-square text-primary"></i>&nbsp;</a>
+                                                    |
+                                                    <a href="delete.php?id=<?php echo $leave['id']; ?>" class='text-black'><i class="bi bi-trash text-primary"></i>&nbsp;</a>
+                                                </td>
+                                            </tr>
+                                    <?php
+                                        }
+                                    }
+                                    ?>
                                 </tbody>
+                            </table>
+
+
+
+                            </tbody>
                             </table>
                             <!-- End Table with stripped rows -->
 
