@@ -4,6 +4,7 @@
 
 <div class="d-flex align-items-center justify-content-between">
   <a href="index.php" class="logo d-flex align-items-center">
+    &nbsp;&nbsp;&nbsp;
     <img src="assets/img/logo-wide.fw.png" alt="logo">
   </a>
   <i class="bi bi-list toggle-sidebar-btn"></i>
