@@ -116,7 +116,7 @@ require_once("include/classes/meekrodb.2.3.class.php");
 
                                 <div class="container mt-3">
                                     <!-- Table with stripped rows -->
-                                    <table class="table datatable">
+                                    <table class="table table-striped table-hover" id='datatable'>
                                         <thead>
                                             <tr>
                                                 <th scope="col">Id</th>

@@ -8,8 +8,7 @@
     <title>Tables / Data - NiceAdmin Bootstrap Template</title>
     <?php include("include/linked-files.php") ?>
 
-    <!-- data table css  -->
-    <link rel="stylesheet" href="assets/jquery/jquery.datatable.css">
+   
     
 
 </head>

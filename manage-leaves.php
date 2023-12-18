@@ -40,7 +40,7 @@
                             <p>Leaves Record</p>
 
                             <!-- Table with stripped rows -->
-                            <table class="table datatable">
+                            <table class="table table-striped table-hover" id='datatable'>
     <thead>
         <tr>
             <th scope="col">Employee Name</th>
