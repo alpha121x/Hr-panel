@@ -44,7 +44,7 @@ require_once("include/classes/meekrodb.2.3.class.php");
                             <h5 class="card-title">Attendance Report</h5>
 
 
-                            <form method="post" action="">
+                            <form method="post" action="attendance-report.php">
                                 <div class="row m-0">
                                     <div class="col-md-3">
                                         <?php
@@ -140,12 +140,16 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                                 $employee_name = $_POST['employee'];
                                                 $year = $_POST['year'];
                                                 $month = $_POST['month'];
+
                                                 $currentMonthName = date('F');
                                                 $currentYear = date('Y');
+                                                date_default_timezone_set("Asia/Karachi");
+                                                $date =  date('d-M-y');
 
                                                 $query = DB::query(
-                                                    "SELECT * FROM attendance_daily");
-                                                
+                                                    "SELECT * FROM attendance_daily"
+                                                );
+
 
                                                 foreach ($query as $row) {
                                             ?>
