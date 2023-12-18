@@ -45,7 +45,7 @@
               <!-- Horizontal Form -->
               
                 <div class="row mb-4">
-                  <label for="" class="col-sm-3 col-form-label"><b>First Name</b></label>
+                  <label for="" class="col-sm-3 col-form-label text-primary"><b>First Name</b></label>
                   <div class="col-sm-9">
                     <input type="text" class="form-control" id="inputText" placeholder="Enter Your First Name" required name="first_name">
                     <div class="invalid-feedback">
@@ -55,7 +55,7 @@
                 </div>
 
                 <div class="row mb-4 justify-content-center">
-                  <label for="" class="col-sm-3 col-form-label"><b>Last Name</b></label>
+                  <label for="" class="col-sm-3 col-form-label text-primary"><b>Last Name</b></label>
                   <div class="col-sm-9">
                     <input type="text" class="form-control" id="inputText" placeholder="Enter Your Second Name" required name="last_name">
                     <div class="invalid-feedback">
@@ -65,7 +65,7 @@
                 </div>
 
                 <div class="row mb-4">
-                  <label for="" class="col-sm-3 col-form-label"><b>Date of Birth</b></label>
+                  <label for="" class="col-sm-3 col-form-label text-primary"><b>Date of Birth</b></label>
                   <div class="col-sm-9">
                     <input type="date" class="form-control" id="inputText" required name="date_of_birth">
                     <div class="invalid-feedback">
@@ -75,7 +75,7 @@
                 </div>
 
                 <div class="row mb-4">
-                  <label for="" class="col-sm-3 col-form-label"><b>Gender</b></label>
+                  <label for="" class="col-sm-3 col-form-label text-primary"><b>Gender</b></label>
                   <div class="col-sm-9">
                   <select class="form-control form-select" required name="gender">
                     <option selected>Gender</option>
@@ -89,7 +89,7 @@
                 </div>
 
                 <div class="row mb-4">
-                  <label for="" class="col-sm-3 col-form-label"><b>CNIC *</b></label>
+                  <label for="" class="col-sm-3 col-form-label text-primary"><b>CNIC *</b></label>
                   <div class="col-sm-9">
                     <input type="text" class="form-control" id="inputText" required name="cnic" data-inputmask="'mask':'99999-9999999-9'" placeholder="xxxxx-xxxxxxx-x">
                     <div class="invalid-feedback">
@@ -99,7 +99,7 @@
                 </div>
 
                 <div class="row mb-4">
-                  <label for="" class="col-sm-3 col-form-label"><b>City</b></label>
+                  <label for="" class="col-sm-3 col-form-label text-primary"><b>City</b></label>
                   <div class="col-sm-9">
                     <input type="text" class="form-control" id="inputText" required name="city">
                     <div class="invalid-feedback">
@@ -109,7 +109,7 @@
                 </div>
 
                 <div class="row mb-4">
-                  <label for="" class="col-sm-3 col-form-label"><b>Phone No 1</b></label>
+                  <label for="" class="col-sm-3 col-form-label text-primary"><b>Phone No 1</b></label>
                   <div class="col-sm-9">
                     <input type="text" class="form-control" id="inputText"  required name="phone1" data-inputmask="'mask':'9999-9999999'" placeholder="0300-1234567">
                     <div class="invalid-feedback">
@@ -119,7 +119,7 @@
                 </div>
 
                 <div class="row mb-4">
-                  <label for="" class="col-sm-3 col-form-label"><b>Phone No 2</b></label>
+                  <label for="" class="col-sm-3 col-form-label text-primary"><b>Phone No 2</b></label>
                   <div class="col-sm-9">
                     <input type="text" class="form-control" id="inputText"  name="phone2" data-inputmask="'mask':'9999-9999999'" placeholder="0300-1234567">
                     <div class="valid-feedback">
@@ -129,7 +129,7 @@
                 </div>
 
                 <div class="row mb-4">
-                  <label for="" class="col-sm-3 col-form-label"><b>Address*</b></label>
+                  <label for="" class="col-sm-3 col-form-label text-primary"><b>Address*</b></label>
                   <div class="col-sm-9">
                     <input type="text" class="form-control" id="inputText" placeholder="Enter Your Address" required name="address">
                     <div class="invalid-feedback">
@@ -141,7 +141,7 @@
                 
 
                 <div class="row mb-4">
-                  <label for="" class="col-sm-3 col-form-label form-label"><b>Nationality</b></label>
+                  <label for="" class="col-sm-3 col-form-label form-label text-primary"><b>Nationality</b></label>
                   <div class="col-sm-9">
                     <input type="text" class="form-control" id="inputText" required name="nationality">
                     <div class="invalid-feedback">
@@ -153,7 +153,7 @@
                 
 
                 <div class="row mb-4">
-                  <label  class="col-sm-3 col-form-label"><b>Marital Status</b></label>
+                  <label  class="col-sm-3 col-form-label text-primary"><b>Marital Status</b></label>
                   <div class="col-sm-9">
                   <select  class="form-control form-select" required name="marital_status">
                     <option selected>Choose...</option>
@@ -167,7 +167,7 @@
                 </div>
 
                 <div class="row mb-4">
-                  <label for="photo" class="col-sm-3 col-form-label"><b>Photo</b></label>
+                  <label for="photo" class="col-sm-3 col-form-label text-primary"><b>Photo</b></label>
                   <div class="col-sm-9">
                     <input type="file" class="form-control" accept=".jpg, .jpeg" required name="photo">
                     <div class="invalid-feedback">
@@ -189,7 +189,7 @@
               <!-- Vertical Form -->
               
                   <div class="row mb-4">
-                      <label for="" class="col-sm-3 col-form-label "><b>Department*</b></label>
+                      <label for="" class="col-sm-3 col-form-label text-primary"><b>Department*</b></label>
                       <div class="col-sm-9">
                       <select id="inputState" class="form-control form-select" required name="department">
                         <option selected>Departments</option>
@@ -208,7 +208,7 @@
                   
 
                   <div class="row mb-4">
-                      <label for="" class="col-sm-3 col-form-label"><b>Designation</b></label>
+                      <label for="" class="col-sm-3 col-form-label text-primary"><b>Designation</b></label>
                       <div class="col-sm-9">
                         <input type="text" class="form-control"  placeholder="Enter Your Designation" required name="designation">
                         <div class="invalid-feedback">
@@ -218,7 +218,7 @@
                     </div>
 
                     <div class="row mb-4">
-                      <label for="" class="col-sm-3 col-form-label"><b>Date of Joining</b></label>
+                      <label for="" class="col-sm-3 col-form-label text-primary"><b>Date of Joining</b></label>
                       <div class="col-sm-9">
                         <input type="date" class="form-control" id="inputText" required name="date_of_join">
                         <div class="invalid-feedback">
@@ -228,7 +228,7 @@
                     </div>
 
                     <div class="row mb-4">
-                      <label for="inputState" class="col-sm-3 col-form-label"><b>Shift</b></label>
+                      <label for="inputState" class="col-sm-3 col-form-label text-primary"><b>Shift</b></label>
                       <div class="col-sm-9">
                       <select id="inputState" class="form-control form-select" required name="shift">
                         <option selected>Select Your Shift</option>
@@ -253,7 +253,7 @@
                     <!-- No Labels Form -->
 
                     <div class="row mb-3">
-                        <label for="" class="col-sm-3 col-form-label"><b>Account Holder Name</b></label>
+                        <label for="" class="col-sm-3 col-form-label text-primary"><b>Account Holder Name</b></label>
                         <div class="col-sm-9">
                           <input type="text" class="form-control" id="inputText" placeholder="Your Account Name" required name="account_name">
                           <div class="invalid-feedback">
@@ -263,7 +263,7 @@
                       </div>
 
                       <div class="row mb-4">
-                        <label for="" class="col-sm-3 col-form-label"><b>Account Number</b></label>
+                        <label for="" class="col-sm-3 col-form-label text-primary"><b>Account Number</b></label>
                         <div class="col-sm-9">
                           <input type="number" class="form-control" id="inputText" placeholder="Your Account Number" required name="account_number">
                           <div class="invalid-feedback">
@@ -273,7 +273,7 @@
                       </div>
 
                       <div class="row mb-4">
-                        <label for="" class="col-sm-3 col-form-label"><b>Bank Name</b></label>
+                        <label for="" class="col-sm-3 col-form-label text-primary"><b>Bank Name</b></label>
                         <div class="col-sm-9">
                           <input type="text" class="form-control" id="inputText" placeholder="Enter Bank Name" required name="bank_name">
                           <div class="invalid-feedback">

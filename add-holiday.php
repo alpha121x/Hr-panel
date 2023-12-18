@@ -26,7 +26,7 @@ require_once("include/classes/meekrodb.2.3.class.php");
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Holiday</h1>
+            <h1 class='text-primary'>Holiday</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -41,9 +41,35 @@ require_once("include/classes/meekrodb.2.3.class.php");
 
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Add Holiday</h5>
+                            <h5 class="card-title text-primary">Add Holiday</h5>
                             
+                            <div class="justify-content-center" style="width: 600px; height:auto;margin:auto">
+                                <form action="">
 
+                                        <div class="row mb-4">
+                                             <label for="" class="col-sm-3 col-form-label text-primary"><b>Date *</b></label>
+                                              <div class="col-sm-9">
+                                                <input type="date" class="form-control"  required name="">
+                                                <div class="invalid-feedback">
+                                                 Please Enter Your Designation
+                                                </div>
+                                             </div>
+                                        </div>
+
+                                        <div class="row mb-4">
+                                             <label for="" class="col-sm-3 col-form-label text-primary"><b>Description *</b></label>
+                                              <div class="col-sm-9">
+                                                <textarea name="" id="" cols="30" rows="5" class='form-control' require></textarea>
+                                                
+                                             </div>
+                                        </div>
+
+                                           <div style="width: 50px; height:auto;margin:auto">
+                                           <button type='submit' class='btn btn-primary mx-5 mt-4'>Holiday</button>
+                                           </div>
+
+                                </form>
+                            </div>
                             
 
 
