@@ -60,13 +60,13 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin') {
         </a>
         <ul id="leaves-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="components-alerts.html">
-              <i class="bi bi-circle-fill text-primary"></i><span>Add Employes</span>
+            <a href="add-leave.php">
+              <i class="bi bi-circle-fill text-primary"></i><span>Add Leaves</span>
             </a>
           </li>
           <li>
-            <a href="components-accordion.html">
-              <i class="bi bi-circle-fill text-primary"></i><span>Manage Employes</span>
+            <a href="manage-leaves.php">
+              <i class="bi bi-circle-fill text-primary"></i><span>Manage Leaves</span>
             </a>
           </li>
         </ul>

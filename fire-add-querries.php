@@ -28,6 +28,32 @@ if (isset($_POST['add-user'])) {
 require_once "include/classes/meekrodb.2.3.class.php";
 require('db_config.php');
 
+if (isset($_POST['add-leave'])) {
+    $employe_name = $_POST['employe_name'];
+    $leave_type = $_POST['leave_type'];
+    $leave_from = $_POST['date_from'];
+    $leave_to = $_POST['date_to'];
+    $comments = $_POST['comments'];
+
+    // Insert query using MeekroDB
+    $inserted = DB::insert('leaves', [
+        'employe_name' => $employe_name,
+        'leave_type' => $leave_type,
+        'date_from' => $leave_from,
+        'date_to' => $leave_to,
+        'comments' => $comments
+    ]);
+
+    if ($inserted) {
+        header("Location: add-leave.php");
+    }
+}
+?>
+
+<?php
+require_once "include/classes/meekrodb.2.3.class.php";
+require('db_config.php');
+
 if (isset($_POST['submit'])) {
     $employe_name = $_POST['employee'];
     $date_curent = $_POST['date'];

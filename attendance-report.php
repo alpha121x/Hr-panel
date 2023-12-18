@@ -121,7 +121,7 @@
                                         $currentMonthName = date('F');
                                         $currentYear = date('Y');
 
-                                        $query = DB::query("SELECT * FROM attendance_daily WHERE date_current = %s", $date);
+                                        $query = DB::query("SELECT * FROM attendance_daily");
 
 
 
