@@ -26,11 +26,11 @@ require_once("include/classes/meekrodb.2.3.class.php");
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1 class='text-primary'>Inter View</h1>
+            <h1 class='text-primary'>Interview</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active"> Inter View</li>
+                    <li class="breadcrumb-item active"> Interview</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
@@ -41,20 +41,20 @@ require_once("include/classes/meekrodb.2.3.class.php");
 
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title text-primary">Inter View</h5>
+                            <h5 class="card-title text-primary">Interview</h5>
                             
                             <div class="justify-content-center" style="width: 800px; height:auto;margin:auto">
-                            <form class="row g-3 needs-validation" novalidate>
+                            <form class="row g-3 needs-validation" method="post" action="fir-add-interview.php" novalidate>
                                                 <div class="col-md-6">
-                                                    <label for="" class="form-label text-primary"><b>Application Name</b></label>
-                                                    <input type="text" class="form-control" id="" value="" required placeholder="First Name">
+                                                    <label for="" class="form-label text-primary"><b>Applicant Name</b></label>
+                                                    <input type="text" class="form-control"  value="" required placeholder="First Name" name='first_name'>
                                                     <div class="invalid-feedback">
                                                         Please enter your first name
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label for="" class="form-label"> <br> </label>
-                                                    <input type="text" class="form-control" id="" value="" required placeholder="Last Name">
+                                                    <input type="text" class="form-control" id="" value="" required placeholder="Last Name" name='last_name'>
                                                     <div class="invalid-feedback">
                                                         Please enter your last name
                                                     </div>
@@ -62,50 +62,54 @@ require_once("include/classes/meekrodb.2.3.class.php");
 
                                                 <div class="col-md-6">
                                                     <label for="" class="form-label text-primary"><b>Position Requested</b></label>
-                                                    <input type="text" class="form-control" id="" value="" required placeholder="Position">
+                                                    <input type="text" class="form-control" id="" value="" required placeholder="Position" name='position'>
                                                     <div class="invalid-feedback">
                                                         Please enter Position Requested
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label for="" class="form-label text-primary"> <b>Date Available</b> </label>
-                                                    <input type="date" class="form-control" id="" value="" required placeholder="Last Name">
+                                                    <input type="date" class="form-control" id="" value="" required placeholder="Last Name" name='date'>
                                                     <div class="invalid-feedback">
-                                                        Please enter Date
+                                                        Please enter Date of InterView
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-12">
-                                                    <label for="" class="form-label text-primary"><b>Salary Requested</b></label>
+                                                    <label for="" class="form-label text-primary"><b>Asking Salary</b></label>
 
                                                     <div class="input-group has-validation">
                                                      
-                                                     <input type="text" class="form-control" id=""  required>
+                                                     <input type="number" class="form-control" id=""  required name='asking_salary'>
                                                         <div class="invalid-feedback">
-                                                            Please choose a username.
+                                                            Please fill asking salary
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                    <label for="" class="form-label text-primary"><b>Salary Offer</b></label>
+
+                                                    <div class="input-group has-validation">
+                                                     
+                                                     <input type="number" class="form-control" id=""  required name='salary_offer'>
+                                                        <div class="invalid-feedback">
+                                                            Please fill salary offer.
                                                         </div>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-12">
                                                     <label for="" class="form-label text-primary"><b>Working Experience</b></label>
-                                                    <select class="form-select" id="" required>
-                                                         <option selected disabled value="">Experience</option>
-                                                            <option value='Fresher'>Fresher</option>
-                                                            <option value='3 Month'>3 Month</option>
-                                                            <option value='6 Month'>6 Month</option>
-                                                            <option value='1 Year'>1 Year</option>
-                                                            <option value='2 Year'>2 Year</option>
-                                                            <option value='3 Year'>3 Year</option>
-                                                    </select>
+                                                    <input type="text" class="form-control" id=""  required name='working_experience'>
                                                     <div class="invalid-feedback">
                                                     Please select a valid Experience.
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-12">
-                                                    <label for="validationCustom04" class="form-label text-primary"><b>Applicable Skills</b></label>
-                                                    <select class="form-select" id="validationCustom04" required>
+                                                    <label for="" class="form-label text-primary"><b>Applicable Skills</b></label>
+                                                    <select class="form-select" id="" required name='applicable_skills'>
                                                          <option selected disabled value="">Applicable Skills</option>
                                                             <option value='Excellent'>Excellent</option>
                                                             <option value='Good'>Good</option>
@@ -113,13 +117,13 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                                             <option value='Poor'>Poor</option>
                                                     </select>
                                                     <div class="invalid-feedback">
-                                                    Please select a valid Experience.
+                                                    Please select a valid Applicable Skills.
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-12">
-                                                    <label for="validationCustom04" class="form-label text-primary"><b>Appearance</b></label>
-                                                    <select class="form-select" id="validationCustom04" required>
+                                                    <label for="" class="form-label text-primary"><b>Appearance</b></label>
+                                                    <select class="form-select"  required name='appearance'>
                                                          <option selected disabled value="">Appearance</option>
                                                             <option value='Excellent'>Excellent</option>
                                                             <option value='Good'>Good</option>
@@ -127,13 +131,13 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                                             <option value='Poor'>Poor</option>
                                                     </select>
                                                     <div class="invalid-feedback">
-                                                    Please select a valid Experience.
+                                                    Please select a valid Appearance.
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-12">
                                                     <label for="validationCustom04" class="form-label text-primary"><b>Attitude</b></label>
-                                                    <select class="form-select" id="validationCustom04" required>
+                                                    <select class="form-select" id="validationCustom04" required name='attitude'>
                                                          <option selected disabled value="">Attitude</option>
                                                             <option value='Excellent'>Excellent</option>
                                                             <option value='Good'>Good</option>
@@ -141,13 +145,13 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                                             <option value='Poor'>Poor</option>
                                                     </select>
                                                     <div class="invalid-feedback">
-                                                    Please select a valid Experience.
+                                                    Please select a valid Attitude.
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-12">
                                                     <label for="validationCustom04" class="form-label text-primary"><b>Education</b></label>
-                                                    <select class="form-select" id="validationCustom04" required>
+                                                    <select class="form-select" id="validationCustom04" required name='education'>
                                                          <option selected disabled value="">Education</option>
                                                             <option value='Intermediate'>Intermediate</option>
                                                             <option value='Graduate'>Graduate</option>
@@ -155,113 +159,20 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                                             >
                                                     </select>
                                                     <div class="invalid-feedback">
-                                                    Please select a valid Experience.
+                                                    Please select a valid Education.
                                                     </div> <br>
                                                 </div> 
 
                                                 <div class="col-md-12">
-                                                    <label for="" class="form-label text-primary"><b>Why are you considering leaving your current position?</b></label>
-                                                    <input type="text" class="form-control" id="" value="" required >
-                                                    <div class="invalid-feedback">
-                                                        Answer a Question
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-12">
-                                                    <label for="" class="form-label text-primary"><b>What aspects of your past / present jobs have been most challenging?</b></label>
-                                                    <input type="text" class="form-control" id="" value="" required >
-                                                    <div class="invalid-feedback">
-                                                        Answer a Question
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-12">
-                                                    <label for="" class="form-label text-primary"><b>Tell me about a professional challenge you've faced and how it was resolved</b></label>
-                                                    <input type="text" class="form-control" id="" value="" required >
-                                                    <div class="invalid-feedback">
-                                                        Answer a Question
-                                                    </div>
+                                                    <label for="" class="form-label text-primary"><b>Outcome of Interview</b></label>
+                                                    <textarea  cols="30" rows="4" class="form-control" placeholder='Outcome of Interview' name='outcome_interview'></textarea>
+                                                    
                                                 </div>
 
 
-                                                <div class="col-md-12">
-                                                    <label for="" class="form-label text-primary"><b>What do you feel were your most significant accomplishments on the job?</b></label>
-                                                    <input type="text" class="form-control" id="" value="" required >
-                                                    <div class="invalid-feedback">
-                                                        Answer a Question
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <label for="" class="form-label text-primary"><b>What do you consider to be a strenght of yours?</b></label>
-                                                    <input type="text" class="form-control" id="" value="" required >
-                                                    <div class="invalid-feedback">
-                                                        Answer a Question
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <label for="" class="form-label text-primary"><b>What do you consider to be your weaknesses?</b></label>
-                                                    <input type="text" class="form-control" id="" value="" required >
-                                                    <div class="invalid-feedback">
-                                                        Answer a Question
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <label for="" class="form-label text-primary"><b>Tell me why you thing you would be a good fit for this position</b></label>
-                                                    <input type="text" class="form-control" id="" value="" required >
-                                                    <div class="invalid-feedback">
-                                                        Answer a Question
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <label for="" class="form-label text-primary"><b>What are your professional goals for the next 5 years?</b></label>
-                                                    <input type="text" class="form-control" id="" value="" required >
-                                                    <div class="invalid-feedback">
-                                                        Answer a Question
-                                                    </div>
-                                                </div>
-
-
-
-
-
-
-                                                <!-- <div class="col-md-6">
-                                                    <label for="validationCustom03" class="form-label">City</label>
-                                                    <input type="text" class="form-control" id="validationCustom03" required>
-                                                    <div class="invalid-feedback">
-                                                    Please provide a valid city.
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <label for="validationCustom04" class="form-label">State</label>
-                                                    <select class="form-select" id="validationCustom04" required>
-                                                    <option selected disabled value="">Choose...</option>
-                                                    <option>...</option>
-                                                    </select>
-                                                    <div class="invalid-feedback">
-                                                    Please select a valid state.
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <label for="validationCustom05" class="form-label">Zip</label>
-                                                    <input type="text" class="form-control" id="validationCustom05" required>
-                                                    <div class="invalid-feedback">
-                                                    Please provide a valid zip.
-                                                    </div>
-                                                </div>
-                                                <div class="col-12">
-                                                    <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                                                    <label class="form-check-label" for="invalidCheck">
-                                                        Agree to terms and conditions
-                                                    </label>
-                                                    <div class="invalid-feedback">
-                                                        You must agree before submitting.
-                                                    </div>
-                                                    </div>
-                                                </div> -->
+                                                
                                                 <div class="col-12 text-center mt-4">
-                                                    <button class="btn btn-primary" type="submit">Submit form</button>
+                                                    <button class="btn btn-primary" type="submit" name='btn-interview'>Save Info</button>
                                                 </div>
                                                 </form>
                             </div>
