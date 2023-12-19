@@ -68,7 +68,7 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <!-- <div class="col-md-3">
                                         <label for="email" class="form-label text-primary">Year</label>
                                         <div class="col-sm-9">
                                             <select class="form-control form-select" name="year">
@@ -77,7 +77,7 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                                 <option value="2024">2024</option>
                                             </select>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="col-md-3">
                                         <label for="email" class="form-label text-primary">Month</label>
                                         <div class="col-sm-9">
@@ -113,7 +113,6 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                     <table class="table table-striped table-hover" id='datatable'>
                                         <thead class="table-primary">
                                             <tr>
-                                                <th scope="col">Id</th>
                                                 <th scope="col">Name</th>
                                                 <th scope="col">Date</th>
                                                 <th scope="col">Month</th>
@@ -129,7 +128,7 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                             // Check if the submit button is clicked
                                             if (isset($_POST['submit'])) {
                                                 $employe_name = $_POST['employe_name'];
-                                                $year = $_POST['year'];
+                                                // $year = $_POST['year'];
                                                 $month = $_POST['month'];
 
                                                 date_default_timezone_set("Asia/Karachi");
@@ -139,9 +138,9 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                                 $conditions = [];
 
                                                 // Add conditions based on user input
-                                                if ($year) {
-                                                    $conditions[] = "current_year = %i";
-                                                }
+                                                // if ($year) {
+                                                //     $conditions[] = "current_year = %i";
+                                                // }
 
                                                 if ($month) {
                                                     $conditions[] = "current_month = %s";
@@ -156,16 +155,15 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                                     $whereClause = "WHERE " . implode(" AND ", $conditions);
 
                                                     // Execute the query with the constructed WHERE clause
-                                                    $query = DB::query("SELECT * FROM attendance_daily $whereClause", $year, $month, "%" . $employe_name . "%");
+                                                    $query = DB::query("SELECT * FROM attendance_daily $whereClause", $month, "%" . $employe_name . "%");
                                                 } else {
                                                     // No conditions set, display all data
-                                                    $query = DB::query("SELECT * FROM attendance_daily LIMIT 30");
+                                                    $query = DB::query("SELECT * FROM attendance_daily");
                                                 }
 
                                                 foreach ($query as $row) {
                                             ?>
                                                     <tr>
-                                                        <th scope="row"><?php echo $row['id']; ?></th>
                                                         <td><a href="" class='text-black'><?php echo $row['employe_name']; ?></a></td>
                                                         <td><?php echo $row['date_current']; ?></td>
                                                         <td><?php echo $row['current_month']; ?></td>
@@ -183,12 +181,12 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                             // Move the "else" block outside the main "if (isset($_POST['submit']))" block
                                             else {
                                                 // No conditions set, display all data
-                                                $query = DB::query("SELECT * FROM attendance_daily LIMIT 30");
+                                                $query = DB::query("SELECT * FROM attendance_daily");
 
                                                 foreach ($query as $row) {
                                                 ?>
                                                     <tr>
-                                                        <th scope="row"><?php echo $row['id']; ?></th>
+
                                                         <td><a href="" class='text-black'><?php echo $row['employe_name']; ?></a></td>
                                                         <td><?php echo $row['date_current']; ?></td>
                                                         <td><?php echo $row['current_month']; ?></td>
@@ -204,8 +202,6 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                             }
                                             ?>
                                         </tbody>
-
-
                                     </table>
                                     <!-- End Table with stripped rows -->
                                 </div>
