@@ -105,7 +105,7 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                     <div class="col-md-3">
                                         <div class="mb-3">
                                             <?php
-                                            date_default_timezone_set("Asia/Karachi");
+                                             $date = date_default_timezone_set("Asia/Karachi");
                                             $date =  date('d-M-y');
                                             ?>
                                             <label for="date" class="form-label text-primary">Date</label>

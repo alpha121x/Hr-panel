@@ -44,11 +44,11 @@ require_once("include/classes/meekrodb.2.3.class.php");
                             <h5 class="card-title">Attendance Report</h5>
 
 
-                            <form method="post" action="attendance-report.php">
+                            <!-- <form method="post" action="attendance-report.php">
                                 <div class="row m-0">
                                     <div class="col-md-3">
                                         <?php
-                                        $query = DB::query("SELECT * FROM employes");
+                                        // $query = DB::query("SELECT * FROM employes");
                                         //print_r($query);
                                         ?>
                                         <div class="mb-3">
@@ -57,18 +57,18 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                                 <select id="" class="form-control form-select" name="employe_name">
                                                     <option selected>SELECT EMPLOYEE</option>
                                                     <?php
-                                                    foreach ($query as $data) {
+                                                    // foreach ($query as $data) {
                                                     ?>
                                                         <option value="<?php echo $data['first_name'] ?>"><?php echo $data['first_name'] . "&nbsp" . $data['last_name']; ?></option>
                                                     <?php
-                                                    }
+                                                    // }
                                                     ?>
                                                 </select>
 
                                             </div>
                                         </div>
-                                    </div>
-                                    <!-- <div class="col-md-3">
+                                    </div> -->
+                            <!-- <div class="col-md-3">
                                         <label for="email" class="form-label text-primary">Year</label>
                                         <div class="col-sm-9">
                                             <select class="form-control form-select" name="year">
@@ -78,7 +78,7 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                             </select>
                                         </div>
                                     </div> -->
-                                    <div class="col-md-3">
+                            <!-- <div class="col-md-3">
                                         <label for="email" class="form-label text-primary">Month</label>
                                         <div class="col-sm-9">
                                             <select class="form-control form-select" name="month">
@@ -102,7 +102,7 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                         <br>
                                         <button class="btn btn-primary mb-4" id='btn' type="submit" name="submit">Get Data</button>
                                     </div>
-                            </form>
+                            </form> -->
                             <br><br>
                             <div class="row m-0">
                                 <div class="col-md-3"></div>
@@ -113,96 +113,54 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                     <table class="table table-striped table-hover" id='datatable'>
                                         <thead class="table-primary">
                                             <tr>
-                                                <th scope="col">Name</th>
-                                                <th scope="col">Date</th>
-                                                <th scope="col">Month</th>
-                                                <th scope="col">Attendance Status</th>
-                                                <th>Action</th>
+                                            <th class="text-center align-middle">Names</th>
+                                                <?php
+                                                // Fetch unique employee names for display
+                                                $employeesQuery = DB::query("SELECT * FROM employes");
+
+                                                // Display employee names in the header
+                                                foreach ($employeesQuery as $employee) {
+                                                    echo "<th scope='col'>" . $employee['first_name'] . " " . $employee['last_name'] . "</th>";
+                                                }
+                                                ?>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            require_once 'include/classes/meekrodb.2.3.class.php';
-                                            require_once 'db_config.php';
+                                            // Fetch unique dates from the attendance_daily table
+                                            $datesQuery = DB::query("SELECT DISTINCT date_current FROM attendance_daily");
 
-                                            // Check if the submit button is clicked
-                                            if (isset($_POST['submit'])) {
-                                                $employe_name = $_POST['employe_name'];
-                                                // $year = $_POST['year'];
-                                                $month = $_POST['month'];
-
-                                                date_default_timezone_set("Asia/Karachi");
-                                                $date = date('d-M-y');
-
-                                                // Initialize an array to store conditions
-                                                $conditions = [];
-
-                                                // Add conditions based on user input
-                                                // if ($year) {
-                                                //     $conditions[] = "current_year = %i";
-                                                // }
-
-                                                if ($month) {
-                                                    $conditions[] = "current_month = %s";
-                                                }
-
-                                                if ($employe_name) {
-                                                    $conditions[] = "employe_name LIKE %s";
-                                                }
-
-                                                // Construct the WHERE clause based on conditions
-                                                if (!empty($conditions)) {
-                                                    $whereClause = "WHERE " . implode(" AND ", $conditions);
-
-                                                    // Execute the query with the constructed WHERE clause
-                                                    $query = DB::query("SELECT * FROM attendance_daily $whereClause", $month, "%" . $employe_name . "%");
-                                                } else {
-                                                    // No conditions set, display all data
-                                                    $query = DB::query("SELECT * FROM attendance_daily");
-                                                }
-
-                                                foreach ($query as $row) {
+                                            // Loop through dates
+                                            foreach ($datesQuery as $dateRow) {
+                                                $currentDate = $dateRow['date_current'];
                                             ?>
-                                                    <tr>
-                                                        <td><a href="" class='text-black'><?php echo $row['employe_name']; ?></a></td>
-                                                        <td><?php echo $row['date_current']; ?></td>
-                                                        <td><?php echo $row['current_month']; ?></td>
-                                                        <td><?php echo $row['attendance_status']; ?></td>
-                                                        <td>
-                                                            <a href="edit-employe-attendance.php?id=<?php echo $row['id']; ?>" class='text-black'><i class="bi bi-pencil-square text-primary"></i>&nbsp;</a>
-                                                            |
-                                                            <a href="delete.php?deleteId=<?php echo $row['id']; ?>" class='text-black'><i class="bi bi-trash text-primary"></i>&nbsp;</a>
-                                                        </td>
-                                                    </tr>
-                                                <?php
-                                                }
-                                            }
+                                                <tr>
+                                                    <th scope="row">
+                                                        <?php echo $currentDate; ?>
+                                                        Attendance
+                                                    </th>
+                                                    <?php
+                                                    // Loop through employees for each date
+                                                    foreach ($employeesQuery as $employee) {
+                                                        $employeeName = $employee['first_name'] . " " . $employee['last_name'];
 
-                                            // Move the "else" block outside the main "if (isset($_POST['submit']))" block
-                                            else {
-                                                // No conditions set, display all data
-                                                $query = DB::query("SELECT * FROM attendance_daily");
+                                                        // Fetch attendance for the current employee and date
+                                                        $attendanceQuery = DB::query("SELECT attendance_status FROM attendance_daily WHERE employe_name = %s AND date_current = %s", $employeeName, $currentDate);
 
-                                                foreach ($query as $row) {
-                                                ?>
-                                                    <tr>
-
-                                                        <td><a href="" class='text-black'><?php echo $row['employe_name']; ?></a></td>
-                                                        <td><?php echo $row['date_current']; ?></td>
-                                                        <td><?php echo $row['current_month']; ?></td>
-                                                        <td><?php echo $row['attendance_status']; ?></td>
-                                                        <td>
-                                                            <a href="edit-employe-attendance.php?id=<?php echo $row['id']; ?>" class='text-black'><i class="bi bi-pencil-square text-primary"></i>&nbsp;</a>
-                                                            |
-                                                            <a href="delete.php?deleteId=<?php echo $row['id']; ?>" class='text-black'><i class="bi bi-trash text-primary"></i>&nbsp;</a>
-                                                        </td>
-                                                    </tr>
-                                            <?php
-                                                }
-                                            }
-                                            ?>
+                                                        // Display attendance status
+                                                        if (!empty($attendanceQuery)) {
+                                                            $attendanceStatus = $attendanceQuery[0]['attendance_status'];
+                                                            echo "<td>{$attendanceStatus}</td>";
+                                                        } else {
+                                                            echo "<td>-</td>";
+                                                        }
+                                                    }
+                                                    ?>
+                                                </tr>
+                                            <?php } ?>
                                         </tbody>
                                     </table>
+
                                     <!-- End Table with stripped rows -->
                                 </div>
                             </div>
