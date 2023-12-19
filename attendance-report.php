@@ -54,17 +54,17 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                         <div class="mb-3">
                                             <label for="email" class="form-label text-primary">Employees</label>
                                             <div class="col-sm-9">
-                                                <select id="" class="form-control form-select" name="employee">
+                                                <select id="" class="form-control form-select" name="employe_name">
                                                     <option value="" selected>SELECT EMPLOYEE</option>
                                                     <?php
                                                     foreach ($query as $data) {
                                                     ?>
-                                                        <option value="<?php echo $data['first_name'] . "&nbsp" . $data['last_name']; ?>"><?php echo $data['first_name'] . "&nbsp" . $data['last_name']; ?></option>
+                                                        <option value="<?php echo $data['first_name'] ?>"><?php echo $data['first_name'] . "&nbsp" . $data['last_name']; ?></option>
                                                     <?php
                                                     }
                                                     ?>
-
                                                 </select>
+
                                             </div>
                                         </div>
                                     </div>
@@ -133,7 +133,9 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                             require_once 'db_config.php';
 
                                             if (isset($_POST['submit'])) {
-                                                $employee_name = $_POST['employee'];
+                                                $employe_name = $_POST['employe_name'];
+                                                // print_r($employe_name);
+                                                // die();
                                                 $year = $_POST['year'];
                                                 $month = $_POST['month'];
 
@@ -142,12 +144,25 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                                 date_default_timezone_set("Asia/Karachi");
                                                 $date =  date('d-M-y');
 
-                                                $query = DB::query(
-                                                    "SELECT * FROM attendance_daily"
+                                                $queryYear = DB::query(
+                                                    "SELECT * FROM attendance_daily WHERE current_year = %i",
+                                                    $year
                                                 );
 
+                                                // Query for the selected month
+                                                $queryMonth = DB::query(
+                                                    "SELECT * FROM attendance_daily WHERE current_month = %s",
+                                                    $month
+                                                );
 
-                                                foreach ($query as $row) {
+                                                // Query for the selected employee
+                                                $queryEmployee = DB::query(
+                                                    "SELECT * FROM attendance_daily WHERE employe_name LIKE %s",
+                                                    "%" . $employe_name . "%"
+                                                );
+                                                
+
+                                                foreach ($queryYear as $row) {
                                             ?>
                                                     <tr>
                                                         <th scope="row"><?php echo $row['id']; ?></th>
@@ -162,8 +177,43 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                                         </td>
 
                                                     </tr>
+                                                <?php }
+
+
+                                                foreach ($queryMonth as $row) {
+                                                ?>
+                                                    <tr>
+                                                        <th scope="row"><?php echo $row['id']; ?></th>
+                                                        <td><a href="" class='text-black'><?php echo $row['employe_name']; ?></a></td>
+                                                        <td><?php echo $row['date_current']; ?></td>
+                                                        <td><?php echo $row['current_month']; ?></td>
+                                                        <td><?php echo $row['attendance_status']; ?></td>
+                                                        <td>
+                                                            <a href="edit-employe-attendance.php?id=<?php echo $row['id']; ?>" class='text-black'><i class="bi bi-pencil-square text-primary"></i>&nbsp;</a>
+                                                            |
+                                                            <a href="delete.php?deleteId=<?php echo $row['id']; ?>" class='text-black'><i class="bi bi-trash text-primary"></i>&nbsp;</a>
+                                                        </td>
+
+                                                    </tr>
+                                                <?php }
+
+                                                foreach ($queryEmployee as $row) {
+                                                ?>
+                                                    <tr>
+                                                        <th scope="row"><?php echo $row['id']; ?></th>
+                                                        <td><a href="" class='text-black'><?php echo $row['employe_name']; ?></a></td>
+                                                        <td><?php echo $row['date_current']; ?></td>
+                                                        <td><?php echo $row['current_month']; ?></td>
+                                                        <td><?php echo $row['attendance_status']; ?></td>
+                                                        <td>
+                                                            <a href="edit-employe-attendance.php?id=<?php echo $row['id']; ?>" class='text-black'><i class="bi bi-pencil-square text-primary"></i>&nbsp;</a>
+                                                            |
+                                                            <a href="delete.php?deleteId=<?php echo $row['id']; ?>" class='text-black'><i class="bi bi-trash text-primary"></i>&nbsp;</a>
+                                                        </td>
+
+                                                    </tr>
                                             <?php }
-                                            } ?>
+                                            }  ?>
                                         </tbody>
                                     </table>
                                     <!-- End Table with stripped rows -->
