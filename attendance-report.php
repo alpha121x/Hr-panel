@@ -132,6 +132,7 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                             require_once 'include/classes/meekrodb.2.3.class.php';
                                             require_once 'db_config.php';
 
+                                            // Check if the submit button is clicked
                                             if (isset($_POST['submit'])) {
                                                 $employe_name = $_POST['employe_name'];
                                                 $year = $_POST['year'];
@@ -143,7 +144,7 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                                 // Initialize an array to store conditions
                                                 $conditions = [];
 
-                                                // Add conditions based on user input using OR
+                                                // Add conditions based on user input
                                                 if ($year) {
                                                     $conditions[] = "current_year = %i";
                                                 }
@@ -156,14 +157,39 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                                     $conditions[] = "employe_name LIKE %s";
                                                 }
 
-                                                // Construct the WHERE clause based on conditions using OR
-                                                $whereClause = implode(" OR ", $conditions);
+                                                // Construct the WHERE clause based on conditions
+                                                if (!empty($conditions)) {
+                                                    $whereClause = "WHERE " . implode(" AND ", $conditions);
 
-                                                // Execute the query with the constructed WHERE clause
-                                                $query = DB::query("SELECT * FROM attendance_daily WHERE $whereClause", $year, $month, "%" . $employe_name . "%");
+                                                    // Execute the query with the constructed WHERE clause
+                                                    $query = DB::query("SELECT * FROM attendance_daily $whereClause", $year, $month, "%" . $employe_name . "%");
+                                                } else {
+                                                    // No conditions set, display all data
+                                                    $query = DB::query("SELECT * FROM attendance_daily");
+                                                }
 
                                                 foreach ($query as $row) {
                                             ?>
+                                                    <tr>
+                                                        <th scope="row"><?php echo $row['id']; ?></th>
+                                                        <td><a href="" class='text-black'><?php echo $row['employe_name']; ?></a></td>
+                                                        <td><?php echo $row['date_current']; ?></td>
+                                                        <td><?php echo $row['current_month']; ?></td>
+                                                        <td><?php echo $row['attendance_status']; ?></td>
+                                                        <td>
+                                                            <a href="edit-employe-attendance.php?id=<?php echo $row['id']; ?>" class='text-black'><i class="bi bi-pencil-square text-primary"></i>&nbsp;</a>
+                                                            |
+                                                            <a href="delete.php?deleteId=<?php echo $row['id']; ?>" class='text-black'><i class="bi bi-trash text-primary"></i>&nbsp;</a>
+                                                        </td>
+                                                    </tr>
+                                                <?php
+                                                }
+                                            } else {
+                                                // No conditions set, display all data
+                                                $query = DB::query("SELECT * FROM attendance_daily");
+
+                                                foreach ($query as $row) {
+                                                ?>
                                                     <tr>
                                                         <th scope="row"><?php echo $row['id']; ?></th>
                                                         <td><a href="" class='text-black'><?php echo $row['employe_name']; ?></a></td>
@@ -181,7 +207,6 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                             }
                                             ?>
                                         </tbody>
-
 
                                     </table>
                                     <!-- End Table with stripped rows -->
