@@ -36,6 +36,26 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin') {
         </ul>
       </li>
       <!-- End Components Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#interviews-nav" data-bs-toggle="collapse" href="#">
+        <i class="bi bi-person-fill-up"></i><span>Inteviews</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="interviews-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="add-interviews.php">
+            <i class="bi bi-circle-fill text-primary"></i></i><span>Add Interviews</span>
+            </a>
+          </li>
+          <li>
+            <a href="manage-interviews.php">
+              <i class="bi bi-circle-fill text-primary"></i><span>Manage Interviews</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <!-- End Components Nav -->
+
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#attendance-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-bell-fill"></i><span>Attendance</span><i class="bi bi-chevron-down ms-auto"></i>
