@@ -55,7 +55,7 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                             <label for="email" class="form-label text-primary">Employees</label>
                                             <div class="col-sm-9">
                                                 <select id="" class="form-control form-select" name="employe_name">
-                                                    <option value="" selected>SELECT EMPLOYEE</option>
+                                                    <option  selected>SELECT EMPLOYEE</option>
                                                     <?php
                                                     foreach ($query as $data) {
                                                     ?>
