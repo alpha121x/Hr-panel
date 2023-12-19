@@ -103,17 +103,13 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                         <button class="btn btn-primary mb-4" id='btn' type="submit" name="submit">Get Data</button>
                                     </div>
                             </form> -->
-                            <br><br>
                             <div class="row m-0">
-                                <div class="col-md-3"></div>
-                                <div class="col-md-3"></div>
-
                                 <div class="container mt-3">
                                     <!-- Table with stripped rows -->
                                     <table class="table table-striped table-hover" id='datatable'>
                                         <thead class="table-primary">
                                             <tr>
-                                            <th class="text-center align-middle">Names</th>
+                                            <th class="text-center align-middle">Date</th>
                                                 <?php
                                                 // Fetch unique employee names for display
                                                 $employeesQuery = DB::query("SELECT * FROM employes");
