@@ -44,7 +44,7 @@ require_once("include/classes/meekrodb.2.3.class.php");
                             <h5 class="card-title">Attendance Report</h5>
 
 
-                            <form method="post" action="">
+                            <form method="post" action="attendance-report.php">
                                 <div class="row m-0">
                                     <div class="col-md-3">
                                         <?php
@@ -76,9 +76,6 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                                 <option value="2023">2023</option>
                                                 <option value="2024">2024</option>
                                             </select>
-                                            <div class="valid-feedback">
-                                                Please Enter You Married or Not!
-                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -99,9 +96,6 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                                 <option value="November">November</option>
                                                 <option value="December">December</option>
                                             </select>
-                                            <div class="valid-feedback">
-                                                Please Enter You Married or Not!
-                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -165,7 +159,7 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                                     $query = DB::query("SELECT * FROM attendance_daily $whereClause", $year, $month, "%" . $employe_name . "%");
                                                 } else {
                                                     // No conditions set, display all data
-                                                    $query = DB::query("SELECT * FROM attendance_daily");
+                                                    $query = DB::query("SELECT * FROM attendance_daily LIMIT 30");
                                                 }
 
                                                 foreach ($query as $row) {
@@ -184,9 +178,12 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                                     </tr>
                                                 <?php
                                                 }
-                                            } else {
+                                            }
+
+                                            // Move the "else" block outside the main "if (isset($_POST['submit']))" block
+                                            else {
                                                 // No conditions set, display all data
-                                                $query = DB::query("SELECT * FROM attendance_daily");
+                                                $query = DB::query("SELECT * FROM attendance_daily LIMIT 30");
 
                                                 foreach ($query as $row) {
                                                 ?>
@@ -207,6 +204,7 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                             }
                                             ?>
                                         </tbody>
+
 
                                     </table>
                                     <!-- End Table with stripped rows -->
