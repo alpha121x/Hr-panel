@@ -137,41 +137,32 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                                 $year = $_POST['year'];
                                                 $month = $_POST['month'];
 
-                                                $currentMonthName = date('F');
-                                                $currentYear = date('Y');
                                                 date_default_timezone_set("Asia/Karachi");
-                                                $date =  date('d-M-y');
+                                                $date = date('d-M-y');
 
-                                                $queryYear = DB::query(
-                                                    "SELECT * FROM attendance_daily WHERE current_year = %i",
-                                                    $year
-                                                );
+                                                // Initialize an array to store conditions
+                                                $conditions = [];
 
-                                                // Query for the selected month
-                                                $queryMonth = DB::query(
-                                                    "SELECT * FROM attendance_daily WHERE current_month = %s",
-                                                    $month
-                                                );
+                                                // Add conditions based on user input using OR
+                                                if ($year) {
+                                                    $conditions[] = "current_year = %i";
+                                                }
 
-                                                // Query for the selected employee
-                                                $queryEmployee = DB::query(
-                                                    "SELECT * FROM attendance_daily WHERE employe_name LIKE %s",
-                                                    "%" . $employe_name . "%"
-                                                );
+                                                if ($month) {
+                                                    $conditions[] = "current_month = %s";
+                                                }
 
-                                                $queryCombined = DB::query(
-                                                    "SELECT * FROM attendance_daily 
-                                                    WHERE current_year = %i 
-                                                    AND current_month = %s 
-                                                    AND employe_name LIKE %s",
-                                                    $year,
-                                                    $month,
-                                                    "%" . $employe_name . "%"
-                                                );
+                                                if ($employe_name) {
+                                                    $conditions[] = "employe_name LIKE %s";
+                                                }
 
+                                                // Construct the WHERE clause based on conditions using OR
+                                                $whereClause = implode(" OR ", $conditions);
 
+                                                // Execute the query with the constructed WHERE clause
+                                                $query = DB::query("SELECT * FROM attendance_daily WHERE $whereClause", $year, $month, "%" . $employe_name . "%");
 
-                                                foreach ($queryYear as $row) {
+                                                foreach ($query as $row) {
                                             ?>
                                                     <tr>
                                                         <th scope="row"><?php echo $row['id']; ?></th>
@@ -184,63 +175,14 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                                             |
                                                             <a href="delete.php?deleteId=<?php echo $row['id']; ?>" class='text-black'><i class="bi bi-trash text-primary"></i>&nbsp;</a>
                                                         </td>
-
                                                     </tr>
-                                                <?php }
-
-
-                                                foreach ($queryMonth as $row) {
-                                                ?>
-                                                    <tr>
-                                                        <th scope="row"><?php echo $row['id']; ?></th>
-                                                        <td><a href="" class='text-black'><?php echo $row['employe_name']; ?></a></td>
-                                                        <td><?php echo $row['date_current']; ?></td>
-                                                        <td><?php echo $row['current_month']; ?></td>
-                                                        <td><?php echo $row['attendance_status']; ?></td>
-                                                        <td>
-                                                            <a href="edit-employe-attendance.php?id=<?php echo $row['id']; ?>" class='text-black'><i class="bi bi-pencil-square text-primary"></i>&nbsp;</a>
-                                                            |
-                                                            <a href="delete.php?deleteId=<?php echo $row['id']; ?>" class='text-black'><i class="bi bi-trash text-primary"></i>&nbsp;</a>
-                                                        </td>
-
-                                                    </tr>
-                                                <?php }
-
-                                                foreach ($queryEmployee as $row) {
-                                                ?>
-                                                    <tr>
-                                                        <th scope="row"><?php echo $row['id']; ?></th>
-                                                        <td><a href="" class='text-black'><?php echo $row['employe_name']; ?></a></td>
-                                                        <td><?php echo $row['date_current']; ?></td>
-                                                        <td><?php echo $row['current_month']; ?></td>
-                                                        <td><?php echo $row['attendance_status']; ?></td>
-                                                        <td>
-                                                            <a href="edit-employe-attendance.php?id=<?php echo $row['id']; ?>" class='text-black'><i class="bi bi-pencil-square text-primary"></i>&nbsp;</a>
-                                                            |
-                                                            <a href="delete.php?deleteId=<?php echo $row['id']; ?>" class='text-black'><i class="bi bi-trash text-primary"></i>&nbsp;</a>
-                                                        </td>
-
-                                                    </tr>
-                                                <?php }
-
-                                                foreach ($queryCombined as $row) {
-                                                ?>
-                                                    <tr>
-                                                        <th scope="row"><?php echo $row['id']; ?></th>
-                                                        <td><a href="" class='text-black'><?php echo $row['employe_name']; ?></a></td>
-                                                        <td><?php echo $row['date_current']; ?></td>
-                                                        <td><?php echo $row['current_month']; ?></td>
-                                                        <td><?php echo $row['attendance_status']; ?></td>
-                                                        <td>
-                                                            <a href="edit-employe-attendance.php?id=<?php echo $row['id']; ?>" class='text-black'><i class="bi bi-pencil-square text-primary"></i>&nbsp;</a>
-                                                            |
-                                                            <a href="delete.php?deleteId=<?php echo $row['id']; ?>" class='text-black'><i class="bi bi-trash text-primary"></i>&nbsp;</a>
-                                                        </td>
-
-                                                    </tr>
-                                            <?php }
-                                            }  ?>
+                                            <?php
+                                                }
+                                            }
+                                            ?>
                                         </tbody>
+
+
                                     </table>
                                     <!-- End Table with stripped rows -->
                                 </div>
