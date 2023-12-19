@@ -55,7 +55,7 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                             <label for="email" class="form-label text-primary">Employees</label>
                                             <div class="col-sm-9">
                                                 <select id="" class="form-control form-select" name="employe_name">
-                                                    <option  selected>SELECT EMPLOYEE</option>
+                                                    <option selected>SELECT EMPLOYEE</option>
                                                     <?php
                                                     foreach ($query as $data) {
                                                     ?>
@@ -134,8 +134,6 @@ require_once("include/classes/meekrodb.2.3.class.php");
 
                                             if (isset($_POST['submit'])) {
                                                 $employe_name = $_POST['employe_name'];
-                                                // print_r($employe_name);
-                                                // die();
                                                 $year = $_POST['year'];
                                                 $month = $_POST['month'];
 
@@ -160,7 +158,18 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                                     "SELECT * FROM attendance_daily WHERE employe_name LIKE %s",
                                                     "%" . $employe_name . "%"
                                                 );
-                                                
+
+                                                $queryCombined = DB::query(
+                                                    "SELECT * FROM attendance_daily 
+                                                    WHERE current_year = %i 
+                                                    AND current_month = %s 
+                                                    AND employe_name LIKE %s",
+                                                    $year,
+                                                    $month,
+                                                    "%" . $employe_name . "%"
+                                                );
+
+
 
                                                 foreach ($queryYear as $row) {
                                             ?>
@@ -198,6 +207,23 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                                 <?php }
 
                                                 foreach ($queryEmployee as $row) {
+                                                ?>
+                                                    <tr>
+                                                        <th scope="row"><?php echo $row['id']; ?></th>
+                                                        <td><a href="" class='text-black'><?php echo $row['employe_name']; ?></a></td>
+                                                        <td><?php echo $row['date_current']; ?></td>
+                                                        <td><?php echo $row['current_month']; ?></td>
+                                                        <td><?php echo $row['attendance_status']; ?></td>
+                                                        <td>
+                                                            <a href="edit-employe-attendance.php?id=<?php echo $row['id']; ?>" class='text-black'><i class="bi bi-pencil-square text-primary"></i>&nbsp;</a>
+                                                            |
+                                                            <a href="delete.php?deleteId=<?php echo $row['id']; ?>" class='text-black'><i class="bi bi-trash text-primary"></i>&nbsp;</a>
+                                                        </td>
+
+                                                    </tr>
+                                                <?php }
+
+                                                foreach ($queryCombined as $row) {
                                                 ?>
                                                     <tr>
                                                         <th scope="row"><?php echo $row['id']; ?></th>
