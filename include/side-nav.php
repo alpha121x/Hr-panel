@@ -48,7 +48,7 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin') {
             </a>
           </li>
           <li>
-            <a href="manage-interviews.php">
+            <a href="manage-interview.php">
               <i class="bi bi-circle-fill text-primary"></i><span>Manage Interviews</span>
             </a>
           </li>
