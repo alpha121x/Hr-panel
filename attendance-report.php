@@ -104,81 +104,81 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                     </div>
                             </form> -->
                             <div class="row m-0">
-    <div class="container mt-3">
-        <!-- Table with stripped rows -->
-        <table class="table table-striped table-hover" id='datatable'>
-            <thead class="table-primary">
-                <tr>
-                    <th class="text-center align-middle">Date</th>
-                    <?php
-                    // Fetch unique employee names for display
-                    $employeesQuery = DB::query("SELECT * FROM employes");
+                                <div class="container mt-3">
+                                    <!-- Table with stripped rows -->
+                                    <table class="table table-striped table-hover" id='datatable'>
+                                        <thead class="table-primary">
+                                            <tr>
+                                                <th class="text-center align-middle">Date</th>
+                                                <?php
+                                                // Fetch unique employee names for display
+                                                $employeesQuery = DB::query("SELECT * FROM employes");
 
-                    // Display employee names in the header
-                    foreach ($employeesQuery as $employee) {
-                        echo "<th scope='col'>" . $employee['first_name'] . " " . $employee['last_name'] . "</th>";
-                    }
-                    ?>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                // Fetch unique dates from the attendance_daily table
-                $datesQuery = DB::query("SELECT DISTINCT date_current FROM attendance_daily");
+                                                // Display employee names in the header
+                                                foreach ($employeesQuery as $employee) {
+                                                    echo "<th scope='col'>" . $employee['first_name'] . " " . $employee['last_name'] . "</th>";
+                                                }
+                                                ?>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            // Fetch unique dates from the attendance_daily table
+                                            $datesQuery = DB::query("SELECT DISTINCT date_current FROM attendance_daily");
 
-                // Loop through dates
-                foreach ($datesQuery as $dateRow) {
-                    $currentDate = $dateRow['date_current'];
-                ?>
-                    <tr>
-                        <td scope="row">
-                            <?php echo $currentDate; ?>
-                            <b>Attendance</b> 
-                        </td>
-                        <?php
-                        // Loop through employees for each date
-                        foreach ($employeesQuery as $employee) {
-                            $employeeName = $employee['first_name'] . " " . $employee['last_name'];
+                                            // Loop through dates
+                                            foreach ($datesQuery as $dateRow) {
+                                                $currentDate = $dateRow['date_current'];
+                                            ?>
+                                                <tr>
+                                                    <td scope="row">
+                                                        <?php echo $currentDate; ?>
+                                                        <b>Attendance</b>
+                                                    </td>
+                                                    <?php
+                                                    // Loop through employees for each date
+                                                    foreach ($employeesQuery as $employee) {
+                                                        $employeeName = $employee['first_name'] . " " . $employee['last_name'];
 
-                            // Fetch attendance for the current employee and date
-                            $attendanceQuery = DB::query("SELECT attendance_status FROM attendance_daily WHERE employe_name = %s AND date_current = %s", $employeeName, $currentDate);
+                                                        // Fetch attendance for the current employee and date
+                                                        $attendanceQuery = DB::query("SELECT attendance_status FROM attendance_daily WHERE employe_name = %s AND date_current = %s", $employeeName, $currentDate);
 
-                            // Display attendance status with color-coding
-                            if (!empty($attendanceQuery)) {
-                                $attendanceStatus = $attendanceQuery[0]['attendance_status'];
-                                $color = '';
-                                switch ($attendanceStatus) {
-                                    case 'P':
-                                        $color = 'green';
-                                        break;
-                                    case 'A':
-                                        $color = 'red';
-                                        break;
-                                    case 'L':
-                                        $color = 'orange';
-                                        break;
-                                    default:
-                                        $color = 'black'; // You can set a default color if needed
-                                }
-                                echo "<td style='color: $color;'>{$attendanceStatus}</td>";
-                            } else {
-                                echo "<td>-</td>";
-                            }
-                        }
-                        ?>
-                    </tr>
-                <?php } ?>
-            </tbody>
-        </table>
-    </div>
-</div>
-
-
-                                    <!-- End Table with stripped rows -->
+                                                        // Display attendance status with color-coding
+                                                        if (!empty($attendanceQuery)) {
+                                                            $attendanceStatus = $attendanceQuery[0]['attendance_status'];
+                                                            $color = '';
+                                                            switch ($attendanceStatus) {
+                                                                case 'P':
+                                                                    $color = 'green';
+                                                                    break;
+                                                                case 'A':
+                                                                    $color = 'red';
+                                                                    break;
+                                                                case 'L':
+                                                                    $color = 'orange';
+                                                                    break;
+                                                                default:
+                                                                    $color = 'black'; // You can set a default color if needed
+                                                            }
+                                                            echo "<td style='color: $color;'>{$attendanceStatus}</td>";
+                                                        } else {
+                                                            echo "<td>-</td>";
+                                                        }
+                                                    }
+                                                    ?>
+                                                </tr>
+                                            <?php } ?>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
+
+
+                            <!-- End Table with stripped rows -->
                         </div>
                     </div>
+                </div>
+            </div>
         </section>
 
     </main><!-- End #main -->
