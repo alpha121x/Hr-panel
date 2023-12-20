@@ -109,76 +109,61 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                     <table class="table table-striped table-hover" id='datatable'>
                                         <thead class="table-primary">
                                             <tr>
-                                                <th class="text-center align-middle">Date</th>
+                                                <th scope="col">Names</th>
                                                 <?php
-                                                // Fetch unique employee names for display
-                                                $employeesQuery = DB::query("SELECT * FROM employes");
+                                                // Get the current year and month
+                                                $currentYear = date('Y');
+                                                $currentMonth = date('m');
 
-                                                // Display employee names in the header
-                                                foreach ($employeesQuery as $employee) {
-                                                    echo "<th scope='col'>" . $employee['first_name'] . " " . $employee['last_name'] . "</th>";
+                                                // Get the number of days in the current month
+                                                $totalDays = cal_days_in_month(CAL_GREGORIAN, $currentMonth, $currentYear);
+
+                                                // Loop through days of the current month and create table headers
+                                                for ($day = 1; $day <= $totalDays; $day++) {
+                                                    echo "<th>{$day}</th>";
                                                 }
                                                 ?>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            // Fetch unique dates from the attendance_daily table
-                                            $datesQuery = DB::query("SELECT DISTINCT date_current FROM attendance_daily");
+                                            // Fetch unique employee names for display
+                                            $employeesQuery = DB::query("SELECT * FROM employes");
 
-                                            // Loop through dates
-                                            foreach ($datesQuery as $dateRow) {
-                                                $currentDate = $dateRow['date_current'];
-                                            ?>
-                                                <tr>
-                                                    <td scope="row">
-                                                        <?php echo $currentDate; ?>
-                                                        <b>Attendance</b>
-                                                    </td>
-                                                    <?php
-                                                    // Loop through employees for each date
-                                                    foreach ($employeesQuery as $employee) {
-                                                        $employeeName = $employee['first_name'] . " " . $employee['last_name'];
+                                            // Loop through employees
+                                            foreach ($employeesQuery as $employee) {
+                                                echo "<tr>";
+                                                echo "<th scope='row'>" . $employee['first_name'] . " " . $employee['last_name'] . "</th>";
 
-                                                        // Fetch attendance for the current employee and date
-                                                        $attendanceQuery = DB::query("SELECT attendance_status FROM attendance_daily WHERE employe_name = %s AND date_current = %s", $employeeName, $currentDate);
+                                                // Loop through days of the current month for each employee
+                                                for ($day = 1; $day <= $totalDays; $day++) {
+                                                    // Format the date for comparison
+                                                    $formattedDate = date('d-M-y', strtotime("{$currentYear}-{$currentMonth}-" . sprintf("%02d", $day)));
 
-                                                        // Display attendance status with color-coding
-                                                        if (!empty($attendanceQuery)) {
-                                                            $attendanceStatus = $attendanceQuery[0]['attendance_status'];
-                                                            $color = '';
-                                                            switch ($attendanceStatus) {
-                                                                case 'P':
-                                                                    $color = 'green';
-                                                                    break;
-                                                                case 'A':
-                                                                    $color = 'red';
-                                                                    break;
-                                                                case 'L':
-                                                                    $color = 'orange';
-                                                                    break;
-                                                                default:
-                                                                    $color = 'black'; // You can set a default color if needed
-                                                            }
-                                                            echo "<td style='color: $color;'>{$attendanceStatus}</td>";
-                                                        } else {
-                                                            echo "<td>-</td>";
-                                                        }
+                                                    // Fetch attendance for the current employee and date
+                                                    $attendanceQuery = DB::query("SELECT attendance_status FROM attendance_daily WHERE employe_name = %s AND date_current = %s", $employee['first_name'] . " " . $employee['last_name'], $formattedDate);
+
+                                                    // Display attendance status or "-"
+                                                    if (!empty($attendanceQuery)) {
+                                                        $attendanceStatus = $attendanceQuery[0]['attendance_status'];
+                                                        echo "<td>{$attendanceStatus}</td>";
+                                                    } else {
+                                                        echo "<td>-</td>";
                                                     }
-                                                    ?>
-                                                </tr>
-                                            <?php } ?>
+                                                }
+
+                                                echo "</tr>";
+                                            }
+                                            ?>
+
                                         </tbody>
+
                                     </table>
+                                    <!-- End Table with stripped rows -->
                                 </div>
                             </div>
-
-
-                            <!-- End Table with stripped rows -->
                         </div>
                     </div>
-                </div>
-            </div>
         </section>
 
     </main><!-- End #main -->
