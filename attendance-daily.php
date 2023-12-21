@@ -90,7 +90,7 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                         <div class="mb-3">
                                             <?php
                                             date_default_timezone_set("Asia/Karachi");
-                                            $date1 =  date('h:i:s:a');
+                                            $date1 =  date('h:i:a');
                                             ?>
                                             <label for="date" class="form-label text-primary">In Time</label>
                                             <input type="text" class="form-control" id="date" name="time" value="<?php echo $date1; ?>">

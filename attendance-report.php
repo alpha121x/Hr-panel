@@ -106,6 +106,7 @@ require_once("include/classes/meekrodb.2.3.class.php");
                             <div class="row m-0">
                                 <div class="container mt-3">
                                     <!-- Table with stripped rows -->
+                                    <!-- Table with stripped rows -->
                                     <table class="table table-striped table-hover" id='datatable'>
                                         <thead class="table-primary">
                                             <tr>
@@ -141,12 +142,22 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                                     $formattedDate = date('d-M-y', strtotime("{$currentYear}-{$currentMonth}-" . sprintf("%02d", $day)));
 
                                                     // Fetch attendance for the current employee and date
-                                                    $attendanceQuery = DB::query("SELECT attendance_status FROM attendance_daily WHERE employe_name = %s AND date_current = %s", $employee['first_name'] . " " . $employee['last_name'], $formattedDate);
+                                                    $attendanceQuery = DB::query("SELECT * FROM attendance_daily WHERE employe_name = %s AND date_current = %s", $employee['first_name'] . " " . $employee['last_name'], $formattedDate);
 
-                                                    // Display attendance status or "-"
+                                                    // Display attendance details or "-"
                                                     if (!empty($attendanceQuery)) {
                                                         $attendanceStatus = $attendanceQuery[0]['attendance_status'];
-                                                        echo "<td>{$attendanceStatus}</td>";
+                                                        $inTime = date('h:i:a', strtotime($attendanceQuery[0]['in_time']));
+                                                        $outTime = date('h:i:a', strtotime($attendanceQuery[0]['out_time']));
+                                                        $shift = $attendanceQuery[0]['shift'];
+
+                                                        // Create a formatted cell with line breaks
+                                                        echo "<td>";
+                                                        echo "Status: {$attendanceStatus}<br>";
+                                                        echo "Shift: {$shift}<br>";
+                                                        echo "In Time: {$inTime}<br>";
+                                                        echo "Out Time: {$outTime}";
+                                                        echo "</td>";
                                                     } else {
                                                         echo "<td>-</td>";
                                                     }
@@ -155,10 +166,11 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                                 echo "</tr>";
                                             }
                                             ?>
-
                                         </tbody>
-
                                     </table>
+
+
+
                                     <!-- End Table with stripped rows -->
                                 </div>
                             </div>
