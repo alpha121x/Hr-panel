@@ -138,62 +138,75 @@ require_once("include/classes/meekrodb.2.3.class.php");
                     <div class="row m-0">
                         <div class="container mt-3">
                             <!-- Table with stripped rows -->
-                            <table class="table table-striped table-hover" id='datatable'>
-                                <thead class="table-primary">
-                                    <tr>
-                                        <th scope="col">Serial</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Date</th>
-                                        <th scope="col">In time</th>
-                                        <th scope="col">Out time</th>
-                                        <th scope="col">Shift</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    // Fetch all employee names from the employes table
-                                    $employeeNames = DB::query("SELECT first_name, last_name FROM employes");
+                           <!-- Table with stripped rows -->
+<table class="table table-striped table-hover" id='datatable'>
+    <thead class="table-primary">
+        <tr>
+            <th scope="col">Serial</th>
+            <th scope="col">Name</th>
+            <th scope="col">Status</th>
+            <th scope="col">Date</th>
+            <th scope="col">In time</th>
+            <th scope="col">Out time</th>
+            <th scope="col">Shift</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        // Fetch all employee names from the employes table
+        $employeeNames = DB::query("SELECT first_name, last_name FROM employes");
 
-                                    // Get the current date in the format 'Y-m-d'
-                                    $currentDate = date('d-M-y');
+        // Get the current date in the format 'Y-m-d'
+        $currentDate = date('d-M-y');
 
-                                    // Initialize a variable for the serial number
-                                    $serialNumber = 1;
+        // Initialize a variable for the serial number
+        $serialNumber = 1;
 
-                                    // Loop through employee names and fetch attendance data for the current date
-                                    foreach ($employeeNames as $employee) {
-                                        $employeeName = $employee['first_name'] . ' ' . $employee['last_name'];
+        // Loop through employee names and fetch attendance data for the current date
+        foreach ($employeeNames as $employee) {
+            $employeeName = $employee['first_name'] . ' ' . $employee['last_name'];
 
-                                        // Fetch attendance data for the current employee and date
-                                        $attendanceData = DB::query("SELECT * FROM attendance_daily WHERE employe_name = %s AND date_current = %s", $employeeName, $currentDate);
+            // Fetch attendance data for the current employee and date
+            $attendanceData = DB::query("SELECT * FROM attendance_daily WHERE employe_name = %s AND date_current = %s", $employeeName, $currentDate);
 
-                                        // Display the data in the table rows
-                                        echo "<tr>";
-                                        echo "<td>{$serialNumber}</td>";
-                                        echo "<th>{$employeeName}</th>";
-                                        echo "<td>{$currentDate}</td>";
+            // Display the data in the table rows
+            echo "<tr>";
+            echo "<td>{$serialNumber}</td>";
+            echo "<th>{$employeeName}</th>";
+            echo "<td>";
 
-                                        if (!empty($attendanceData)) {
-                                            echo "<td>{$attendanceData[0]['in_time']}</td>";
-                                            echo "<td>{$attendanceData[0]['out_time']}</td>";
-                                            echo "<td>{$attendanceData[0]['shift']}</td>";
-                                        } else {
-                                            // If no attendance data, display placeholders
-                                            echo "<td>-</td>";
-                                            echo "<td>-</td>";
-                                            echo "<td>-</td>";
-                                        }
+            if (!empty($attendanceData)) {
+                // Check the attendance status and apply styles
+                $attendanceStatus = $attendanceData[0]['attendance_status'];
+                $style = ($attendanceStatus == 'P') ? 'color: green; font-weight: bold;' : 'color: red; font-weight: bold;';
+                echo "<span style='{$style}'>{$attendanceStatus}</span>";
+            } else {
+                // If no attendance data, display placeholders
+                echo "<span style='color: gray; font-weight: bold;'>-</span>";
+            }
 
-                                        echo "</tr>";
+            echo "</td>";
+            echo "<td>{$currentDate}</td>";
 
-                                        // Increment the serial number for the next row
-                                        $serialNumber++;
-                                    }
-                                    ?>
-                                </tbody>
-                            </table>
+            if (!empty($attendanceData)) {
+                echo "<td>{$attendanceData[0]['in_time']}</td>";
+                echo "<td>{$attendanceData[0]['out_time']}</td>";
+                echo "<td>{$attendanceData[0]['shift']}</td>";
+            } else {
+                // If no attendance data, display placeholders
+                echo "<td>-</td>";
+                echo "<td>-</td>";
+                echo "<td>-</td>";
+            }
 
+            echo "</tr>";
 
+            // Increment the serial number for the next row
+            $serialNumber++;
+        }
+        ?>
+    </tbody>
+</table>
 
                         </div>
 
