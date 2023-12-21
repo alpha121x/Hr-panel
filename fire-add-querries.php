@@ -51,7 +51,7 @@ if (isset($_POST['add-leave'])) {
     }
 }
 ?>
-
+<!----- attendance ----->
 <?php
 require_once "include/classes/meekrodb.2.3.class.php";
 require('db_config.php');
@@ -61,6 +61,7 @@ if (isset($_POST['submit'])) {
     $date_curent = $_POST['date'];
     $shift = $_POST['shift'];
     $in_time = $_POST['time'];
+    $out_time = $_POST['out-time'];
    $attendance_current = $_POST['attendance'];
    $currentMonthName = date('F');
    $currentYear = date('Y');
@@ -74,6 +75,7 @@ if (isset($_POST['submit'])) {
         'current_year' => $currentYear,
         'shift' => $shift,
         'in_time' => $in_time,
+        'out_time' => $out_time,
         'attendance_status' => $attendance_current
     ]);
 
