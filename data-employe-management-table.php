@@ -41,228 +41,209 @@
         $query = DB::query("SELECT * FROM employes WHERE id=%i;", $id);
         foreach($query as $row) {
     ?>
+<div class="container-fluid">
+<div class="container">
+<section>
+ 
 
-    <section class="section">
-        <div class="padding-md">
-            <div class="container-fluid">
-                <div class="row bg-white">
-                    <div class="col-md-4">
-                        <div class='mt-3 mx-3'>
-                                <h2 class='text-primary'>Personal Information</h2> <br>
-                                <div class='m-0 d-flex'>
-                                        <div class='text-start m-0'>
-                                            <h4 class='m-0'><b>Full Name</b></h4>
-                                        </div>
-                                        <div class='text-end mx-5'>
-                                            <h4 class="m-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['first_name'].' '.$row['last_name']; ?></h4>
-                                        </div>
-                                </div>
-                                <hr>
-
-                                <div class='m-0 d-flex'>
-                                        <div class='text-start m-0'>
-                                            <h4 class='m-0'><b>Date of Birth</b></h4>
-                                        </div>
-                                        <div class='text-end mx-5'>
-                                            <h4 class="m-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['date_of_birth']; ?></h4>
-                                        </div>
-                                </div>
-                                <hr>
-
-                                <div class='m-0 d-flex'>
-                                        <div class='text-start m-0'>
-                                            <h4 class='m-0'><b>Gender</b></h4>
-                                        </div>
-                                        <div class='text-end mx-5'>
-                                            <h4 class="m-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['gender']; ?></h4>
-                                        </div>
-                                </div>
-                                <hr>
-
-                                <div class='m-0 d-flex'>
-                                        <div class='text-start m-0'>
-                                            <h4 class='m-0'><b>CNIC</b></h4>
-                                        </div>
-                                        <div class='text-end mx-5 '>
-                                            <h4 class="m-0 justify-content-end">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['cnic']; ?></h4>
-                                        </div>
-                                </div>
-                                <hr>
-
-                                <div class='m-0 d-flex'>
-                                        <div class='text-start m-0'>
-                                            <h4 class='m-0'><b>City</b></h4>
-                                        </div>
-                                        <div class='text-end mx-5'>
-                                            <h4 class="m-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['city']; ?></h4>
-                                        </div>
-                                </div>
-                                <hr>
-
-                                <div class='m-0 d-flex'>
-                                        <div class='text-start m-0'>
-                                            <h4 class='m-0'><b>Phone1</b></h4>
-                                        </div>
-                                        <div class='text-end mx-5'>
-                                            <h4 class="m-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['phone1']; ?></h4>
-                                        </div>
-                                </div>
-                                <hr>
-
-                                <div class='m-0 d-flex'>
-                                        <div class='text-start m-0'>
-                                            <h4 class='m-0'><b>Phone2</b></h4>
-                                        </div>
-                                        <div class='text-end mx-5'>
-                                            <h4 class="m-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['phone2']; ?></h4>
-                                        </div>
-                                </div>
-                                <hr>
-
-                                <div class='m-0 d-flex'>
-                                        <div class='text-start m-0'>
-                                            <h4 class='m-0'><b>Address</b></h4>
-                                        </div>
-                                        <div class='text-end mx-5'>
-                                            <h4 class="m-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['address']; ?></h4>
-                                        </div>
-                                </div>
-                                <hr>
-
-                                <div class='m-0 d-flex'>
-                                        <div class='text-start m-0'>
-                                            <h4 class='m-0'><b>Nationality</b></h4>
-                                        </div>
-                                        <div class='text-end mx-5 justify-content-end'>
-                                            <h4 class="m-0 text-end ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['nationality']; ?></h4>
-                                        </div>
-                                </div>
-                                <hr>
-
-                                <div class='m-0 d-flex'>
-                                        <div class='text-start m-0'>
-                                            <h4 class='m-0'><b>Employe Id</b></h4>
-                                        </div>
-                                        <div class='text-end mx-5'>
-                                            <h4 class="m-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['id']; ?></h4>
-                                        </div>
-                                </div>
-                                <hr>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 mt-5">
-                                     <div class='m-0 d-flex mt-4'>
-                                                    <div class='text-start m-0 mt-3'>
-                                                        <h4 class='m-0'><b>Full Name</b></h4>
-                                                    </div>
-                                                    <div class='text-end mx-5 mt-3'>
-                                                        <h4 class="m-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['first_name'].' '.$row['last_name']; ?></h4>
-                                                    </div> 
-                                    </div>
-                                    <hr>
-                                                    <div class='text-start m-0 mt-5 mx-5'>
-                                                        <img src="./assets/img/amir.jpg " alt="" class='rounded rounded-pill' width='300px' height="300px">
-                                                    </div>
-
-                                                    <div class='m-0 d-flex mt-5'>
-                                                        <div class='text-start m-0 mt-5'>
-                                                            <h4 class='m-0'><b>Marital Status</b></h4>
-                                                        </div>
-                                                        <div class='text-end mx-5 mt-5'>
-                                                            <h4 class="m-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['marital_status']; ?></h4>
-                                                    </div>
-                                </div>
-                                <hr>
-
-                                                    
-
-
-
-                     </div>
-
-                    <div class="col-md-4">
-                                    <div class='mt-3 mx-3'>
-                                                <h2 class='text-primary'>Company Detail </h2> <br>
-                                                <div class='m-0 d-flex'>
-                                                        <div class='text-start m-0'>
-                                                            <h4 class='m-0'><b>Department</b></h4>
-                                                        </div>
-                                                        <div class='text-end mx-5'>
-                                                            <h4 class="m-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['department']; ?></h4>
-                                                        </div>
-                                                </div>
-                                                <hr>
-
-                                                <div class='m-0 d-flex'>
-                                                        <div class='text-start m-0'>
-                                                            <h4 class='m-0'><b>Designation</b></h4>
-                                                        </div>
-                                                        <div class='text-end mx-5'>
-                                                            <h4 class="m-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['designation']; ?></h4>
-                                                        </div>
-                                                </div>
-                                                <hr>
-
-                                                <div class='m-0 d-flex'>
-                                                        <div class='text-start m-0'>
-                                                            <h4 class='m-0'><b>Date of Join</b></h4>
-                                                        </div>
-                                                        <div class='text-end mx-5'>
-                                                            <h4 class="m-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['date_of_join']; ?></h4>
-                                                        </div>
-                                                </div>
-                                                <hr>
-
-                                                <div class='m-0 d-flex mb-5'>
-                                                        <div class='text-start m-0'>
-                                                            <h4 class='m-0'><b>Shift</b></h4>
-                                                        </div>
-                                                        <div class='text-end mx-5 '>
-                                                            <h4 class="m-0 justify-content-end">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['shift']; ?></h4>
-                                                        </div>
-                                                </div>
-                                                <hr>
-                                        </div>
-
-                                        <div class='mt-5 mx-3'>
-                                                <h2 class='text-primary'> Bank Account Detail </h2> <br>
-                                                <div class='m-0 d-flex'>
-                                                        <div class='text-start m-0 mt-3'>
-                                                            <h4 class='m-0'><b>Account Holder Name</b></h4>
-                                                        </div>
-                                                        <div class='text-end mx-4 mt-3'>
-                                                            <h4 class="m-0">&nbsp;&nbsp;<?php echo $row['account_name']; ?></h4>
-                                                        </div>
-                                                </div>
-                                                <hr>
-
-                                                <div class='m-0 d-flex'>
-                                                        <div class='text-start m-0'>
-                                                            <h4 class='m-0'><b>Account Number</b></h4>
-                                                        </div>
-                                                        <div class='text-end mx-5'>
-                                                            <h4 class="m-0"><?php echo $row['account_number']; ?></h4>
-                                                        </div>
-                                                </div>
-                                                <hr>
-
-                                                <div class='m-0 d-flex'>
-                                                        <div class='text-start m-0'>
-                                                            <h4 class='m-0'><b>Bank Name</b></h4>
-                                                        </div>
-                                                        <div class='text-end mx-5'>
-                                                            <h4 class="m-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['bank_name']; ?></h4>
-                                                        </div>
-                                                </div>
-                                                <hr>
-                                        </div>
-                    </div>
-                </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card mb-4">
+          <div class="card-body text-center mt-4">
+            <img src="./assets/img/amir.jpg " alt="avatar"
+              class="rounded-circle img-fluid" style="width: 150px;">
+            <h5 class="my-3">ABC</h5>
+            <p class="text-dark mb-1">Full Stack Developer</p>
+            <div class="d-flex justify-content-center mb-2">
+              <a href="https://wa.me/15551234567" type="button" class="btn btn-outline-primary ms-1">Contact</a>
             </div>
+          </div>
+        </div>
+
+        <div class="card mb-4 mb-lg-0">
+          <div class="card-body p-0">
+            <ul class="list-group list-group-flush rounded-3">
+              <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+               <h2 class='text-primary'>Company Detail </h2>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+              <p class="mb-0"> Department</p>
+                <p class="mb-0"><?php echo $row['department']; ?></p>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+              <p>Designation</p>
+                <p class="mb-0"><?php echo $row['designation']; ?></p>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                <p>Date of join</p>
+                <p class="mb-0"><?php echo $row['date_of_join']; ?></p>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                <p>Shift</p>
+                <p class="mb-0"><?php echo $row['shift']; ?></p>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+<div class="row">
+        <div class="card mb-4 mb-lg-0 mt-4">
+          <div class="card-body p-0">
+            <ul class="list-group list-group-flush rounded-3">
+              <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+               <h2 class='text-primary fs-4'>Bank Account Detail</h2>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+              <p class="mb-0"> Bank Name</p>
+                <p class="mb-0"><?php echo $row['bank_name']; ?></p>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+              <p>Account Holder Name</p>
+                <p class="mb-0"><?php echo $row['account_name']; ?></p>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                <p>Account Number</p>
+                <p class="mb-0"><?php echo $row['account_number']; ?></p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        </div>
+      </div>
+
+     <div class="col-lg-8  ">
+        <div class="card mb-4 ">
+          <div class="card-body justify-content-center">
+            <div class="row">
+              <div class="col-sm-12">
+                <h2 class="mb-0 d-flex justify-content-center mb-2 mt-4 text-primary">Personal Information</h2>
+        </div>
+            </div>
+            <hr>
+
+            <div class="row">
+                
+              <div class="col-sm-3">
+                <p class="mb-0">Full Name</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-dark mb-0"><?php echo $row['first_name'].' '.$row['last_name']; ?></p>
+              </div>
+            </div>
+            <hr>
+
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Date of Birth</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-dark mb-0"><?php echo $row['date_of_birth']; ?></p>
+              </div>
+            </div>
+            <hr>
+            
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Employe Id</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-dark mb-0"><?php echo $row['id']; ?></p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Gender</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-dark mb-0"><?php echo $row['gender']; ?></p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Marital Status</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-dark mb-0"><?php echo $row['marital_status']; ?></p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Nationality</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-dark mb-0"><?php echo $row['nationality']; ?></p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">CNIC</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-dark mb-0"> <?php echo $row['cnic']; ?></p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">City</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-dark mb-0"><?php echo $row['city']; ?></p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Phone1</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-dark mb-0"><?php echo $row['phone1']; ?></p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Phone2</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-dark mb-0"><?php echo $row['phone2']; ?></p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Address</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-dark mb-0"><?php echo $row['address']; ?></p>
+              </div>
+            </div>
+            <hr>
+
+        
+          </div>
+        </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  </div>
+  <!-- main container.close -->
+  </div>   
+   
+ 
             <?php } ?>
-        </div><!-- /.padding20 -->
-    </section>
+        </div>  
+
+
+  
 
 </main><!-- End #main -->
 
