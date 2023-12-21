@@ -135,11 +135,33 @@ require_once("include/classes/meekrodb.2.3.class.php");
                         </div>
                     </div>
                     <hr>
+                   
                     <div class="row m-0">
-                        <div class="container mt-3">
-                           
-                        </div>
-                    </div>
+                                <div class="container mt-3">
+                                    <!-- Table with stripped rows -->
+                                    <table class="table table-striped table-hover" id='datatable'>
+                                        <thead class="table-primary">
+                                        <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Intime</th>
+                                        <th scope="col">Outtime</th>
+                                        <th scope="col">Shift</th>
+                                        </tr>
+                                     </thead>
+                                        <tbody>
+                                        <tr>
+                                        <td scope="col">1</td>
+                                        <td scope="col">2</td>
+                                        <td scope="col">3</td>
+                                        <td scope="col">4</td>
+                                        <td scope="col">5</td>
+                                        </tr>
+                                    
+                                      
+                                        </tbody>
+
+                                    </table>
         </section>
 
     </main><!-- End #main -->
