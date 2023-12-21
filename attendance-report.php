@@ -108,73 +108,71 @@ require_once("include/classes/meekrodb.2.3.class.php");
                                 <div class="container mt-3">
                                     <!-- Table with stripped rows -->
                                     <table class="table table-striped table-hover" id='datatable'>
-                                        <thead class="table-primary">
-                                            <tr>
-                                                <th scope="col">Names</th>
-                                                <?php
-                                                // Get the current year and month
-                                                $currentYear = date('Y');
-                                                $currentMonth = date('m');
+    <thead class="table-primary">
+        <tr>
+            <th scope="col">Names</th>
+            <?php
+            // Get the current year and month
+            $currentYear = date('Y');
+            $currentMonth = date('m');
 
-                                                // Get the number of days in the current month
-                                                $totalDays = cal_days_in_month(CAL_GREGORIAN, $currentMonth, $currentYear);
+            // Get the number of days in the current month
+            $totalDays = cal_days_in_month(CAL_GREGORIAN, $currentMonth, $currentYear);
 
-                                                // Loop through days of the current month and create table headers
-                                                for ($day = 1; $day <= $totalDays; $day++) {
-                                                    echo "<th>{$day}</th>";
-                                                }
-                                                ?>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            // Fetch unique employee names for display
-                                            $employeesQuery = DB::query("SELECT * FROM employes");
+            // Loop through days of the current month and create table headers
+            for ($day = 1; $day <= $totalDays; $day++) {
+                echo "<th>{$day}</th>";
+            }
+            ?>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        // Fetch unique employee names for display
+        $employeesQuery = DB::query("SELECT * FROM employes");
 
-                                            // Loop through employees
-                                            foreach ($employeesQuery as $employee) {
-                                                echo "<tr>";
-                                                echo "<th scope='row'>" . $employee['first_name'] . " " . $employee['last_name'] . "</th>";
+        // Loop through employees
+        foreach ($employeesQuery as $employee) {
+            echo "<tr>";
+            echo "<th scope='row'>" . $employee['first_name'] . " " . $employee['last_name'] . "</th>";
 
-                                                // Loop through days of the current month for each employee
-                                                for ($day = 1; $day <= $totalDays; $day++) {
-                                                    // Format the date for comparison
-                                                    $formattedDate = date('d-M-y', strtotime("{$currentYear}-{$currentMonth}-" . sprintf("%02d", $day)));
+            // Loop through days of the current month for each employee
+            for ($day = 1; $day <= $totalDays; $day++) {
+                // Format the date for comparison
+                $formattedDate = date('d-M-y', strtotime("{$currentYear}-{$currentMonth}-" . sprintf("%02d", $day)));
 
-                                                    // Fetch attendance for the current employee and date
-                                                    $attendanceQuery = DB::query("SELECT attendance_status FROM attendance_daily WHERE employe_name = %s AND date_current = %s", $employee['first_name'] . " " . $employee['last_name'], $formattedDate);
+                // Fetch attendance for the current employee and date
+                $attendanceQuery = DB::query("SELECT attendance_status FROM attendance_daily WHERE employe_name = %s AND date_current = %s", $employee['first_name'] . " " . $employee['last_name'], $formattedDate);
 
-                                                    // Display attendance status with color-coding
-                                                    if (!empty($attendanceQuery)) {
-                                                        $attendanceStatus = $attendanceQuery[0]['attendance_status'];
-                                                        $color = '';
-                                                        switch ($attendanceStatus) {
-                                                            case 'P':
-                                                                $color = 'green';
-                                                                break;
-                                                            case 'A':
-                                                                $color = 'red';
-                                                                break;
-                                                            case 'L':
-                                                                $color = 'orange';
-                                                                break;
-                                                            default:
-                                                                $color = 'black'; // You can set a default color if needed
-                                                        }
-                                                        echo "<td style='color: $color;'>{$attendanceStatus}</td>";
-                                                    } else {
-                                                        echo "<td>-</td>";
-                                                    }
-                                                }
+                // Display attendance status with color-coding
+                if (!empty($attendanceQuery)) {
+                    $attendanceStatus = $attendanceQuery[0]['attendance_status'];
+                    $color = '';
+                    switch ($attendanceStatus) {
+                        case 'P':
+                            $color = 'green';
+                            break;
+                        case 'A':
+                            $color = 'red';
+                            break;
+                        case 'L':
+                            $color = 'orange';
+                            break;
+                        default:
+                            $color = 'black'; // You can set a default color if needed
+                    }
+                    echo "<td style='color: $color; font-weight: bold;'>{$attendanceStatus}</td>";
+                } else {
+                    echo "<td>-</td>";
+                }
+            }
 
-                                                echo "</tr>";
-                                            }
-                                            ?>
+            echo "</tr>";
+        }
+        ?>
+    </tbody>
+</table>
 
-
-                                        </tbody>
-
-                                    </table>
                                     <!-- End Table with stripped rows -->
                                 </div>
                             </div>
