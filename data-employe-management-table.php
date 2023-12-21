@@ -62,7 +62,7 @@
                     <h5 class="my-3">ABC</h5>
                     <p class="text-dark mb-1">Full Stack Developer</p>
                     <div class="d-flex justify-content-center mb-2">
-                      <a href="https://wa.me/15551234567" type="button" class="btn btn-outline-primary ms-1">Contact</a>
+                      <a href="https://wa.me/15551234567" type="button" class="btn btn-outline-white bg-primary text-white ms-1">Contact</a>
                     </div>
                   </div>
                 </div>
@@ -70,8 +70,8 @@
                 <div class="card mb-4 mb-lg-0 mt-4 ">
                   <div class="card-body p-0 mt-4 shadow">
                     <ul class="list-group list-group-flush rounded-3">
-                      <li class="list-group-item  text-center p-4">
-                        <h2 class='text-primary fs-4'>Company Detail </h2>
+                      <li class="list-group-item  text-center ">
+                        <h2 class='text-primary '>Company Detail </h2>
                       </li>
                       <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                         <p class="mb-0"> Department</p>
@@ -93,12 +93,35 @@
                   </div>
                 </div>
 
+                <div>
 
+                  <div class="card mb-3 mb-lg-0 mt-4 ">
+                    <div class="card-body p-0  shadow ">
+                      <ul class="list-group list-group-flush rounded-3">
+                        <li class="list-group-item  text-center p-3">
+                          <h2 class='text-primary fs-4'>Bank Account Detail</h2>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                          <p class="mb-0"> Bank Name</p>
+                          <p class="mb-0"><?php echo $row['bank_name']; ?></p>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                          <p>Account Holder Name</p>
+                          <p class="mb-0"><?php echo $row['account_name']; ?></p>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                          <p>Account Number</p>
+                          <p class="mb-0"><?php echo $row['account_number']; ?></p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
 
               </div>
 
-              <div class="col-lg-8 ">
-                <div class="card mb-4 ">
+              <div class="col-lg-8  ">
+                <div class="card mb-4">
                   <div class="card-body justify-content-center shadow">
                     <div class="row">
                       <div class="col-sm-12">
@@ -213,35 +236,18 @@
 
                   </div>
                 </div>
+                <a href="#" type="button" class="btn btn-primary btn-lg m-4"style="width:20%;float:right; height:50px">Back </a>
+</div> 
+
+                  
               </div>
+             
             </div>
         </div>
       </div>
       </div>
       </div>
-        <div >
-                  <div class="card mb-6 mb-lg-0 mt-4 ">
-                    <div class="card-body p-0  shadow ">
-                      <ul class="list-group list-group-flush rounded-3">
-                        <li class="list-group-item  text-center p-3">
-                          <h2 class='text-primary fs-4'>Bank Account Detail</h2>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                          <p class="mb-0"> Bank Name</p>
-                          <p class="mb-0"><?php echo $row['bank_name']; ?></p>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                          <p>Account Holder Name</p>
-                          <p class="mb-0"><?php echo $row['account_name']; ?></p>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                          <p>Account Number</p>
-                          <p class="mb-0"><?php echo $row['account_number']; ?></p>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
+
       </section>
       </div>
       <!-- main container.close -->
