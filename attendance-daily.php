@@ -136,8 +136,8 @@ require_once("include/classes/meekrodb.2.3.class.php");
                     </div>
                     <hr>
                     <div class="row m-0">
-                        <div class="container mt-3">
-                           
+                        <div class="container mt-1">
+
                         </div>
                     </div>
         </section>
