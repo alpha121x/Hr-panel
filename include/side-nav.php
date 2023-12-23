@@ -99,23 +99,11 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin') {
         <ul id="payrolls-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a href="components-alerts.html">
-              <i class="bi bi-circle-fill text-primary"></i><span>Monthly</span>
+              <i class="bi bi-circle-fill text-primary"></i><span>Add-Payroll</span>
             </a>
           </li>
-          <li>
-            <a href="components-accordion.html">
-              <i class="bi bi-circle-fill text-primary"></i><span>Weekly</span>
-            </a>
-          </li>
-          <li>
-            <a href="components-accordion.html">
-              <i class="bi bi-circle-fill text-primary"></i><span>Hourly</span>
-            </a>
-          </li> <li>
-            <a href="components-accordion.html">
-              <i class="bi bi-circle-fill text-primary"></i><span>Per Unit</span>
-            </a>
-          </li>
+         
+           
         </ul>
       </li>
       <!-- End Components Nav -->
