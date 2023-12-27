@@ -1,10 +1,3 @@
-<?php
-// Check if the user is an admin
-if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin') {
-    echo '<!-- ======= Sidebar ======= -->
-   ';
-}
-?>
  <aside id="sidebar" class="sidebar">
    
    <ul class="sidebar-nav" id="sidebar-nav">
