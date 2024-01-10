@@ -1,10 +1,3 @@
-<?php
-// Check if the user is an admin
-if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin') {
-    echo '<!-- ======= Sidebar ======= -->
-   ';
-}
-?>
  <aside id="sidebar" class="sidebar">
    
    <ul class="sidebar-nav" id="sidebar-nav">
@@ -176,6 +169,26 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin') {
         </ul>
       </li>
       <!-- End Components Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#jd-nav" data-bs-toggle="collapse" href="#">
+        <i class="bi bi-file-earmark-person-fill"></i><span>Job Document</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="jd-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="components-alerts.html">
+              <i class="bi bi-circle-fill text-primary"></i><span>Add JD </span>
+            </a>
+          </li>
+          <li>
+            <a href="components-accordion.html">
+              <i class="bi bi-circle-fill text-primary"></i><span>Manage JD</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <!-- End Components Nav -->
+
 
 
 
