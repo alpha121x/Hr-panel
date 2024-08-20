@@ -112,49 +112,62 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $district_id = isset($_POST['district_id']) && is_numeric($_POST['district_id']) ? (int)$_POST['district_id'] : null;
     $tehsil_id = isset($_POST['tehsil_id']) && is_numeric($_POST['tehsil_id']) ? (int)$_POST['tehsil_id'] : null;
     $circle_id = isset($_POST['circle_id']) && is_numeric($_POST['circle_id']) ? (int)$_POST['circle_id'] : null;
-    $mozah_id = isset($_POST['mozah_id']) && is_numeric($_POST['mozah_id']) ? (int)$_POST['mozah_id'] : null;
+    $mozah_ids = isset($_POST['mozah_id']) ? $_POST['mozah_id'] : []; // Handle multiple mozah_id values as an array
     $applicant_id = isset($_POST['applicant_id']) && is_numeric($_POST['applicant_id']) ? (int)$_POST['applicant_id'] : null;
 
-    if (!empty($applicant_id)) {
-        $sql = "INSERT INTO assigned_applicants (district_id, tehsil_id, circle_id, mozah_id, applicant_id) VALUES (:district_id, :tehsil_id, :circle_id, :mozah_id, :applicant_id)";
-        $params = [
-            'district_id' => $district_id,
-            'tehsil_id' => $tehsil_id,
-            'circle_id' => $circle_id,
-            'mozah_id' => $mozah_id,
-            'applicant_id' => $applicant_id
-        ];
+    // print_r($mozah_ids);
+    // die();
 
-        $stmt = $pdo->prepare($sql);
-        if ($stmt->execute($params)) {
-            echo "<script>
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'Applicant assigned successfully.',
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.href = 'assigned_applicants.php';
-                    }
-                });
-            </script>";
-        } else {
-            echo "<script>
-                Swal.fire({
-                    title: 'Error!',
-                    text: 'Failed to assign applicant.',
-                    icon: 'error',
-                    confirmButtonText: 'OK'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.href = 'add_applicants.php';
-                    }
-                });
-            </script>";
+    if (!empty($applicant_id)) {
+        // Loop through each selected mozah_id and insert it into the database
+        foreach ($mozah_ids as $mozah_id) {
+            $mozah_id = (int)$mozah_id; // Ensure it's an integer
+            $sql = "INSERT INTO assigned_applicants (district_id, tehsil_id, circle_id, mozah_id, applicant_id) VALUES (:district_id, :tehsil_id, :circle_id, :mozah_id, :applicant_id)";
+            $params = [
+                'district_id' => $district_id,
+                'tehsil_id' => $tehsil_id,
+                'circle_id' => $circle_id,
+                'mozah_id' => $mozah_id,
+                'applicant_id' => $applicant_id
+            ];
+
+            $stmt = $pdo->prepare($sql);
+            $success = $stmt->execute($params);
+
+            if (!$success) {
+                echo "<script>
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Failed to assign applicant.',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = 'add_applicants.php';
+                        }
+                    });
+                </script>";
+                // Exit if any insert fails
+                exit;
+            }
         }
+
+        // If all inserts were successful
+        echo "<script>
+            Swal.fire({
+                title: 'Success!',
+                text: 'Applicant assigned successfully.',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = 'assigned_applicants.php';
+                }
+            });
+        </script>";
     }
 }
+
 
 // Fetch initial data
 $districts = getDistricts($pdo);
@@ -312,7 +325,7 @@ $applicants = getApplicants($pdo);
                             <div class="row mb-3">
                                 <label for="mozah" class="col-sm-2 col-form-label">Mozah</label>
                                 <div class="col-sm-10">
-                                    <select name="mozah_id" id="mozah" class="form-select">
+                                    <select name="mozah_id[]" id="mozah" multiple class="form-select">
                                         <option value="">Select Mozah</option>
                                     </select>
                                 </div>
