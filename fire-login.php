@@ -1,27 +1,43 @@
 <?php
-// Include MeekroDB library
-require_once 'include/classes/meekrodb.2.3.class.php';
+// Include database configuration
 include("db_config.php");
 
 if (isset($_POST['login'])) {
-    $log_password = $_POST['password'];
+    // Retrieve and sanitize user input
     $username = $_POST['username'];
+    $log_password = $_POST['password'];
 
-    // Use DB::queryFirstRow to get a single row directly
-    $row = DB::queryFirstRow("SELECT * FROM admin_users WHERE username=%s AND password = %s", $username, $log_password);
+    // Connect to the PostgreSQL database
+    $conn = pg_connect("host=$host dbname=$dbname user=$user password=$password");
 
-    if ($row) {
+    if (!$conn) {
+        die("Connection failed: " . pg_last_error());
+    }
+
+    // Prepare the SQL query to prevent SQL injection
+    $query = "SELECT * FROM admin_users WHERE username = $1 AND password = $2";
+    $result = pg_query_params($conn, $query, array($username, $log_password));
+
+    if ($result && pg_num_rows($result) > 0) {
         session_start(); // Start session
 
+        // Fetch the result row
+        $row = pg_fetch_assoc($result);
+
         // Store user information in session variables
-        $_SESSION['user'] = $username;
+        $_SESSION['user'] = $row['username'];
         $_SESSION['user_type'] = $row['user_type']; // Assuming 'user_type' is the column name
 
+        pg_close($conn); // Close the database connection
         header("Location: index.php");
+        exit(); // Ensure no further code is executed after the redirect
     } else {
-        header("Location: login.php");
+        pg_close($conn); // Close the database connection
+        // Redirect back to login with an error message
+        header("Location: login.php?error=invalid_credentials");
+        exit(); // Ensure no further code is executed after the redirect
     }
 } else {
-    echo "Invalid credentials...";
+    echo "Invalid access method.";
 }
 ?>

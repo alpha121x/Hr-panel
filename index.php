@@ -1,4 +1,4 @@
-<?php require_once("auth.php") ?>
+<?php include("auth.php") ?>
 
 <!DOCTYPE html>
 <html lang="en">

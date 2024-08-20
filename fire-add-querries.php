@@ -1,90 +1,43 @@
 <?php
-require_once "include/classes/meekrodb.2.3.class.php";
-require('db_config.php');
+require "db_config.php";
 
-if (isset($_POST['add-user'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $email = $_POST['email'];
-    $user_type = $_POST['user_type'];
-    $user_image = $_POST['user_image'];
+// Check if the form was submitted
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Retrieve POST data
+    $district_id = isset($_POST['district_id']) ? (int)$_POST['district_id'] : null;
+    $tehsil_id = isset($_POST['tehsil_id']) ? (int)$_POST['tehsil_id'] : null;
+    $circle_id = isset($_POST['circle_id']) ? (int)$_POST['circle_id'] : null;
+    $mozah_id = isset($_POST['mozah_id']) ? (int)$_POST['mozah_id'] : null;
+    $applicant_ids = isset($_POST['applicant_ids']) ? $_POST['applicant_ids'] : [];
 
-    // Insert query using MeekroDB
-    $inserted = DB::insert('admin_users', [
-        'username' => $username,
-        'password' => $password,
-        'email' => $email,
-        'user_type' => $user_type,
-        'user_image' => $user_image
-    ]);
+    // Prepare SQL statement for inserting data
+    $sql = "INSERT INTO assigned_applicants (applicant_id, district_id, tehsil_id, circle_id, mozah_id) VALUES (:applicant_id, :district_id, :tehsil_id, :circle_id, :mozah_id)";
 
-    if ($inserted) {
-        header("Location: add-user-profile.php");
+    // Use a transaction to ensure all inserts succeed
+    try {
+        $pdo->beginTransaction();
+
+        // Prepare the statement
+        $stmt = $pdo->prepare($sql);
+
+        // Bind parameters and execute the statement for each applicant
+        foreach ($applicant_ids as $applicant_id) {
+            $stmt->execute([
+                'applicant_id' => $applicant_id,
+                'district_id' => $district_id,
+                'tehsil_id' => $tehsil_id,
+                'circle_id' => $circle_id,
+                'mozah_id' => $mozah_id
+            ]);
+        }
+
+        // Commit the transaction
+        $pdo->commit();
+        echo "<div class='alert alert-success'>Data successfully inserted.</div>";
+    } catch (Exception $e) {
+        // Rollback the transaction in case of an error
+        $pdo->rollBack();
+        echo "<div class='alert alert-danger'>Error: " . $e->getMessage() . "</div>";
     }
 }
 ?>
-
-<?php
-require_once "include/classes/meekrodb.2.3.class.php";
-require('db_config.php');
-
-if (isset($_POST['add-leave'])) {
-    $employe_name = $_POST['employe_name'];
-    $leave_type = $_POST['leave_type'];
-    $leave_from = $_POST['date_from'];
-    $leave_to = $_POST['date_to'];
-    $status = $_POST['status'];
-    $comments = $_POST['comments'];
-
-    // Insert query using MeekroDB
-    $inserted = DB::insert('leaves', [
-        'employe_name' => $employe_name,
-        'leave_type' => $leave_type,
-        'date_from' => $leave_from,
-        'date_to' => $leave_to,
-        'status' => $status,
-        'comments' => $comments
-    ]);
-
-    if ($inserted) {
-        header("Location: add-leave.php");
-    }
-}
-?>
-<!----- attendance ----->
-<?php
-require_once "include/classes/meekrodb.2.3.class.php";
-require('db_config.php');
-
-if (isset($_POST['submit'])) {
-    $employe_name = $_POST['employee'];
-    $date_curent = $_POST['date'];
-    $shift = $_POST['shift'];
-    $in_time = $_POST['time'];
-    $out_time = $_POST['out-time'];
-   $attendance_current = $_POST['attendance'];
-   $currentMonthName = date('F');
-   $currentYear = date('Y');
-
-
-    // Insert query using MeekroDB
-    $inserted = DB::insert('attendance_daily', [
-        'employe_name' => $employe_name,
-        'date_current' => $date_curent,
-        'current_month' => $currentMonthName,
-        'current_year' => $currentYear,
-        'shift' => $shift,
-        'in_time' => $in_time,
-        'out_time' => $out_time,
-        'attendance_status' => $attendance_current
-    ]);
-
-    if ($inserted) {
-        header("Location: attendance-daily.php");
-    }
-}
-?>
-
-
-
-

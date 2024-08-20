@@ -1,10 +1,22 @@
 <?php
-require_once "include/classes/meekrodb.2.3.class.php";
-DB::$user = 'root';
-DB::$password = '';
-DB::$dbName = 'bixisoft';
-DB::$host = 'localhost';
+// Database connection settings
+$host = 'localhost';
+$dbname = 'new_db'; // Your database name
+$user = 'postgres'; // Your PostgreSQL username
+$password = '12345'; // Your PostgreSQL password
 
-// Test the connection
-DB::query("SELECT 1");
+// DSN (Data Source Name) for PostgreSQL
+$dsn = "pgsql:host=$host;dbname=$dbname";
+
+try {
+    // Create a PDO instance
+    $pdo = new PDO($dsn, $user, $password);
+
+    // Set the PDO error mode to exception
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // echo "Connection successful!";
+} catch (PDOException $e) {
+    die("Connection failed: " . $e->getMessage());
+}
 ?>
