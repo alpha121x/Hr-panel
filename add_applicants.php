@@ -4,8 +4,8 @@
 <!-- SweetAlert2 CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
-<!-- SweetAlert2 JS -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+<!-- Include Select2 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
 
 <?php
@@ -333,6 +333,16 @@ $applicants = getApplicants($pdo);
                                 </div>
                             </div>
 
+                            <script>
+                                $(document).ready(function() {
+                                    // Initialize select2 on all select elements
+                                    $('#district, #tehsil, #circle, #mozah, #applicant').select2();
+
+                                    // Existing AJAX and other code to populate dropdowns remains unchanged...
+                                });
+                            </script>
+
+
                             <!-- Submit Button -->
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary">Assign</button>
@@ -344,11 +354,15 @@ $applicants = getApplicants($pdo);
         </section>
     </main><!-- End #main -->
 
-    <?php include("include/footer.php") ?>
+    <?php require_once "include/footer.php" ?>
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-    <?php include("include/script-files.php") ?>
+    <?php require_once "include/script-files.php" ?>
+
+    <script>
+
+    </script>
 </body>
 
 </html>
