@@ -143,7 +143,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         confirmButtonText: 'OK'
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            window.location.href = 'add_applicants.php';
+                            window.location.href = 'assigned_applicants.php';
                         }
                     });
                 </script>";
@@ -161,7 +161,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 confirmButtonText: 'OK'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = 'assigned_applicants.php';
+                    window.location.href = 'add_applicants.php';
                 }
             });
         </script>";
