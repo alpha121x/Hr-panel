@@ -40,10 +40,10 @@
                             <h5 class="card-title">Applicants</h5>
 
                             <?php
-require("db_config.php");
+                            require("db_config.php");
 
-// Fetch data from assigned_applicants table and join with applicants table
-$query = "
+                            // Fetch data from assigned_applicants table and join with applicants table
+                            $query = "
     SELECT a.id, a.applicant_id, ap.applicant_name, m.mozah_name, c.circle_name, t.tehsil_name, d.district_name
     FROM assigned_applicants a
     JOIN mozah m ON a.mozah_id = m.mozah_id
@@ -52,56 +52,56 @@ $query = "
     JOIN district d ON t.district_id = d.district_id
     JOIN applicants ap ON a.applicant_id = ap.applicant_id
 ";
-$stmt = $pdo->prepare($query);
-$stmt->execute();
-$assigned_applicants = $stmt->fetchAll(PDO::FETCH_ASSOC);
-?>
+                            $stmt = $pdo->prepare($query);
+                            $stmt->execute();
+                            $assigned_applicants = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                            ?>
 
-<!-- Table with stripped rows -->
-<table class="table table-striped table-hover" id='datatable'>
-    <caption>
-        BixiSoft HR Management
-    </caption>
-    <thead class="table-primary">
-        <tr>
-            <th>#</th>
-            <th>Applicant Name</th>
-            <th>District</th>
-            <th>Tehsil</th>
-            <th>Circle</th>
-            <th>Mozah</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-        $index = 1; // Initialize index
-        foreach ($assigned_applicants as $row): ?>
-            <tr>
-                <th scope="row"><?php echo $index++; ?></th> <!-- Use index for row number -->
-                <td><?php echo htmlspecialchars($row['applicant_name']); ?></td> 
-                <td><?php echo htmlspecialchars($row['district_name']); ?></td>
-                <td><?php echo htmlspecialchars($row['tehsil_name']); ?></td>
-                <td><?php echo htmlspecialchars($row['circle_name']); ?></td>
-                <td><?php echo htmlspecialchars($row['mozah_name']); ?></td>
-                <td>
-                    <a href="edit_assigned_applicant.php?id=<?php echo htmlspecialchars($row['id']); ?>" class='text-black'>
-                        <i class="bi bi-pencil-square text-primary"></i>&nbsp;
-                    </a>
-                    |
-                    <a href="delete_assigned_applicant.php?id=<?php echo htmlspecialchars($row['id']); ?>" class='text-black'>
-                        <i class="bi bi-trash text-primary"></i>&nbsp;
-                    </a>
-                    <!-- | -->
-                    <!-- <a href="view_assigned_applicant.php?id=<?php echo htmlspecialchars($row['id']); ?>" class='text-black'>
+                            <!-- Table with stripped rows -->
+                            <table class="table table-striped table-hover" id='datatable'>
+                                <caption>
+                                    BixiSoft HR Management
+                                </caption>
+                                <thead class="table-primary">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Applicant Name</th>
+                                        <th>District</th>
+                                        <th>Tehsil</th>
+                                        <th>Circle</th>
+                                        <th>Mozah</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $index = 1; // Initialize index
+                                    foreach ($assigned_applicants as $row): ?>
+                                        <tr>
+                                            <th scope="row"><?php echo $index++; ?></th> <!-- Use index for row number -->
+                                            <td><?php echo htmlspecialchars($row['applicant_name']); ?></td>
+                                            <td><?php echo htmlspecialchars($row['district_name']); ?></td>
+                                            <td><?php echo htmlspecialchars($row['tehsil_name']); ?></td>
+                                            <td><?php echo htmlspecialchars($row['circle_name']); ?></td>
+                                            <td><?php echo htmlspecialchars($row['mozah_name']); ?></td>
+                                            <td>
+                                                <a href="edit_assigned_applicant.php?id=<?php echo htmlspecialchars($row['id']); ?>" class='text-black'>
+                                                    <i class="bi bi-pencil-square text-primary"></i>&nbsp;
+                                                </a>
+                                                |
+                                                <a href="delete_assigned_applicant.php?id=<?php echo htmlspecialchars($row['id']); ?>" class='text-black'>
+                                                    <i class="bi bi-trash text-primary"></i>&nbsp;
+                                                </a>
+                                                <!-- | -->
+                                                <!-- <a href="view_assigned_applicant.php?id=<?php echo htmlspecialchars($row['id']); ?>" class='text-black'>
                         <i class='bi bi-eye-fill text-primary'></i>
                     </a> -->
-                </td>
-            </tr>
-        <?php endforeach; ?>
-    </tbody>
-</table>
-<!-- End Table with stripped rows -->
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                            <!-- End Table with stripped rows -->
 
 
                         </div>

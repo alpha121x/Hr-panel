@@ -1,197 +1,176 @@
+<?php
+require('db_config.php');
+?>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <main id="main" class="main">
- 
-<!-- Left side columns -->
-<div class="col-lg-8">
-          <div class="row">
 
-            <!-- Sales Card -->
-            <div class="col-xxl-4 col-md-6">
-              <div class="card info-card sales-card">
+  <div class="pagetitle">
+    <h1>Dashboard</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+        <li class="breadcrumb-item active">Dashboard</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
 
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
+  <section class="section dashboard">
+    <div class="row">
 
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
+      <?php
+        require('db_config.php'); // Ensure this file includes the PDO connection setup
 
-                <div class="card-body">
-                  <h5 class="card-title">Sales <span>| Today</span></h5>
+        // Query to get the count of districts
+        $queryDistricts = "SELECT COUNT(*) AS count FROM district";
+        $stmtDistricts = $pdo->prepare($queryDistricts);
+        $stmtDistricts->execute();
+        $districtsRow = $stmtDistricts->fetch(PDO::FETCH_ASSOC);
+        $totalDistricts = $districtsRow['count'];
 
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-cart"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>145</h6>
-                      <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+        // Query to get the count of tehsils
+        $queryTehsils = "SELECT COUNT(*) AS count FROM tehsil";
+        $stmtTehsils = $pdo->prepare($queryTehsils);
+        $stmtTehsils->execute();
+        $tehsilsRow = $stmtTehsils->fetch(PDO::FETCH_ASSOC);
+        $totalTehsils = $tehsilsRow['count'];
 
-                    </div>
+        // Query to get the count of circles
+        $queryCircles = "SELECT COUNT(*) AS count FROM circle";
+        $stmtCircles = $pdo->prepare($queryCircles);
+        $stmtCircles->execute();
+        $circlesRow = $stmtCircles->fetch(PDO::FETCH_ASSOC);
+        $totalCircles = $circlesRow['count'];
+
+        // Query to get the count of mozahs
+        $queryMozahs = "SELECT COUNT(*) AS count FROM mozah";
+        $stmtMozahs = $pdo->prepare($queryMozahs);
+        $stmtMozahs->execute();
+        $mozahsRow = $stmtMozahs->fetch(PDO::FETCH_ASSOC);
+        $totalMozahs = $mozahsRow['count'];
+        ?>
+
+
+
+        <div class="col-lg-8">
+        <div class="row">
+
+          <!-- Districts Card -->
+          <div class="col-xxl-4 col-md-6">
+            <div class="card info-card districts-card">
+              <div class="filter">
+                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                  <li class="dropdown-header text-start">
+                    <h6>Filter</h6>
+                  </li>
+                  <li><a class="dropdown-item" href="#">Today</a></li>
+                  <li><a class="dropdown-item" href="#">This Month</a></li>
+                  <li><a class="dropdown-item" href="#">This Year</a></li>
+                </ul>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Districts</h5>
+                <div class="d-flex align-items-center">
+                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                    <i class="bi bi-geo-alt"></i>
+                  </div>
+                  <div class="ps-3">
+                    <h6><?php echo number_format($totalDistricts); ?></h6>
                   </div>
                 </div>
-
               </div>
-            </div><!-- End Sales Card -->
+            </div>
+          </div><!-- End Districts Card -->
 
-            <!-- Revenue Card -->
-            <div class="col-xxl-4 col-md-6">
-              <div class="card info-card revenue-card">
-
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-
-                <div class="card-body">
-                  <h5 class="card-title">Revenue <span>| This Month</span></h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-currency-dollar"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>$3,264</h6>
-                      <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
-
-                    </div>
+          <!-- Tehsils Card -->
+          <div class="col-xxl-4 col-md-6">
+            <div class="card info-card tehsils-card">
+              <div class="filter">
+                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                  <li class="dropdown-header text-start">
+                    <h6>Filter</h6>
+                  </li>
+                  <li><a class="dropdown-item" href="#">Today</a></li>
+                  <li><a class="dropdown-item" href="#">This Month</a></li>
+                  <li><a class="dropdown-item" href="#">This Year</a></li>
+                </ul>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Tehsils</h5>
+                <div class="d-flex align-items-center">
+                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                    <i class="bi bi-map"></i>
+                  </div>
+                  <div class="ps-3">
+                    <h6><?php echo number_format($totalTehsils); ?></h6>
                   </div>
                 </div>
-
               </div>
-            </div><!-- End Revenue Card -->
+            </div>
+          </div><!-- End Tehsils Card -->
 
-            <!-- Customers Card -->
-            <div class="col-xxl-4 col-xl-12">
-
-              <div class="card info-card customers-card">
-
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-
-                <div class="card-body">
-                  <h5 class="card-title">Customers <span>| This Year</span></h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-people"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>1244</h6>
-                      <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
-
-                    </div>
+          <!-- Circles Card -->
+          <div class="col-xxl-4 col-md-6">
+            <div class="card info-card circles-card">
+              <div class="filter">
+                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                  <li class="dropdown-header text-start">
+                    <h6>Filter</h6>
+                  </li>
+                  <li><a class="dropdown-item" href="#">Today</a></li>
+                  <li><a class="dropdown-item" href="#">This Month</a></li>
+                  <li><a class="dropdown-item" href="#">This Year</a></li>
+                </ul>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Circles</h5>
+                <div class="d-flex align-items-center">
+                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                    <i class="bi bi-circle"></i>
                   </div>
-
+                  <div class="ps-3">
+                    <h6><?php echo number_format($totalCircles); ?></h6>
+                  </div>
                 </div>
               </div>
+            </div>
+          </div><!-- End Circles Card -->
 
-            </div><!-- End Customers Card -->
-
-            <!-- Reports -->
-            <div class="col-12">
-              <div class="card">
-
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-
-                <div class="card-body">
-                  <h5 class="card-title">Reports <span>/Today</span></h5>
-
-                  <!-- Line Chart -->
-                  <div id="reportsChart"></div>
-
-                  <script>
-                    document.addEventListener("DOMContentLoaded", () => {
-                      new ApexCharts(document.querySelector("#reportsChart"), {
-                        series: [{
-                          name: 'Sales',
-                          data: [31, 40, 28, 51, 42, 82, 56],
-                        }, {
-                          name: 'Revenue',
-                          data: [11, 32, 45, 32, 34, 52, 41]
-                        }, {
-                          name: 'Customers',
-                          data: [15, 11, 32, 18, 9, 24, 11]
-                        }],
-                        chart: {
-                          height: 350,
-                          type: 'area',
-                          toolbar: {
-                            show: false
-                          },
-                        },
-                        markers: {
-                          size: 4
-                        },
-                        colors: ['#4154f1', '#2eca6a', '#ff771d'],
-                        fill: {
-                          type: "gradient",
-                          gradient: {
-                            shadeIntensity: 1,
-                            opacityFrom: 0.3,
-                            opacityTo: 0.4,
-                            stops: [0, 90, 100]
-                          }
-                        },
-                        dataLabels: {
-                          enabled: false
-                        },
-                        stroke: {
-                          curve: 'smooth',
-                          width: 2
-                        },
-                        xaxis: {
-                          type: 'datetime',
-                          categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
-                        },
-                        tooltip: {
-                          x: {
-                            format: 'dd/MM/yy HH:mm'
-                          },
-                        }
-                      }).render();
-                    });
-                  </script>
-                  <!-- End Line Chart -->
-
-                </div>
-
+          <!-- Mozahs Card -->
+          <div class="col-xxl-4 col-md-6">
+            <div class="card info-card mozahs-card">
+              <div class="filter">
+                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                  <li class="dropdown-header text-start">
+                    <h6>Filter</h6>
+                  </li>
+                  <li><a class="dropdown-item" href="#">Today</a></li>
+                  <li><a class="dropdown-item" href="#">This Month</a></li>
+                  <li><a class="dropdown-item" href="#">This Year</a></li>
+                </ul>
               </div>
-            </div><!-- End Reports -->
+              <div class="card-body">
+                <h5 class="card-title">Mozahs</h5>
+                <div class="d-flex align-items-center">
+                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                    <i class="bi bi-house-door"></i>
+                  </div>
+                  <div class="ps-3">
+                    <h6><?php echo number_format($totalMozahs); ?></h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><!-- End Mozahs Card -->
 
+        </div>
+    </div><!-- End Left side columns -->
 
+    <!-- Left side columns -->
+
+    </div>
+  </section>
 </main><!-- End #main -->

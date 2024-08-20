@@ -23,7 +23,7 @@
           </li>
           <li>
             <a href="assigned_applicants.php">
-            <i class="bi bi-circle-fill text-primary"></i></i><span>Applicants List</span>
+            <i class="bi bi-circle-fill text-primary"></i></i><span>Assigned Applicants</span>
             </a>
           </li>
         </ul>
