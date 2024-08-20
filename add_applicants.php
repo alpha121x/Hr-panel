@@ -171,8 +171,8 @@ $applicants = getApplicants($pdo);
 
     <?php include("include/linked-files.php") ?>
 
-    
 
+    <!-- Ajax Code  -->
     <script>
         $(document).ready(function() {
             // Handle district change
