@@ -36,6 +36,14 @@
                         <div class="card-body">
                             <h5 class="card-title">Applicants</h5>
 
+                             <!-- Download PDF Button -->
+                             <form method="post" action="download_pdf.php">
+                                <button type="submit" class="btn btn-primary">Download PDF</button>
+                            </form>
+
+                            <br>
+
+
                             <?php
                             require("db_config.php");
 
@@ -96,11 +104,7 @@
                             </table>
                             <!-- End Table with stripped rows -->
 
-                            <!-- Download PDF Button -->
-                            <form method="post" action="download_pdf.php">
-                                <button type="submit" class="btn btn-primary">Download PDF</button>
-                            </form>
-
+                           
                         </div>
                     </div>
 
