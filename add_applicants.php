@@ -290,7 +290,7 @@ $applicants = getApplicants($pdo);
                             <div class="row mb-3">
                                 <label for="district" class="col-sm-2 col-form-label">District</label>
                                 <div class="col-sm-10">
-                                    <select name="district_id" id="district" class="form-select">
+                                    <select name="district_id" id="district" class="form-select" required>
                                         <option value="">Select District</option>
                                         <?php foreach ($districts as $row): ?>
                                             <option value="<?php echo htmlspecialchars($row['district_id']); ?>" <?php if (isset($_POST['district_id']) && $_POST['district_id'] == $row['district_id']) echo 'selected'; ?>>

@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
     <title>Assigned Applicants</title>
 
@@ -19,7 +16,7 @@
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Manage Employees</h1>
+            <h1>Assigned Applicants</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.php">Home</a></li>
@@ -36,8 +33,8 @@
                         <div class="card-body">
                             <h5 class="card-title">Applicants</h5>
 
-                             <!-- Download PDF Button -->
-                             <form method="post" action="download_pdf.php">
+                            <!-- Download PDF Button -->
+                            <form method="post" action="download_pdf.php">
                                 <button type="submit" class="btn btn-primary">Download PDF</button>
                             </form>
 
@@ -64,9 +61,6 @@
 
                             <!-- Table with stripped rows -->
                             <table class="table table-striped table-hover" id='datatable'>
-                                <caption>
-                                    BixiSoft HR Management
-                                </caption>
                                 <thead class="table-primary">
                                     <tr>
                                         <th>#</th>
@@ -104,7 +98,108 @@
                             </table>
                             <!-- End Table with stripped rows -->
 
-                           
+                            <br>
+
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Pie Chart</h5>
+
+                                        <!-- Pie Chart -->
+                                        <div id="pieChart"></div>
+
+                                        <script>
+                                            document.addEventListener("DOMContentLoaded", () => {
+                                                new ApexCharts(document.querySelector("#pieChart"), {
+                                                    series: [44, 55, 13, 43, 22],
+                                                    chart: {
+                                                        height: 350,
+                                                        type: 'pie',
+                                                        toolbar: {
+                                                            show: true
+                                                        }
+                                                    },
+                                                    labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E']
+                                                }).render();
+                                            });
+                                        </script>
+                                        <!-- End Pie Chart -->
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br>
+
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Column Chart</h5>
+
+                                        <!-- Column Chart -->
+                                        <div id="columnChart"></div>
+
+                                        <script>
+                                            document.addEventListener("DOMContentLoaded", () => {
+                                                new ApexCharts(document.querySelector("#columnChart"), {
+                                                    series: [{
+                                                        name: 'Net Profit',
+                                                        data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
+                                                    }, {
+                                                        name: 'Revenue',
+                                                        data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
+                                                    }, {
+                                                        name: 'Free Cash Flow',
+                                                        data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
+                                                    }],
+                                                    chart: {
+                                                        type: 'bar',
+                                                        height: 350
+                                                    },
+                                                    plotOptions: {
+                                                        bar: {
+                                                            horizontal: false,
+                                                            columnWidth: '55%',
+                                                            endingShape: 'rounded'
+                                                        },
+                                                    },
+                                                    dataLabels: {
+                                                        enabled: false
+                                                    },
+                                                    stroke: {
+                                                        show: true,
+                                                        width: 2,
+                                                        colors: ['transparent']
+                                                    },
+                                                    xaxis: {
+                                                        categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+                                                    },
+                                                    yaxis: {
+                                                        title: {
+                                                            text: '$ (thousands)'
+                                                        }
+                                                    },
+                                                    fill: {
+                                                        opacity: 1
+                                                    },
+                                                    tooltip: {
+                                                        y: {
+                                                            formatter: function(val) {
+                                                                return "$ " + val + " thousands"
+                                                            }
+                                                        }
+                                                    }
+                                                }).render();
+                                            });
+                                        </script>
+                                        <!-- End Column Chart -->
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+
                         </div>
                     </div>
 
@@ -121,5 +216,3 @@
     <?php include("include/script-files.php") ?>
 
 </body>
-
-</html>
