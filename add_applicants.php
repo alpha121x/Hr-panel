@@ -115,51 +115,56 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $mozah_ids = isset($_POST['mozah_id']) ? $_POST['mozah_id'] : []; // Handle multiple mozah_id values as an array
     $applicant_id = isset($_POST['applicant_id']) && is_numeric($_POST['applicant_id']) ? (int)$_POST['applicant_id'] : null;
 
+    // print_r($mozah_ids);
+    // die();
+
     if (!empty($applicant_id)) {
-        // Convert mozah_ids array to JSON
-        $mozah_ids_json = json_encode($mozah_ids);
+        // Loop through each selected mozah_id and insert it into the database
+        foreach ($mozah_ids as $mozah_id) {
+            $mozah_id = (int)$mozah_id; // Ensure it's an integer
+            $sql = "INSERT INTO assigned_applicants (district_id, tehsil_id, circle_id, mozah_id, applicant_id) VALUES (:district_id, :tehsil_id, :circle_id, :mozah_id, :applicant_id)";
+            $params = [
+                'district_id' => $district_id,
+                'tehsil_id' => $tehsil_id,
+                'circle_id' => $circle_id,
+                'mozah_id' => $mozah_id,
+                'applicant_id' => $applicant_id
+            ];
 
-        // Insert data with mozah_id as JSONB
-        $sql = "INSERT INTO assigned_applicants (district_id, tehsil_id, circle_id, mozah_id, applicant_id)
-                VALUES (:district_id, :tehsil_id, :circle_id, :mozah_id, :applicant_id)";
-        $params = [
-            'district_id' => $district_id,
-            'tehsil_id' => $tehsil_id,
-            'circle_id' => $circle_id,
-            'mozah_id' => $mozah_ids_json, // Insert JSONB data
-            'applicant_id' => $applicant_id
-        ];
+            $stmt = $pdo->prepare($sql);
+            $success = $stmt->execute($params);
 
-        $stmt = $pdo->prepare($sql);
-        $success = $stmt->execute($params);
-
-        if ($success) {
-            echo "<script>
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'Applicant assigned successfully.',
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.href = 'assigned_applicants.php';
-                    }
-                });
-            </script>";
-        } else {
-            echo "<script>
-                Swal.fire({
-                    title: 'Error!',
-                    text: 'Failed to assign applicant.',
-                    icon: 'error',
-                    confirmButtonText: 'OK'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.href = 'add_applicants.php';
-                    }
-                });
-            </script>";
+            if (!$success) {
+                echo "<script>
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Failed to assign applicant.',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = 'add_applicants.php';
+                        }
+                    });
+                </script>";
+                // Exit if any insert fails
+                exit;
+            }
         }
+
+        // If all inserts were successful
+        echo "<script>
+            Swal.fire({
+                title: 'Success!',
+                text: 'Applicant assigned successfully.',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = 'assigned_applicants.php';
+                }
+            });
+        </script>";
     }
 }
 
