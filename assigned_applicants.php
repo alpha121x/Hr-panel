@@ -216,72 +216,78 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.21/jspdf.plugin.autotable.min.js"></script>
 
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            function generatePDF() {
-                const {
-                    jsPDF
-                } = window.jspdf;
-                const doc = new jsPDF("p", "mm", "a4");
+    document.addEventListener("DOMContentLoaded", () => {
+        function generatePDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF("p", "mm", "a4");
 
-                // Add Header
-                doc.setFontSize(18);
-                doc.text("BixiSoft HR Management", 10, 10); // Replace with your actual dashboard name
-                doc.setFontSize(14);
-                doc.text("Assigned Applicants Report", 10, 20);
-                doc.setFontSize(12);
-                doc.text(`Date: ${new Date().toLocaleDateString()}`, 10, 30);
+            // Set Colors
+            const headerColor = "#007BFF";  // Blue color for header
+            const dateColor = "#FF5733";    // Orange color for date
+            const titleColor = "#28A745";   // Green color for title
 
-                // Generate the table, excluding the "Action" column
-                const tableElement = document.querySelector("#datatable");
-                const columnsToInclude = [0, 1, 2, 3, 4, 5]; // Indexes of the columns you want to include
+            // Add Header - Centered with color
+            doc.setTextColor(headerColor);
+            doc.setFontSize(18);
+            doc.text("BixiSoft HR Management", doc.internal.pageSize.getWidth() / 2, 20, { align: "center" });
 
-                doc.autoTable({
-                    html: tableElement,
-                    startY: 40, // Position below the header
-                    theme: "grid",
-                    columnStyles: {
-                        6: {
-                            cellWidth: 0
-                        }, // Hide the "Action" column (index 6)
-                    },
-                    columns: columnsToInclude.map(index => ({
-                        header: tableElement.querySelectorAll("th")[index].innerText,
-                        dataKey: index,
-                    })),
-                    styles: {
-                        cellPadding: 3,
-                        fontSize: 10,
-                    },
-                    margin: {
-                        left: 10,
-                        right: 10
-                    },
-                });
+            // Add Report Title - Centered with color
+            doc.setTextColor(titleColor);
+            doc.setFontSize(14);
+            doc.text("Assigned Applicants Report", doc.internal.pageSize.getWidth() / 2, 30, { align: "center" });
 
-                // Add the Pie Chart
-                html2canvas(document.querySelector("#pieChart")).then((canvas) => {
-                    const imgData = canvas.toDataURL("image/png");
-                    const imgWidth = 180;
-                    const imgHeight = canvas.height * imgWidth / canvas.width;
-                    const positionY = doc.previousAutoTable.finalY + 10;
-                    doc.addImage(imgData, "PNG", 15, positionY, imgWidth, imgHeight);
+            // Add Date - Centered with color
+            doc.setTextColor(dateColor);
+            doc.setFontSize(12);
+            doc.text(`Date: ${new Date().toLocaleDateString()}`, doc.internal.pageSize.getWidth() / 2, 40, { align: "center" });
 
-                    return html2canvas(document.querySelector("#columnChart"));
-                }).then((canvas) => {
-                    const imgData = canvas.toDataURL("image/png");
-                    const imgWidth = 180;
-                    const imgHeight = canvas.height * imgWidth / canvas.width;
-                    const positionY = doc.previousAutoTable.finalY + 10 + imgHeight + 10;
-                    doc.addImage(imgData, "PNG", 15, positionY, imgWidth, imgHeight);
+            // Generate the table, excluding the "Action" column
+            const tableElement = document.querySelector("#datatable");
+            const columnsToInclude = [0, 1, 2, 3, 4, 5]; // Indexes of the columns you want to include
 
-                    doc.save("Assigned_Applicants_Report.pdf");
-                }).catch((error) => {
-                    console.error("Error generating PDF:", error);
-                });
-            }
+            doc.autoTable({
+                html: tableElement,
+                startY: 50, // Position below the header
+                theme: "grid",
+                columnStyles: {
+                    6: { cellWidth: 0 }, // Hide the "Action" column (index 6)
+                },
+                columns: columnsToInclude.map(index => ({
+                    header: tableElement.querySelectorAll("th")[index].innerText,
+                    dataKey: index,
+                })),
+                styles: {
+                    cellPadding: 3,
+                    fontSize: 10,
+                },
+                margin: { left: 10, right: 10 },
+            });
 
-            document.querySelector("#downloadPDF").addEventListener("click", generatePDF);
-        });
-    </script>
+            // Add the Pie Chart
+            html2canvas(document.querySelector("#pieChart")).then((canvas) => {
+                const imgData = canvas.toDataURL("image/png");
+                const imgWidth = 190;
+                const imgHeight = canvas.height * imgWidth / canvas.width;
+                const positionY = doc.previousAutoTable.finalY + 10;
+                doc.addImage(imgData, "PNG", 10, positionY, imgWidth, imgHeight);
+
+                return html2canvas(document.querySelector("#columnChart"));
+            }).then((canvas) => {
+                const imgData = canvas.toDataURL("image/png");
+                const imgWidth = 190;
+                const imgHeight = canvas.height * imgWidth / canvas.width;
+                const positionY = doc.previousAutoTable.finalY + 10 + imgHeight + 10;
+                doc.addImage(imgData, "PNG", 10, positionY, imgWidth, imgHeight);
+
+                doc.save("Assigned_Applicants_Report.pdf");
+            }).catch((error) => {
+                console.error("Error generating PDF:", error);
+            });
+        }
+
+        document.querySelector("#downloadPDF").addEventListener("click", generatePDF);
+    });
+</script>
+
 
 </body>
