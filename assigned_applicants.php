@@ -3,7 +3,7 @@
 
     <?php include("include/linked-files.php") ?>
     <!-- Add jsPDF and html2canvas scripts -->
-
+    
 </head>
 
 <body>
@@ -216,54 +216,52 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            function generatePDF() {
-                const {
-                    jsPDF
-                } = window.jspdf;
-                const doc = new jsPDF();
+    document.addEventListener("DOMContentLoaded", () => {
+        function generatePDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
 
-                doc.setFontSize(16);
-                doc.text("Assigned Applicants Report", 10, 10);
+            doc.setFontSize(16);
+            doc.text("Assigned Applicants Report", 10, 10);
 
-                html2canvas(document.querySelector("#datatable"))
-                    .then(canvas => {
-                        // Adjust dimensions based on canvas size
-                        const imgData = canvas.toDataURL("image/png");
-                        const imgWidth = 190; // Set to fit your PDF page width
-                        const imgHeight = canvas.height * imgWidth / canvas.width;
-                        doc.addImage(imgData, "PNG", 10, 20, imgWidth, imgHeight);
+            html2canvas(document.querySelector("#datatable"))
+                .then(canvas => {
+                    // Adjust dimensions based on canvas size
+                    const imgData = canvas.toDataURL("image/png");
+                    const imgWidth = 190; // Set to fit your PDF page width
+                    const imgHeight = canvas.height * imgWidth / canvas.width;
+                    doc.addImage(imgData, "PNG", 10, 20, imgWidth, imgHeight);
 
-                        return html2canvas(document.querySelector("#pieChart"));
-                    })
-                    .then(pieChartCanvas => {
-                        const imgData = pieChartCanvas.toDataURL("image/png");
-                        const imgWidth = 190; // Set to fit your PDF page width
-                        const imgHeight = pieChartCanvas.height * imgWidth / pieChartCanvas.width;
-                        doc.addPage();
-                        doc.text("Pie Chart", 10, 10);
-                        doc.addImage(imgData, "PNG", 10, 20, imgWidth, imgHeight);
+                    return html2canvas(document.querySelector("#pieChart"));
+                })
+                .then(pieChartCanvas => {
+                    const imgData = pieChartCanvas.toDataURL("image/png");
+                    const imgWidth = 190; // Set to fit your PDF page width
+                    const imgHeight = pieChartCanvas.height * imgWidth / pieChartCanvas.width;
+                    doc.addPage();
+                    doc.text("Pie Chart", 10, 10);
+                    doc.addImage(imgData, "PNG", 10, 20, imgWidth, imgHeight);
 
-                        return html2canvas(document.querySelector("#columnChart"));
-                    })
-                    .then(columnChartCanvas => {
-                        const imgData = columnChartCanvas.toDataURL("image/png");
-                        const imgWidth = 190; // Set to fit your PDF page width
-                        const imgHeight = columnChartCanvas.height * imgWidth / columnChartCanvas.width;
-                        doc.addPage();
-                        doc.text("Column Chart", 10, 10);
-                        doc.addImage(imgData, "PNG", 10, 20, imgWidth, imgHeight);
+                    return html2canvas(document.querySelector("#columnChart"));
+                })
+                .then(columnChartCanvas => {
+                    const imgData = columnChartCanvas.toDataURL("image/png");
+                    const imgWidth = 190; // Set to fit your PDF page width
+                    const imgHeight = columnChartCanvas.height * imgWidth / columnChartCanvas.width;
+                    doc.addPage();
+                    doc.text("Column Chart", 10, 10);
+                    doc.addImage(imgData, "PNG", 10, 20, imgWidth, imgHeight);
 
-                        doc.save("assigned_applicants_report.pdf");
-                    })
-                    .catch(error => {
-                        console.error("Error generating PDF:", error);
-                    });
-            }
+                    doc.save("assigned_applicants_report.pdf");
+                })
+                .catch(error => {
+                    console.error("Error generating PDF:", error);
+                });
+        }
 
-            document.querySelector("#downloadPDF").addEventListener("click", generatePDF);
-        });
-    </script>
+        document.querySelector("#downloadPDF").addEventListener("click", generatePDF);
+    });
+</script>
 
 
 </body>
