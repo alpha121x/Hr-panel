@@ -211,58 +211,70 @@
 
     <?php include("include/script-files.php") ?>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.21/jspdf.plugin.autotable.min.js"></script>
 
-
-    <!-- Add PDF generation script -->
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            function generatePDF() {
-                const {
-                    jsPDF
-                } = window.jspdf;
-                const doc = new jsPDF();
+    document.addEventListener("DOMContentLoaded", () => {
+        function generatePDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF("p", "mm", "a4");
 
-                doc.setFontSize(16);
-                doc.text("Assigned Applicants Report", 10, 10);
+            // Add Header
+            doc.setFontSize(18);
+            doc.text("Dashboard Name", 10, 10); // Replace with your actual dashboard name
+            doc.setFontSize(14);
+            doc.text("Assigned Applicants Report", 10, 20);
+            doc.setFontSize(12);
+            doc.text(`Date: ${new Date().toLocaleDateString()}`, 10, 30);
 
-                html2canvas(document.querySelector("#datatable"))
-                    .then(canvas => {
-                        // Adjust dimensions based on canvas size
-                        const imgData = canvas.toDataURL("image/png");
-                        const imgWidth = 190; // Set to fit your PDF page width
-                        const imgHeight = canvas.height * imgWidth / canvas.width;
-                        doc.addImage(imgData, "PNG", 10, 20, imgWidth, imgHeight);
+            // Generate the table, excluding the "Action" column
+            const tableElement = document.querySelector("#datatable");
+            const columnsToInclude = [0, 1, 2, 3, 4, 5]; // Indexes of the columns you want to include
 
-                        return html2canvas(document.querySelector("#pieChart"));
-                    })
-                    .then(pieChartCanvas => {
-                        const imgData = pieChartCanvas.toDataURL("image/png");
-                        const imgWidth = 190; // Set to fit your PDF page width
-                        const imgHeight = pieChartCanvas.height * imgWidth / pieChartCanvas.width;
-                        doc.addPage();
-                        doc.text("Pie Chart", 10, 10);
-                        doc.addImage(imgData, "PNG", 10, 20, imgWidth, imgHeight);
+            doc.autoTable({
+                html: tableElement,
+                startY: 40, // Position below the header
+                theme: "grid",
+                columnStyles: {
+                    6: { cellWidth: 0 }, // Hide the "Action" column (index 6)
+                },
+                columns: columnsToInclude.map(index => ({
+                    header: tableElement.querySelectorAll("th")[index].innerText,
+                    dataKey: index,
+                })),
+                styles: {
+                    cellPadding: 3,
+                    fontSize: 10,
+                },
+                margin: { left: 10, right: 10 },
+            });
 
-                        return html2canvas(document.querySelector("#columnChart"));
-                    })
-                    .then(columnChartCanvas => {
-                        const imgData = columnChartCanvas.toDataURL("image/png");
-                        const imgWidth = 190; // Set to fit your PDF page width
-                        const imgHeight = columnChartCanvas.height * imgWidth / columnChartCanvas.width;
-                        doc.addPage();
-                        doc.text("Column Chart", 10, 10);
-                        doc.addImage(imgData, "PNG", 10, 20, imgWidth, imgHeight);
+            // Add the Pie Chart
+            html2canvas(document.querySelector("#pieChart")).then((canvas) => {
+                const imgData = canvas.toDataURL("image/png");
+                const imgWidth = 180;
+                const imgHeight = canvas.height * imgWidth / canvas.width;
+                const positionY = doc.previousAutoTable.finalY + 10;
+                doc.addImage(imgData, "PNG", 15, positionY, imgWidth, imgHeight);
 
-                        doc.save("assigned_applicants_report.pdf");
-                    })
-                    .catch(error => {
-                        console.error("Error generating PDF:", error);
-                    });
-            }
+                return html2canvas(document.querySelector("#columnChart"));
+            }).then((canvas) => {
+                const imgData = canvas.toDataURL("image/png");
+                const imgWidth = 180;
+                const imgHeight = canvas.height * imgWidth / canvas.width;
+                const positionY = doc.previousAutoTable.finalY + 10 + imgHeight + 10;
+                doc.addImage(imgData, "PNG", 15, positionY, imgWidth, imgHeight);
 
-            document.querySelector("#downloadPDF").addEventListener("click", generatePDF);
-        });
-    </script>
+                doc.save("assigned_applicants_report.pdf");
+            }).catch((error) => {
+                console.error("Error generating PDF:", error);
+            });
+        }
+
+        document.querySelector("#downloadPDF").addEventListener("click", generatePDF);
+    });
+</script>
 
 </body>
