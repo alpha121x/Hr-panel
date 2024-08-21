@@ -2,6 +2,7 @@
     <title>Assigned Applicants</title>
 
     <?php include("include/linked-files.php") ?>
+    <!-- Add jsPDF and html2canvas scripts -->
 
 </head>
 
@@ -13,6 +14,7 @@
     <!-- ======= Sidebar ======= -->
     <?php require_once('include/side-nav.php'); ?>
     <!-- End Sidebar-->
+
     <main id="main" class="main">
 
         <div class="pagetitle">
@@ -34,12 +36,8 @@
                             <h5 class="card-title">Applicants</h5>
 
                             <!-- Download PDF Button -->
-                            <form method="post" action="download_pdf.php">
-                                <button type="submit" class="btn btn-primary">Download PDF</button>
-                            </form>
-
-                            <br>
-
+                            <button id="downloadPDF" class="btn btn-primary">Download PDF</button>
+                            <br><br>
 
                             <?php
                             require("db_config.php");
@@ -198,8 +196,6 @@
                                 </div>
                             </div>
 
-
-
                         </div>
                     </div>
 
@@ -214,5 +210,60 @@
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
     <?php include("include/script-files.php") ?>
+
+    <!-- Add PDF generation script -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            function generatePDF() {
+                const {
+                    jsPDF
+                } = window.jspdf;
+                const doc = new jsPDF();
+
+                doc.setFontSize(16);
+                doc.text("Assigned Applicants Report", 10, 10);
+
+                html2canvas(document.querySelector("#datatable"))
+                    .then(canvas => {
+                        // Adjust dimensions based on canvas size
+                        const imgData = canvas.toDataURL("image/png");
+                        const imgWidth = 190; // Set to fit your PDF page width
+                        const imgHeight = canvas.height * imgWidth / canvas.width;
+                        doc.addImage(imgData, "PNG", 10, 20, imgWidth, imgHeight);
+
+                        return html2canvas(document.querySelector("#pieChart"));
+                    })
+                    .then(pieChartCanvas => {
+                        const imgData = pieChartCanvas.toDataURL("image/png");
+                        const imgWidth = 190; // Set to fit your PDF page width
+                        const imgHeight = pieChartCanvas.height * imgWidth / pieChartCanvas.width;
+                        doc.addPage();
+                        doc.text("Pie Chart", 10, 10);
+                        doc.addImage(imgData, "PNG", 10, 20, imgWidth, imgHeight);
+
+                        return html2canvas(document.querySelector("#columnChart"));
+                    })
+                    .then(columnChartCanvas => {
+                        const imgData = columnChartCanvas.toDataURL("image/png");
+                        const imgWidth = 190; // Set to fit your PDF page width
+                        const imgHeight = columnChartCanvas.height * imgWidth / columnChartCanvas.width;
+                        doc.addPage();
+                        doc.text("Column Chart", 10, 10);
+                        doc.addImage(imgData, "PNG", 10, 20, imgWidth, imgHeight);
+
+                        doc.save("assigned_applicants_report.pdf");
+                    })
+                    .catch(error => {
+                        console.error("Error generating PDF:", error);
+                    });
+            }
+
+            document.querySelector("#downloadPDF").addEventListener("click", generatePDF);
+        });
+    </script>
+
 
 </body>
