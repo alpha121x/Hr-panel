@@ -225,7 +225,7 @@
 
                 // Add Header
                 doc.setFontSize(18);
-                doc.text("Dashboard Name", 10, 10); // Replace with your actual dashboard name
+                doc.text("BixiSoft HR Management", 10, 10); // Replace with your actual dashboard name
                 doc.setFontSize(14);
                 doc.text("Assigned Applicants Report", 10, 20);
                 doc.setFontSize(12);
