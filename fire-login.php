@@ -17,15 +17,17 @@ if (isset($_POST['login'])) {
 
         // Prepare the SQL query to prevent SQL injection
         $query = "SELECT * FROM login_users WHERE username = :username AND password = :password";
+        
         $stmt = $pdo->prepare($query);
 
         // Bind parameters to prevent SQL injection
         $stmt->bindParam(':username', $username);
         $stmt->bindParam(':password', $log_password);
-
+     
         // Execute the query
         $stmt->execute();
-
+        // echo $stmt->rowCount();
+        // exit();
         // Fetch the result row
         if ($stmt->rowCount() > 0) {
             session_start(); // Start session
