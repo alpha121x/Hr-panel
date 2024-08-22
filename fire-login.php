@@ -15,14 +15,18 @@ if (isset($_POST['login'])) {
     }
 
     // Prepare the SQL query to prevent SQL injection
-    $query = "SELECT * FROM admin_users WHERE username = $1 AND password = $2";
+    $query = "SELECT * FROM login_users WHERE username = $1 AND password = $2";
     $result = pg_query_params($conn, $query, array($username, $log_password));
+    // print_r($result);
+    // die();
 
     if ($result && pg_num_rows($result) > 0) {
         session_start(); // Start session
 
         // Fetch the result row
         $row = pg_fetch_assoc($result);
+
+
 
         // Store user information in session variables
         $_SESSION['user'] = $row['username'];

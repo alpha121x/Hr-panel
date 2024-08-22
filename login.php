@@ -2,12 +2,11 @@
 <html lang="en">
 
 <head>
-  <title>Pages / Login - NiceAdmin Bootstrap Template</title>
-  
-  
- <?php include"include/linked-files.php" ?>
-  
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <?php include "include/linked-files.php"; ?>
+  <link rel="stylesheet" href="assets/css/styles.css"> <!-- Ensure CSS for form styling -->
 </head>
 
 <body>
@@ -35,12 +34,19 @@
                     <p class="text-center small">Enter your username & password to login</p>
                   </div>
 
-                  <form class="row g-3 needs-validation" action="fire-login.php" method="POST">
+                  <!-- Display error message if set -->
+                  <?php if (isset($_GET['error'])): ?>
+                    <div class="alert alert-danger text-center" role="alert">
+                      Invalid username or password. Please try again.
+                    </div>
+                  <?php endif; ?>
+
+                  <form class="row g-3 needs-validation" action="fire-login.php" method="POST" novalidate>
 
                     <div class="col-12">
                       <label for="yourUsername" class="form-label">Username</label>
                       <div class="input-group has-validation">
-                        <span class="input-group-text" id="inputGroupPrepend"><i class='bx bx-user text-primary fs-4'></i></i></span>
+                        <span class="input-group-text" id="inputGroupPrepend"><i class='bx bx-user text-primary fs-4'></i></span>
                         <input type="text" name="username" class="form-control" id="yourUsername" required>
                         <div class="invalid-feedback">Please enter your username.</div>
                       </div>
@@ -55,12 +61,6 @@
                       </div>
                     </div>
 
-                    <!-- <div class="col-12">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe">
-                        <label class="form-check-label" for="rememberMe">Remember me</label>
-                      </div>
-                    </div> -->
                     <div class="col-12">
                       <button class="btn btn-primary w-100" type="submit" name="login">Login</button>
                     </div>
@@ -68,7 +68,6 @@
 
                 </div>
               </div>
-
 
             </div>
           </div>
@@ -81,7 +80,26 @@
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <?php ("include/script-files.php"); ?>
+  <?php include "include/script-files.php"; ?>
+
+  <!-- Optional: JavaScript for client-side validation -->
+  <script>
+    (function() {
+      'use strict';
+      window.addEventListener('load', function() {
+        var forms = document.getElementsByClassName('needs-validation');
+        Array.prototype.filter.call(forms, function(form) {
+          form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
+  </script>
 
 </body>
 
